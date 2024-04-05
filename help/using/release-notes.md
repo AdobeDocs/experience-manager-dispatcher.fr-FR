@@ -10,9 +10,9 @@ products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 7bf3bf55abe5a015df9b9e99fe838388a4fe6360
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1101'
-ht-degree: 91%
+ht-degree: 100%
 
 ---
 
@@ -25,7 +25,7 @@ ht-degree: 91%
 | Produits | Adobe Experience Manager (AEM) Dispatcher |
 | Version | 4.3.7 |
 | Type | Version mineure |
-| Date | jeudi 27 mars 2024 |
+| Date | 27 mars 2024 |
 | URL de téléchargement | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul> |
 | Compatibilité | AEM 6.1 ou version ultérieure |
 
@@ -41,14 +41,14 @@ Pour obtenir des instructions détaillées, voir [Installation de Dispatcher](di
 
 ## Historique des versions {#release-history}
 
-### Version 4.3.7 (27 mars-2024) {#march}
+### Version 4.3.7 (27 mars 2024) {#march}
 
 **Améliorations** :
 
-* DISP-1009 - définition de la longueur de l’en-tête à nouveau
-* DISP-1013 - ajout de la prise en charge d’openssl 3.0 pour Linux
-* DISP-1014 - traitement response.location entraînant une redirection non valide
-* DISP-1017 - modification de la définition DTD
+* DISP-1009 - Nouvelle définition de la longueur de l’en-tête
+* DISP-1013 - Ajout de la prise en charge d’OpenSSL 3.0 pour Linux
+* DISP-1014 - Traitement response.location entraînant une redirection non valide
+* DISP-1017 - Modification de la définition DTD
 
 ### Version 4.3.6 (25 juillet 2023) {#jyly}
 
