@@ -3,9 +3,9 @@ title: Configurer Dispatcher
 description: Découvrez comment configurer Dispatcher. Découvrez la prise en charge d’IPv4 et d’IPv6, des fichiers de configuration, des variables d’environnement, de l’attribution de noms à l’instance, de la définition de batteries, de l’identification des hôtes virtuels, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8857'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1324,7 +1324,7 @@ Pour plus d’informations sur les propriétés glob, voir [Création de modèl
 >
 >Cette fonction est disponible avec la version **4.1.11** de Dispatcher.
 
-La propriété `/headers` permet de définir les types d’en-têtes HTTP qui vont être mis en cache par Dispatcher. Lors de la première requête à une ressource non mise en cache, tous les en-têtes correspondant à l’une des valeurs configurées (voir l’exemple de configuration ci-dessous) sont stockés dans un fichier séparé, à côté du fichier cache. Lors des requêtes suivantes à la ressource mise en cache, les en-têtes stockés sont ajoutés à la réponse.
+La propriété `/headers` permet de définir les types d’en-têtes HTTP qui vont être mis en cache par Dispatcher. Lors de la première requête à une ressource non mise en cache, tous les en-têtes correspondant à l’une des valeurs configurées (voir l’exemple de configuration ci-dessous) sont stockés dans un fichier séparé, à côté du fichier cache. Lors des requêtes ultérieures à la ressource mise en cache, les en-têtes stockés sont ajoutés à la réponse.
 
 Voici ci-dessous un exemple de la configuration par défaut :
 
