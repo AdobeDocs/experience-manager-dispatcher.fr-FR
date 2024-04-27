@@ -1,20 +1,16 @@
 ---
 title: Utiliser Dispatcher avec plusieurs domaines
-seo-title: Using Dispatcher with Multiple Domains
 description: Découvrez comment utiliser Dispatcher pour traiter les requêtes de pages dans plusieurs domaines web.
-seo-description: Learn how to use Dispatcher to process page requests in multiple web domains.
-uuid: 7342a1c2-fe61-49be-a240-b487d53c7ec1
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: c7af1a042b0106fa0a559448398a8dd636d920c2
-workflow-type: ht
-source-wordcount: '2967'
-ht-degree: 100%
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
+workflow-type: tm+mt
+source-wordcount: '2918'
+ht-degree: 84%
 
 ---
 
@@ -29,7 +25,7 @@ Utilisez Dispatcher pour traiter les demandes de pages dans plusieurs domaines w
 * Le contenu web des deux domaines est stocké dans un référentiel AEM unique.
 * Les fichiers du cache de Dispatcher peuvent être invalidés séparément pour chaque domaine.
 
-Par exemple, une entreprise publie des sites web pour deux de leurs marques : Marque A et Marque B. Le contenu des pages du site web est créé dans AEM et stocké sur le même espace de travail du référentiel :
+Par exemple, une entreprise publie des sites web pour deux de ses marques : Marque A et Marque B. Le contenu des pages du site web est créé dans AEM et stocké dans le même espace de travail de référentiel :
 
 ```
 /
@@ -42,7 +38,7 @@ Par exemple, une entreprise publie des sites web pour deux de leurs marques : M
 
 Les pages pour `BrandA.com` sont stockées ci-dessous `/content/sitea`. Les requêtes client pour l’URL `https://BrandA.com/en.html` sont renvoyées à la page rendue pour le nœud `/content/sitea/en`. De même, les pages pour `BrandB.com` sont stockées sous `/content/siteb`.
 
-Lorsque Dispatcher est utilisé pour mettre en cache du contenu, des associations doivent être effectuées entre l’URL de la page de la requête HTTP du client, le chemin d’accès au fichier correspondant du cache et le chemin d’accès au fichier correspondant dans le référentiel.
+Lors de l’utilisation de Dispatcher pour mettre en cache du contenu, des associations doivent être effectuées entre l’URL de la page dans la requête HTTP client, le chemin d’accès au fichier mis en cache correspondant et le chemin d’accès au fichier correspondant dans le référentiel.
 
 ## Demandes clients
 
@@ -54,7 +50,7 @@ Lorsque les clientes et clients envoient des requêtes HTTP au serveur web, l’
 1. La requête HTTP est envoyée au serveur web.
 1. La requête HTTP est transmise à Dispatcher.
 1. Dispatcher détermine si les fichiers mis en cache sont valides. Si tel est le cas, les fichiers mis en cache sont servis au client ou à la cliente.
-1. Si les fichiers mis en cache ne sont pas valides, Dispatcher demande les pages nouvellement rendues à l’instance de publication AEM.
+1. Si les fichiers mis en cache ne sont pas valides, Dispatcher demande les pages nouvellement rendues à partir de l’instance de publication AEM.
 
 ## Invalidation du cache
 
@@ -62,11 +58,11 @@ Lorsque les agents de réplication de purge de Dispatcher demandent que ce derni
 
 ![](assets/chlimage_1-9.png)
 
-* a - Une page est activée sur l’instance de création AEM et le contenu est répliqué sur l’instance de publication.
+* a - Une page est activée sur l’instance d’auteur AEM et le contenu est répliqué sur l’instance de publication.
 * b - L’agent de purge de Dispatcher appelle Dispatcher afin d’invalider le cache pour le contenu répliqué.
 * c - Dispatcher traite un ou plusieurs fichiers .stat pour invalider les fichiers mis en cache.
 
-Pour utiliser Dispatcher avec plusieurs domaines, vous devez configurer AEM, Dispatcher et votre serveur web. Les solutions décrites dans cette page sont générales et s’appliquent à la plupart des environnements. En raison de la complexité de certaines topologies AEM, votre solution peut nécessiter d’autres configurations personnalisées afin de résoudre des problèmes spécifiques. Vous devrez probablement adapter les exemples en fonction de votre infrastructure informatique et de vos politiques de gestion existantes.
+Pour utiliser Dispatcher avec plusieurs domaines, vous devez configurer AEM, Dispatcher et votre serveur web. Les solutions décrites dans cette page sont générales et s’appliquent à la plupart des environnements. En raison de la complexité de certaines topologies AEM, votre solution peut nécessiter d’autres configurations personnalisées afin de résoudre des problèmes spécifiques. Vous devez probablement adapter les exemples pour répondre à vos stratégies de gestion et d’infrastructure informatique existantes.
 
 ## Mappage des URL {#url-mapping}
 
@@ -75,7 +71,7 @@ Pour permettre aux URL de domaine et aux chemins de contenu de se résoudre en f
 * (Recommandé) L’instance de publication AEM utilise le mappage Sling pour la résolution des ressources afin d’implémenter des règles de réécriture d’URL internes. Les URL de domaine sont traduites en chemins de référentiel de contenu. Voir [AEM réécrit les URL entrantes](#aem-rewrites-incoming-urls).
 * Le serveur web utilise des règles de réécriture des URL internes qui traduisent les URL de domaine en chemins d’accès au cache. Voir [Le serveur web réécrit les URL entrantes](#the-web-server-rewrites-incoming-urls).
 
-Il est généralement souhaitable d’utiliser des URL courtes pour les pages web. En règle générale, les URL des pages reflètent la structure des dossiers du référentiel contenant le contenu web. Cependant, les URL ne sont pas en mesure de lire les nœuds les plus élevés du référentiel, tels que `/content`. Le client ne connaît pas nécessairement la structure du référentiel AEM.
+Il est souhaitable d’utiliser des URL courtes pour les pages web. En règle générale, les URL des pages reflètent la structure des dossiers du référentiel contenant le contenu web. Cependant, les URL ne sont pas en mesure de lire les nœuds les plus élevés du référentiel, tels que `/content`. Le client ne connaît pas nécessairement la structure du référentiel AEM.
 
 ## Conditions générales {#general-requirements}
 
@@ -90,8 +86,8 @@ Votre environnement doit mettre en œuvre les fonctionnalités suivantes pour pr
 
 Les exemples de solutions fournis s’appliquent à un environnement présentant les caractéristiques suivantes :
 
-* Les instances de création et de publication d’AEM sont déployées sur des systèmes Linux.
-* Apache HTTPD est le serveur web, déployé sur un système Linux.
+* Les instances de création et de publication d’AEM sont déployées sur les systèmes Linux®.
+* Apache HTTPD est le serveur web déployé sur un système Linux®.
 * Le référentiel de contenu AEM et la racine du document du serveur web utilisent les structures de fichiers suivantes (la racine du document du serveur web Apache est /`usr/lib/apache/httpd-2.4.3/htdocs)`:
 
   **Référentiel**
@@ -127,7 +123,7 @@ Les requêtes de Dispatcher pour le rendu de page identifient la page à l’aid
 
 ![](assets/chlimage_1-10.png)
 
-Le cache de Dispatcher reflète la structure de nœuds du référentiel. Par conséquent, lorsque des activations de page se produisent, les demandes qui en résultent pour l’invalidation de la page mise en cache ne requièrent aucune conversion d’URL ou de chemin d’accès.
+Le cache de Dispatcher reflète la structure de nœuds du référentiel. Par conséquent, lorsque des activations de page se produisent, les requêtes qui en résultent pour l’invalidation de la page mise en cache ne requièrent aucune conversion d’URL ou de chemin d’accès.
 
 ![](assets/chlimage_1-11.png)
 
@@ -144,7 +140,7 @@ L’exemple de fichier suivant `httpd.conf` configure deux domaines virtuels pou
 * Les noms des serveurs (qui coïncident avec les noms des domaines) sont branda.com (ligne 16) et brandb.com (ligne 30).
 * La racine du document de chaque domaine virtuel est le répertoire du cache Dispatcher qui contient les pages du site. (Lignes 17 et 31)
 
-Avec cette configuration, le serveur web effectue les actions suivantes lorsqu’il reçoit une requête pour `https://branda.com/en/products.html` :
+Avec cette configuration, le serveur web effectue les actions suivantes lorsqu’il reçoit une demande pour `https://branda.com/en/products.html`:
 
 * Associe l’URL à l’hôte virtuel doté d’un `ServerName` de `branda.com.`
 
@@ -198,7 +194,7 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-Notez que les hôtes virtuels héritent de la valeur de propriété [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) qui est configurée dans la section du serveur principal. Les hôtes virtuels peuvent inclure leur propre propriété DispatcherConfig pour remplacer la configuration du serveur principal.
+Les hôtes virtuels héritent du [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) valeur de propriété configurée dans la section du serveur principal. Les hôtes virtuels peuvent inclure leur propre propriété DispatcherConfig pour remplacer la configuration du serveur principal.
 
 ### Configuration de Dispatcher pour gérer plusieurs domaines  {#configure-dispatcher-to-handle-multiple-domains}
 
@@ -216,7 +212,7 @@ Les fermes de serveurs pour les hôtes virtuels doivent comporter les configurat
 
 * La propriété `/docroot` est définie sur le chemin d’accès au répertoire racine du contenu du site du domaine dans le cache de Dispatcher. Ce chemin est utilisé comme préfixe pour l’URL concaténée de la demande d’origine. Par exemple, la docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` entraîne la résolution de la requête pour `https://branda.com/en.html` vers le fichier `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
 
-De plus, l’instance de publication d’AEM doit être désignée comme rendu pour l’hôte virtuel. Configurez d&#39;autres propriétés de batterie le cas échéant. Le code suivant est une configuration de batterie abrégée pour le domaine branda.com :
+En outre, l’instance de publication AEM doit être désignée comme rendu pour l’hôte virtuel. Configurez d&#39;autres propriétés de batterie le cas échéant. Le code suivant est une configuration de batterie abrégée pour le domaine branda.com :
 
 ```xml
 /farm_sitea  {     
@@ -244,12 +240,12 @@ Une batterie Dispatcher est requise pour traiter les requêtes d&#39;invalidatio
 
 Les configurations de propriétés suivantes permettent à Dispatcher de résoudre les fichiers du référentiel de contenu AEM à partir des fichiers présents dans le cache :
 
-* La propriété `/docroot` est définie sur le répertoire docroot par défaut du serveur web. En règle générale, il s’agit du répertoire dans lequel le dossier `/content` est créé. Un exemple de valeur pour Apache sous Linux est `/usr/lib/apache/httpd-2.4.3/htdocs`.
+* La propriété `/docroot` est définie sur le répertoire docroot par défaut du serveur web. En règle générale, il s’agit du répertoire dans lequel le dossier `/content` est créé. Un exemple de valeur pour Apache sous Linux® est `/usr/lib/apache/httpd-2.4.3/htdocs`.
 * La propriété `/filter` permet d’accéder aux fichiers en-dessous du répertoire `/content`.
 
 La propriété`/statfileslevel` doit être suffisamment élevée pour que les fichiers .stat soient créés dans le répertoire racine de chaque hôte virtuel. Cette propriété permet au cache de chaque domaine d’être invalidé séparément. Pour l’exemple de configuration, une valeur `/statfileslevel` de `2` crée des fichiers .stat dans le répertoire `*docroot*/content/sitea` et le répertoire `*docroot*/content/siteb`.
 
-De plus, l’instance de publication doit être désignée comme rendu de l’hôte virtuel. Configurez d&#39;autres propriétés de batterie le cas échéant. Le code suivant est une configuration abrégée de la batterie utilisée pour l’invalidation du cache :
+En outre, l’instance de publication doit être désignée comme rendu pour l’hôte virtuel. Configurez d&#39;autres propriétés de batterie le cas échéant. Le code suivant est une configuration abrégée de la batterie utilisée pour l’invalidation du cache :
 
 ```xml
 /farm_flush {  
@@ -286,15 +282,15 @@ Dispatcher initializing (build 4.1.2)
 
 Utilisez le mappage Sling pour la résolution des ressources afin que les URL basées sur des domaines soient résolues en tant que contenu dans l’instance de publication AEM. Le mappage des ressources convertit les URL entrantes provenant de Dispatcher (provenant à l’origine des requêtes HTTP des clients) en nœuds de contenu.
 
-Pour en savoir plus sur le mappage Sling des ressources, consultez [Mappages pour la résolution des ressources](https://sling.apache.org/site/mappings-for-resource-resolution.html) dans la documentation Sling.
+Pour en savoir plus sur le mappage Sling des ressources, consultez [Mappages pour la résolution des ressources](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html) dans la documentation Sling.
 
-En règle générale, les mappages sont nécessaires pour les ressources suivantes, bien que des mappages supplémentaires puissent être nécessaires :
+En règle générale, les mappages sont requis pour les ressources suivantes, bien que d’autres mappages puissent être nécessaires :
 
 * Nœud racine de la page de contenu (sous `/content`)
 * Nœud de conception que les pages utilisent (sous `/etc/designs`)
 * Le dossier `/libs`
 
-Après avoir créé le mappage pour la page de contenu, pour découvrir les mappages supplémentaires requis, utilisez un navigateur web pour ouvrir une page sur le serveur web. Dans le fichier error.log de l’instance de publication, recherchez des messages concernant des ressources introuvables. L’exemple de message suivant indique qu’un mappage pour `/etc/clientlibs` est requis :
+Après avoir créé le mappage pour la page de contenu, pour découvrir d’autres mappages requis, utilisez un navigateur web pour ouvrir une page sur le serveur web. Dans le fichier error.log de l’instance de publication, recherchez des messages concernant des ressources introuvables. L’exemple de message suivant indique qu’un mappage pour `/etc/clientlibs` est requis :
 
 ```shell
 01.11.2012 15:59:24.601 *INFO* [10.36.34.243 [1351799964599] GET /etc/clientlibs/foundation/jquery.js HTTP/1.1] org.apache.sling.engine.impl.SlingRequestProcessorImpl service: Resource /content/sitea/etc/clientlibs/foundation/jquery.js not found
@@ -302,19 +298,19 @@ Après avoir créé le mappage pour la page de contenu, pour découvrir les mapp
 
 >[!NOTE]
 >
->Le transformateur linkchecker du module de réécriture Apache Sling par défaut modifie automatiquement les hyperliens dans la page pour éviter la présence de liens rompus. Cependant, la réécriture des liens n’est effectuée que lorsque la cible du lien est un fichier HTML ou HTM. Pour mettre à jour les liens sur d’autres types de fichiers, créez un composant du transformateur et ajoutez-le à un pipeline de réécriture HTML.
+>Le transformateur Linkchecker du module de réécriture Apache Sling par défaut modifie automatiquement les liens hypertexte de la page afin d’éviter les liens rompus. Cependant, la réécriture des liens n’est effectuée que lorsque la cible du lien est un fichier HTML ou HTM. Pour mettre à jour les liens sur d’autres types de fichiers, créez un composant du transformateur et ajoutez-le à un pipeline de réécriture HTML.
 
-### Exemple de nœuds de mappage des ressources
+### Exemple de noeuds de mappage de ressources
 
 Le tableau suivant répertorie les nœuds qui mettent en œuvre le mappage des ressources pour le domaine marquea.com. Des nœuds similaires sont créés pour le domaine `brandb.com`, par exemple `/etc/map/http/brandb.com`. Dans tous les cas, des mappages sont requis lorsque les références dans la page HTML ne se résolvent pas correctement dans le contexte Sling.
 
 | Chemin d’accès du nœud | Type | Propriété |
 |--- |--- |--- |
-| `/etc/map/http/branda.com` | sling:Mapping | Nom : sling:internalRedirect Type : String Valeur : /content/sitea |
-| `/etc/map/http/branda.com/libs` | sling:Mapping | Nom : sling:internalRedirect<br/> Type : String<br/> Valeur : /libs |
-| `/etc/map/http/branda.com/etc` | sling:Mapping |  |
-| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | Nom : sling:internalRedirect <br/>VType : String <br/>VValeur : /etc/designs |
-| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | Nom : sling:internalRedirect <br/>VType : String <br/>VValeur : /etc/clientlibs |
+| `/etc/map/http/branda.com` | `sling:Mapping` | `Name: sling:internalRedirect Type: String Value: /content/sitea` |
+| `/etc/map/http/branda.com/libs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>Type: String <br/>Value: /libs` |
+| `/etc/map/http/branda.com/etc` | `sling:Mapping` | |
+| `/etc/map/http/branda.com/etc/designs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/designs` |
+| `/etc/map/http/branda.com/etc/clientlibs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/clientlibs` |
 
 ## Configurer l’agent de réplication de purge de Dispatcher {#configuring-the-dispatcher-flush-replication-agent}
 
@@ -328,7 +324,7 @@ Par exemple, pour utiliser la ferme de serveurs `farm_flush` de l’exemple pré
 
 ## Le serveur web réécrit les URL entrantes. {#the-web-server-rewrites-incoming-urls}
 
-Utilisez la fonction de réécriture des URL internes du serveur web pour convertir des URL basées sur un domaine en chemins d’accès aux fichiers du cache de Dispatcher. Par exemple, les requêtes client pour la page `https://brandA.com/en.html` sont converties vers le fichier `content/sitea/en.html` dans la racine du document du serveur web.
+Pour convertir les URL basées sur un domaine en chemins d’accès aux fichiers dans le cache de Dispatcher, utilisez la fonction de réécriture d’URL interne de votre serveur web. Par exemple, les requêtes client pour la page `https://brandA.com/en.html` sont converties vers le fichier `content/sitea/en.html` dans la racine du document du serveur web.
 
 ![](assets/chlimage_1-13.png)
 
@@ -504,12 +500,12 @@ Comme d’habitude, la racine du document du cache est identique à la racine du
 
 Pour réécrire des références à des fichiers dont l’extension est autre que .html ou .htm, créez un composant de transformateur de réécriture Sling et ajoutez-le au pipeline de réécriture par défaut.
 
-Réécrivez les références lorsque les chemins de ressources ne sont pas résolus correctement dans le contexte du serveur web. Par exemple, un transformateur est requis lorsque des composants générateurs d’images créent des liens tels que /content/sitea/en/products.navimage.png. Le composant topnav de la section [Créer un site web complet](https://helpx.adobe.com/fr/experience-manager/6-5/sites/developing/using/the-basics.html) crée de tels liens.
+Réécrivez les références lorsque les chemins de ressources ne sont pas résolus correctement dans le contexte du serveur web. Par exemple, un transformateur est requis lorsque des composants générateurs d’images créent des liens tels que /content/sitea/en/products.navimage.png. La variable `topnav` du composant [Création d’un site web complet](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/developing/introduction/the-basics) crée de tels liens.
 
 Le module de [réécriture Sling](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) effectue le post-traitement de la sortie Sling. Les mises en œuvre de pipeline SAX du module de réécriture se composent d’un générateur, d’un ou de plusieurs transformateurs et d’un sérialiseur :
 
 * **Générateur :** analyse le flux de sortie Sling (document HTML) et génère des événements SAX lorsqu’il rencontre des types d’éléments spécifiques.
-* **Transformateur :** écoute les événements SAX et modifie par conséquent la cible de l’événement (un élément HTML). Un pipeline de réécriture contient zéro, un ou plusieurs transformateurs. Les transformateurs sont exécutés en séquence, transmettant les événements SAX au transformateur suivant dans la séquence.
+* **Transformateur :** Écoute les événements SAX et modifie donc la cible de l’événement (un élément de HTML). Un pipeline de réécriture contient zéro, un ou plusieurs transformateurs. Les transformateurs sont exécutés en séquence, transmettant les événements SAX au transformateur suivant dans la séquence.
 * **Sérialiseur :** sérialise la sortie, y compris les modifications de chaque transformateur.
 
 ![](assets/chlimage_1-15.png)
@@ -526,15 +522,15 @@ Le nœud `/libs/cq/config/rewriter/default` définit le pipeline.
 
 ### Créer un transformateur {#creating-a-transformer}
 
-Procédez comme suit pour créer un composant du transformateur et l’utiliser dans un pipeline :
+Pour créer un composant du transformateur et l’utiliser dans un pipeline, effectuez les tâches suivantes :
 
 1. Mettez en œuvre l’interface `org.apache.sling.rewriter.TransformerFactory`. Cette classe crée des instances de la classe du transformateur. Spécifiez les valeurs de la propriété `transformer.type` (l’alias du transformateur) et configurez la classe comme un composant du service OSGi.
-1. Mettez en œuvre l’interface `org.apache.sling.rewriter.Transformer`. Afin de réduire la charge de travail, vous pouvez étendre la classe `org.apache.cocoon.xml.sax.AbstractSAXPipe`. Remplacez la méthode startElement pour personnaliser le comportement de la réécriture. Cette méthode est appelée pour chaque événement SAX transmis au transformateur.
+1. Mettez en œuvre l’interface `org.apache.sling.rewriter.Transformer`. Afin de réduire la charge de travail, vous pouvez étendre la classe `org.apache.cocoon.xml.sax.AbstractSAXPipe`. Pour personnaliser le comportement de réécriture, remplacez la méthode startElement . Cette méthode est appelée pour chaque événement SAX transmis au transformateur.
 1. Regroupez et déployez les classes.
-1. Ajoutez un nœud de configuration à votre application AEM pour ajouter le transformateur au pipeline.
+1. Pour ajouter le transformateur au pipeline, ajoutez un noeud de configuration à votre application AEM.
 
 >[!TIP]
->Conseil : vous pouvez à la place configurer le TransformerFactory afin que le transformateur soit inséré dans chaque module de réécriture défini. Ainsi, vous n’avez pas besoin de configurer un pipeline :
+>Conseil : vous pouvez à la place configurer le TransformerFactory afin que le transformateur soit inséré dans chaque module de réécriture défini. Par conséquent, vous n’avez pas besoin de configurer un pipeline :
 >
 >* Définissez la propriété `pipeline.mode` sur `global`.
 >* Définissez la propriété `service.ranking` sur un entier positif.
@@ -542,14 +538,14 @@ Procédez comme suit pour créer un composant du transformateur et l’utiliser 
 
 >[!NOTE]
 >
->Utilisez l’archétype [multimodule](https://helpx.adobe.com/fr/experience-manager/aem-previous-versions.html) du module externe Content Package Maven pour créer le projet Maven. Les POM créent et installent automatiquement un package de contenu.
+>Pour créer votre projet Maven, utilisez le [multimodule](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions) archétype du module externe Content Package Maven. Les POM créent et installent automatiquement un package de contenu.
 
 Les exemples suivants mettent en œuvre un transformateur qui réécrit les références aux fichiers image.
 
-* La classe MyRewriterTransformerFactory instancie des objets MyRewriterTransformer. La propriété pipeline.type définit l’alias du transformateur sur mytransformer. Pour inclure l’alias dans un pipeline, le nœud de configuration du pipeline inclut cet alias dans la liste des transformateurs.
+* La classe MyRewriterTransformerFactory instancie des objets MyRewriterTransformer. La propriété pipeline.type définit l’alias du transformateur sur `mytransformer`. Pour inclure l’alias dans un pipeline, le noeud de configuration du pipeline doit inclure l’alias dans la liste des transformateurs.
 * La classe MyRewriterTransformer remplace la méthode startElement de la classe AbstractSAXTransformer. La méthode startElement réécrit la valeur des attributs src des éléments img.
 
-Les exemples ne sont pas fiables et ne doivent pas être utilisés dans un environnement de production.
+Les exemples ne sont pas robustes. Ne les utilisez pas dans un environnement de production.
 
 ### Exemple de mise en œuvre de TransformerFactory  {#example-transformerfactory-implementation}
 

@@ -2,10 +2,10 @@
 title: Configurer Dispatcher
 description: Découvrez comment configurer Dispatcher. Découvrez la prise en charge d’IPv4 et d’IPv6, des fichiers de configuration, des variables d’environnement, de l’attribution de noms à l’instance, de la définition de batteries, de l’identification des hôtes virtuels, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
-workflow-type: ht
-source-wordcount: '8857'
-ht-degree: 100%
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
+workflow-type: tm+mt
+source-wordcount: '8854'
+ht-degree: 96%
 
 ---
 
@@ -19,7 +19,7 @@ Les sections suivantes décrivent comment configurer divers aspects de Dispatche
 
 ## Prise en charge d’IPv6 et IPv4  {#support-for-ipv-and-ipv}
 
-Vous pouvez installer tous les éléments d’AEM et de Dispatcher sur des réseaux IPv4 et IPv6. Voir [IPV4 et IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=fr#ipv-and-ipv).
+Vous pouvez installer tous les éléments d’AEM et de Dispatcher sur des réseaux IPv4 et IPv6. Voir [IPV4 et IPV6](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv).
 
 ## Fichiers de configuration de Dispatcher {#dispatcher-configuration-files}
 
@@ -133,7 +133,7 @@ Par exemple, si le fichier dispatcher.any se trouve dans le même répertoire qu
 /docroot "${PWD}/cache"
 ```
 
-Autre exemple : si vous créez une variable d’environnement nommée `PUBLISH_IP` qui stocke le nom d’hôte de l’instance de publication AEM, la configuration de la propriété [/renders](#defining-page-renderers-renders) suivante peut être utilisée :
+Autre exemple : si vous créez une variable d’environnement nommée `PUBLISH_IP` qui stocke le nom d’hôte de l’instance de publication AEM, la configuration suivante de la fonction [/renders](#defining-page-renderers-renders) peut être utilisée :
 
 ```xml
 /renders {
@@ -194,7 +194,7 @@ Chaque propriété /farm peut contenir les propriétés enfants suivantes :
 |--- |--- |
 | [/homepage](#specify-a-default-page-iis-only-homepage) | Page d’accueil par défaut (facultative) (IIS uniquement) |
 | [/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders) | En-têtes provenant de la requête HTTP client à transférer. |
-| [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | Hôtes virtuels de cette batterie. |
+| [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | Les hôtes virtuels de cette ferme. |
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | Prise en charge de la gestion et de l’authentification des sessions. |
 | [/renders](#defining-page-renderers-renders) | Serveurs qui fournissent les pages rendues (généralement les instances de publication AEM). |
 | [/filter](#configuring-access-to-content-filter) | Définit les URL auxquelles Dispatcher autorise l’accès. |
@@ -259,7 +259,7 @@ Comment Type: draft
 
 La propriété `/clientheaders` définit une liste d’en-têtes HTTP que Dispatcher transfère de la demande HTTP client vers le rendu (instance AEM).
 
-Par défaut, Dispatcher transmet les en-têtes HTTP standard à l’instance AEM. Dans certains cas, vous souhaiterez peut-être transférer des en-têtes supplémentaires ou supprimer des en-têtes spécifiques :
+Par défaut, Dispatcher transmet les en-têtes HTTP standard à l’instance AEM. Dans certains cas, vous pouvez transférer d’autres en-têtes ou supprimer des en-têtes spécifiques :
 
 * Ajoutez les en-têtes, tels que les en-têtes personnalisés, que votre instance AEM attend dans la requête HTTP.
 * Supprimez les en-têtes, tels que les en-têtes d’authentification qui ne concernent que le serveur web.
@@ -402,9 +402,9 @@ L’exemple suivant représente un extrait de code provenant d’un fichier `dis
 
 >[!CAUTION]
 >
->Définissez `/allowAuthorized` sur `"0"` dans la section `/cache` pour activer cette fonctionnalité. Comme détaillé dans la section [Mise en cache lorsque l’authentification est utilisée](#caching-when-authentication-is-used), lorsque vous définissez `/allowAuthorized 0 `, les requêtes qui incluent des informations d’authentification ne sont **pas** mises en cache. Si une mise en cache sensible aux autorisations est requise, consultez la page [Mise en cache du contenu sécurisé](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html?lang=fr).
+>Définissez `/allowAuthorized` sur `"0"` dans la section `/cache` pour activer cette fonctionnalité. Comme détaillé dans la section [Mise en cache lorsque l’authentification est utilisée](#caching-when-authentication-is-used), lorsque vous définissez `/allowAuthorized 0 `, les requêtes qui incluent des informations d’authentification ne sont **pas** mises en cache. Si une mise en cache sensible aux autorisations est requise, consultez la page [Mise en cache du contenu sécurisé](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/permissions-cache).
 
-Créez une session sécurisée pour l’accès à la batterie de rendus, de sorte que les utilisateurs et les utilisatrices doivent ouvrir une session pour accéder à n’importe quelle page de la batterie. Après avoir ouvert une session, les utilisateurs et utilisatrices peuvent accéder à toutes les pages de la batterie. Voir [Création d’un groupe d’utilisateurs et d’utilisatrices fermé](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=fr#creating-the-user-group-to-be-used) pour plus d’informations sur l’utilisation de cette fonctionnalité avec les groupes d’utilisateurs et d’utilisatrices fermés. Consultez également la [Liste de contrôle de sécurité](/help/using/security-checklist.md) de Dispatcher avant la mise en ligne.
+Créez une session sécurisée pour l’accès à la batterie de rendus, de sorte que les utilisateurs et les utilisatrices doivent ouvrir une session pour accéder à n’importe quelle page de la batterie. Après avoir ouvert une session, les utilisateurs et utilisatrices peuvent accéder à toutes les pages de la batterie. Voir [Création d’un groupe d’utilisateurs et d’utilisatrices fermé](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used) pour plus d’informations sur l’utilisation de cette fonctionnalité avec les groupes d’utilisateurs et d’utilisatrices fermés. Consultez également la [Liste de contrôle de sécurité](/help/using/security-checklist.md) de Dispatcher avant la mise en ligne.
 
 La propriété `/sessionmanagement` est une sous-propriété de `/farms`.
 
@@ -412,7 +412,7 @@ La propriété `/sessionmanagement` est une sous-propriété de `/farms`.
 >
 >Si des sections de votre site web utilisent des conditions d’accès différentes, vous devez définir plusieurs batteries.
 
-**/sessionmanagement** comporte plusieurs sous-paramètres :
+**/sessionmanagement** comporte plusieurs sous-paramètres :
 
 **/directory** (obligatoire)
 
@@ -420,7 +420,7 @@ Répertoire qui stocke les informations de session. Si le répertoire n’existe
 
 >[!CAUTION]
 >
-> Lorsque vous configurez le sous-paramètre de répertoire, **ne pointez pas** vers le dossier racine (`/directory "/"`), car cela risque de poser de sérieux problèmes. Vous devez toujours spécifier le chemin d’accès au dossier où sont stockées les informations de session. Par exemple :
+> Lors de la configuration du sous-paramètre de répertoire, **ne pas** pointez vers le dossier racine (`/directory "/"`), car cela peut causer de graves problèmes. Vous devez toujours spécifier le chemin d’accès au dossier où sont stockées les informations de session. Par exemple :
 
 ```xml
 /sessionmanagement
@@ -513,7 +513,7 @@ Indique le délai de connexion (en millisecondes) pour accéder à l’instance 
 
 Indique la durée (en millisecondes) autorisée d’une réponse. La valeur par défaut est `"600000"`, ce qui amène Dispatcher à attendre pendant 10 minutes. Un paramètre de `"0"` élimine le délai d’expiration.
 
-Si le délai est atteint pendant l’analyse des en-têtes de réponse, un état HTTP 504 (passerelle erronée) est renvoyé. Si le délai d’expiration est atteint pendant la lecture du corps de la réponse, Dispatcher renvoie la réponse incomplète au client. Il supprime également tout fichier du cache qui peut avoir été écrit.
+Si le délai est atteint pendant l’analyse des en-têtes de réponse, un état HTTP 504 (passerelle erronée) est renvoyé. Si le délai d’expiration est atteint pendant la lecture du corps de la réponse, Dispatcher renvoie la réponse incomplète au client. Elle supprime également les fichiers mis en cache qui peuvent avoir été écrits.
 
 **/ipv4**
 
@@ -525,7 +525,7 @@ Amazon Elastic Load Balancing (ELB) est un service qui répond à getaddrinf
 
 **/secure**
 
-Si la propriété `/secure` a une valeur de `"1"`, Dispatcher utilise HTTPS pour communiquer avec l’instance AEM. Pour plus de détails, voir aussi [Configuration de Dispatcher pour l’utilisation de SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
+Si la propriété `/secure` a une valeur de `"1"`, Dispatcher utilise HTTPS pour communiquer avec l’instance AEM. Pour plus d’informations, voir [Configuration de Dispatcher pour utiliser SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
 
 **/always-resolve**
 
@@ -555,7 +555,7 @@ Utilisez la section `/filter` pour définir les requêtes HTTP que Dispatcher ac
 
 >[!CAUTION]
 >
->Voir [Liste de contrôle de sécurité de Dispatcher](security-checklist.md) pour en savoir plus sur la limitation de l’accès en utilisant Dispatcher. Pour plus de détails sur la sécurité de votre installation AEM, lisez aussi la [Liste de contrôle de sécurité d’AEM](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=fr#security).
+>Voir [Liste de contrôle de sécurité de Dispatcher](security-checklist.md) pour en savoir plus sur la limitation de l’accès en utilisant Dispatcher. Voir également la section [Liste de contrôle AEM sécurité](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist#security) pour plus d’informations sur la sécurité de votre installation AEM.
 
 La section `/filter` se compose d’une série de règles qui refusent ou autorisent l’accès au contenu en fonction des modèles de la partie ligne de demande de la requête HTTP. Utilisez une stratégie de liste autorisée pour votre section `/filter` :
 
@@ -588,7 +588,7 @@ Chaque élément de la section `/filter` comprend un type et un modèle associé
 >
 >`/glob "* *.css *"`
 >
->use
+>Utilisez
 >
 >`/url "*.css"`
 
@@ -670,7 +670,7 @@ Si vous devez accéder à des pages uniques dans la zone restreinte, vous pouvez
 
 >[!NOTE]
 >
->Lorsque plusieurs modèles de filtres s’appliquent à une requête, le dernier modèle appliqué est celui en vigueur.
+>Lorsque plusieurs modèles de filtre s’appliquent à une requête, le dernier modèle de filtre appliqué est effectif.
 
 #### Exemple de filtre : Utilisation d’expressions régulières {#example-filter-using-regular-expressions}
 
@@ -680,7 +680,7 @@ Ce filtre permet des extensions dans des répertoires de contenu non publics à 
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### Exemple de filtre : Filtrer des éléments supplémentaires d’une URL de demande  {#example-filter-filter-additional-elements-of-a-request-url}
+#### Exemple de filtre : Filtrage des éléments supplémentaires d’une URL de demande {#example-filter-filter-additional-elements-of-a-request-url}
 
 Voici un exemple de règle qui bloque la récupération de contenu à partir du chemin `/content` et de sa sous-arborescence, en utilisant des filtres par chemin, sélecteurs et extensions :
 
@@ -797,15 +797,15 @@ Tenez compte des recommandations suivantes si vous choisissez d’étendre l’a
 
    * `/libs/opensocial/proxy*`
 
-En fonction de l’installation, il peut y avoir des ressources supplémentaires sous `/libs`, `/apps` ou ailleurs. Faites en sorte qu’elles soient disponibles. Vous pouvez utiliser le fichier `access.log` en tant que méthode permettant de déterminer les ressources accessibles en externe.
+Selon votre installation, il peut y avoir d’autres ressources sous `/libs`, `/apps` ou ailleurs, qui doit être rendu disponible. Vous pouvez utiliser le fichier `access.log` en tant que méthode permettant de déterminer les ressources accessibles en externe.
 
 >[!CAUTION]
 >
->L’accès aux consoles et aux répertoires peut présenter un risque de sécurité pour les environnements de production. À moins que vous n’ayez des justifications explicites, ils doivent rester désactivés (commentés).
+>L’accès aux consoles et aux répertoires peut présenter un risque de sécurité pour les environnements de production. À moins que vous n’ayez une justification explicite, ils doivent rester désactivés (commentés).
 
 >[!CAUTION]
 >
->Si vous [utilisez des rapports dans un environnement de publication](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=fr#using-reports-in-a-publish-environment), vous devez configurer Dispatcher pour refuser l’accès à `/etc/reports` aux visiteurs et visiteuses externes.
+>Si vous [utilisez des rapports dans un environnement de publication](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment), vous devez configurer Dispatcher pour refuser l’accès à `/etc/reports` aux visiteurs et visiteuses externes.
 
 ### Restreindre des chaînes de requête {#restricting-query-strings}
 
@@ -937,7 +937,7 @@ La section `/vanity_urls` contient les propriétés suivantes :
 
 >[!NOTE]
 >
->Si votre rendu est une instance AEM, vous devez installer le [package VanityURLS-Components depuis la Distribution logicielle](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) pour activer le service d’URL de redirection. (Voir [Distribution logicielle](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=fr#software-distribution) pour plus d’informations.)
+>Si votre rendu est une instance AEM, vous devez installer le [package VanityURLS-Components depuis la Distribution logicielle](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) pour activer le service d’URL de redirection. (Voir [Distribution logicielle](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution) pour plus d’informations.)
 
 Utilisez la procédure suivante pour autoriser l’accès aux URL de redirection.
 
@@ -954,7 +954,7 @@ Si nécessaire, définissez la propriété `/propagateSyndPost` sur « `"1"` �
 
 ## Configurer le cache de Dispatcher - /cache {#configuring-the-dispatcher-cache-cache}
 
-La section `/cache` contrôle la manière dont Dispatcher met en cache les documents. Configurez plusieurs sous-propriétés pour implémenter vos stratégies de mise en cache :
+La section `/cache` contrôle la manière dont Dispatcher met en cache les documents. Configurez plusieurs sous-propriétés pour implémenter vos stratégies de mise en cache :
 
 * `/docroot`
 * `/statfile`
@@ -1150,7 +1150,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 Utilisez la propriété `/statfileslevel` pour invalider une sélection de fichiers mis en cache en fonction de leur chemin d’accès :
 
 * Dispatcher crée des fichiers`.stat` dans chaque dossier du dossier docroot au niveau que vous indiquez. Le dossier docroot correspond au niveau 0.
-* Les fichiers sont invalidés en touchant le fichier `.stat`. La date de dernière modification du fichier `.stat` est comparée à celle d’un document mis en cache. Le document est à nouveau récupéré si le fichier `.stat` est plus récent.
+* Les fichiers sont invalidés en touchant le fichier `.stat`. La date de dernière modification du fichier `.stat` est comparée à celle d’un document mis en cache. Le document est récupéré si la variable `.stat` est plus récent.
 
 * Lorsqu’un fichier situé à un certain niveau est invalidé, **tous** les fichiers `.stat` de docroot **jusqu’au** niveau du fichier invalidé ou du fichier `statsfilevel` configuré (celui qui est le plus petit) seront touchés.
 
@@ -1167,7 +1167,7 @@ Lorsqu’un fichier dans `/content/myWebsite/xx` est invalidé, tous les fichier
 
 >[!NOTE]
 >
->L’invalidation peut être empêchée en envoyant un en-tête `CQ-Action-Scope:ResourceOnly` supplémentaire. Cette méthode peut être utilisée pour purger des ressources particulières sans invalider d’autres parties du cache. Pour plus de détails, voir [cette page](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) et [Invalidation manuelle du cache de Dispatcher](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/page-invalidate.html?lang=fr#configuring).
+>L’invalidation peut être empêchée en envoyant un en-tête `CQ-Action-Scope:ResourceOnly` supplémentaire. Cette méthode peut être utilisée pour purger des ressources particulières sans invalider d’autres parties du cache. Voir [cette page](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) et [Invalidation manuelle du cache de Dispatcher](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring) pour plus d’informations.
 
 >[!NOTE]
 >
@@ -1195,7 +1195,7 @@ Cette configuration provoque l’activité suivante lorsque `/content/wknd/us/en
 
 * Tous les fichiers avec le motif en.* sont supprimés du dossier `/content/wknd/us`.
 * Le dossier `/content/wknd/us/en./_jcr_content` est supprimé.
-* Tous les autres fichiers correspondant à la configuration `/invalidate` ne sont pas immédiatement supprimés. Ces fichiers sont supprimés lors de la requête suivante. Dans l’exemple, `/content/wknd.html` n’est pas supprimé ; il est supprimé lorsque `/content/wknd.html` est demandé.
+* Tous les autres fichiers correspondant à la configuration `/invalidate` ne sont pas immédiatement supprimés. Ces fichiers sont supprimés lors de la requête suivante. Dans l’exemple : `/content/wknd.html` n’est pas supprimé. Il est supprimé lorsque `/content/wknd.html` est demandée.
 
 Si vous proposez des fichiers PDF et ZIP générés automatiquement au téléchargement, vous devrez peut-être également invalider automatiquement ces fichiers. Voici un exemple de configuration :
 
@@ -1229,7 +1229,7 @@ Elle est appelée avec les arguments suivants :
 
 Cette méthode peut être utilisée pour couvrir plusieurs cas d’utilisation différents. Par exemple, l’invalidation d’autres caches spécifiques à l’application, ou la gestion de cas où l’URL externalisée d’une page, ainsi que sa place dans le docroot, ne correspondent pas au chemin d’accès au contenu.
 
-L’exemple de script ci-dessous consigne chaque requête d’invalidation à un fichier.
+L’exemple de script ci-dessous consigne chaque requête invalidée dans un fichier.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
@@ -1380,7 +1380,7 @@ Si la propriété `/invalidate` est définie par défaut, chaque activation inva
 
 La propriété `/gracePeriod` définit le nombre de secondes pendant lesquelles une ressource obsolète à invalidation automatique peut toujours être servie à partir du cache après la dernière activation. La propriété peut être utilisée dans une configuration où un lot d’activations invaliderait de manière répétée le cache entier. La valeur recommandée est de 2 secondes.
 
-Pour plus de détails, vous pouvez aussi lire les sections `/invalidate` et `/statfileslevel` ci-dessus.
+Pour plus d’informations, voir `/invalidate` et `/statfileslevel`plus tôt.
 
 ### Configurer une invalidation temporelle du cache - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
@@ -1412,7 +1412,7 @@ Cela garantit que l’invalidation de fichier `.stat` n’est pas utilisée et q
 
 >[!NOTE]
 >
->Gardez à l’esprit que le paramétrage de `/enableTTL` sur 1 active la mise en cache TTL uniquement du côté de Dispatcher. Les informations TTL contenues dans le fichier supplémentaire (voir ci-dessus) ne sont donc fournies à aucun autre useragent demandant un tel type de fichier à Dispatcher. Si vous souhaitez fournir des en-têtes de mise en cache à des systèmes en aval comme un réseau de diffusion de contenu ou un navigateur, vous devez configurer la section `/cache/headers` en conséquence.
+>Gardez à l’esprit que ce paramètre `/enableTTL` La valeur 1 active la mise en cache TTL uniquement du côté de Dispatcher. Par conséquent, les informations TTL contenues dans le fichier supplémentaire (voir ci-dessus) ne sont fournies à aucun autre agent utilisateur demandant un tel type de fichier à Dispatcher. Si vous souhaitez fournir des en-têtes de mise en cache à des systèmes en aval comme un réseau de diffusion de contenu ou un navigateur, vous devez configurer la section `/cache/headers` en conséquence.
 
 >[!NOTE]
 >
@@ -1520,13 +1520,13 @@ Lorsqu’une page est constituée de contenu provenant de plusieurs nœuds de co
 }
 ```
 
-### httpOnly {#httponly}
+### `httpOnly` {#httponly}
 
 Lorsque les connexions persistantes sont activées, le module de Dispatcher définit le cookie `renderid`. Ce cookie n’est pas doté de l’indicateur `httponly`, qui doit être ajouté pour renforcer la sécurité. Pour ajouter l’indicateur `httponly`, définissez la propriété `httpOnly` dans le nœud `/stickyConnections` d’un fichier de configuration `dispatcher.any`. La valeur de la propriété (`0` ou `1`) définit si le cookie `renderid` se fait adjoindre l’attribut `HttpOnly`. La valeur par défaut est `0`, ce qui signifie que l’attribut n’est pas ajouté.
 
-Pour plus d’informations sur l’indicateur `httponly`, consultez [cette page](https://www.owasp.org/index.php/HttpOnly).
+Pour plus d’informations sur l’indicateur `httponly`, consultez [cette page](https://owasp.org/www-community/HttpOnly).
 
-### secure {#secure}
+### `secure` {#secure}
 
 Lorsque les connexions persistantes sont activées, le module de Dispatcher définit le cookie `renderid`. Ce cookie n’est pas doté de l’indicateur `secure`, qui doit être ajouté pour renforcer la sécurité. Pour ajouter l’indicateur `secure`, définissez la propriété `secure` dans le nœud `/stickyConnections` d’un fichier de configuration `dispatcher.any`. La valeur de la propriété (`0` ou `1`) définit si le cookie `renderid` se fait adjoindre l’attribut `secure`. La valeur par défaut est `0`, ce qui signifie que l’attribut est ajouté **si** la requête entrante est sécurisée. Si la valeur est définie sur `1`, l’indicateur sécurisé sera ajouté, que la requête entrante soit sécurisée ou non.
 
@@ -1550,7 +1550,7 @@ Utilisez la propriété `/health_check` pour indiquer une URL qui est vérifiée
 
 La propriété `/retryDelay` définit le délai (en secondes) pendant lequel Dispatcher attend entre les séries de tentatives de connexion aux rendus de la batterie. Pour chaque série, le nombre maximal de tentatives de connexion de Dispatcher à un rendu est le nombre de rendus de la ferme de serveurs.
 
-Dispatcher utilise la valeur `"1"` si la propriété `/retryDelay` n’est pas explicitement définie. La valeur par défaut est généralement correcte.
+Dispatcher utilise la valeur `"1"` si la propriété `/retryDelay` n’est pas explicitement définie. La valeur par défaut est appropriée.
 
 ```xml
 /retryDelay "1"
@@ -1619,7 +1619,7 @@ La définition du paramètre `/ignoreEINTR` sur `"1"` fait en sorte que Dispatch
 
 ## Créer des motifs pour les propriétés glob {#designing-patterns-for-glob-properties}
 
-Plusieurs sections du fichier de configuration de Dispatcher utilisent les propriétés `glob` comme critères de sélection des requêtes du client. Les valeurs des propriétés `glob` sont des motifs que Dispatcher compare à un aspect de la requête, par exemple au chemin d’accès à la ressource demandée ou à l’adresse IP du client. Par exemple, les éléments de la section `/filter` utilisent les motifs `glob` pour identifier les chemins d’accès des pages que Dispatcher traite ou rejette.
+Plusieurs sections du fichier de configuration de Dispatcher peuvent utiliser `glob` propriétés en tant que critères de sélection des requêtes client. Les valeurs des propriétés `glob` sont des motifs que Dispatcher compare à un aspect de la requête, par exemple au chemin d’accès à la ressource demandée ou à l’adresse IP du client. Par exemple, les éléments de la section `/filter` utilisent les motifs `glob` pour identifier les chemins d’accès des pages que Dispatcher traite ou rejette.
 
 Les valeurs `glob` peuvent inclure des caractères génériques et des caractères alphanumériques pour définir le motif.
 
@@ -1751,7 +1751,7 @@ Consultez la documentation du serveur web Apache sur la rotation des journaux et
 >
 >Lors de l’installation, le niveau de journalisation par défaut est élevé (à savoir, niveau 3 = Déboguer), de sorte que Dispatcher consigne toutes les erreurs et tous les avertissements. Ce niveau est utile lors des étapes initiales.
 >
->Toutefois, un tel niveau nécessite des ressources supplémentaires. Lorsque Dispatcher fonctionne sans problème *selon vos besoins*, vous pouvez réduire le niveau de journal.
+>Toutefois, un tel niveau nécessite davantage de ressources. Lorsque Dispatcher fonctionne sans problème *selon vos besoins*, vous pouvez réduire le niveau de journal.
 
 ### Journalisation de trace {#trace-logging}
 

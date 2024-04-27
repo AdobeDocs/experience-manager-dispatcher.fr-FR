@@ -1,13 +1,11 @@
 ---
 title: Problèmes fréquents de Dispatcher
-seo-title: Top issues for AEM Dispatcher
-description: Problèmes fréquents d’AEM Dispatcher
-seo-description: Top issues for Adobe AEM Dispatcher
+description: Problèmes fréquents de Adobe Experience Manager Dispatcher.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
-workflow-type: ht
-source-wordcount: '1534'
-ht-degree: 100%
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
+workflow-type: tm+mt
+source-wordcount: '1542'
+ht-degree: 89%
 
 ---
 
@@ -19,7 +17,7 @@ ht-degree: 100%
 
 ### Qu’est-ce que Dispatcher ?
 
-Dispatcher est l’outil d’équilibrage de charge et/ou de mise en cache d’Adobe Experience Manager qui permet de créer un environnement de création web rapide et dynamique. Pour la mise en cache, Dispatcher fonctionne comme faisant partie d’un serveur HTTP, tel qu’Apache. Il a pour but de stocker (ou de « mettre en cache ») autant de contenu statique que possible du site web et d’accéder aussi rarement que possible au moteur de disposition du site web. Dans un rôle d’équilibrage de charge, Dispatcher répartit les requêtes des utilisateurs et utilisatrices (charge) sur différentes instances (rendus) AEM.
+Dispatcher est l’outil d’équilibrage de charge et/ou de mise en cache d’Adobe Experience Manager qui permet de créer un environnement de création web rapide et dynamique. Pour la mise en cache, Dispatcher fonctionne comme faisant partie d’un serveur HTTP, tel qu’Apache. Il a pour but de stocker (ou de &quot;mettre en cache&quot;) autant de contenu statique du site web que possible et d’accéder aussi rarement que possible à la mise en page du moteur du site web. Dans un rôle d’équilibrage de charge, Dispatcher répartit les requêtes des utilisateurs et utilisatrices (charge) sur différentes instances (rendus) AEM.
 
 Pour la mise en cache, le module Dispatcher utilise la capacité du serveur web à fournir du contenu statique. Dispatcher place les documents mis en cache à la racine du document du serveur web.
 
@@ -82,9 +80,9 @@ Pour certaines applications, il peut être possible d’utiliser à la fois des 
 
 ### Dispatcher et une instance AEM de publication peuvent-ils résider sur le même ordinateur physique ?
 
-Oui, si l’ordinateur est suffisamment puissant. Toutefois, il est recommandé de configurer Dispatcher et l’instance AEM de publication sur différents ordinateurs.
+Oui, si l’ordinateur est suffisamment puissant. Cependant, vous devez configurer Dispatcher et l’instance de publication AEM sur différents ordinateurs.
 
-En général, l’instance de publication réside à l’intérieur du pare-feu et Dispatcher réside dans la DMZ. Si vous décidez de disposer à la fois de l’instance de publication et de Dispatcher sur la même machine physique, assurez-vous que les paramètres du pare-feu interdisent l’accès direct à l’instance de publication à partir de réseaux externes.
+En règle générale, l’instance de publication se trouve à l’intérieur du pare-feu et Dispatcher se trouve dans la zone démilitarisée. Si vous décidez de disposer à la fois de l’instance de publication et de Dispatcher sur le même ordinateur physique, assurez-vous que les paramètres du pare-feu interdisent l’accès direct à l’instance de publication à partir de réseaux externes.
 
 ### Puis-je mettre en cache uniquement les fichiers avec des extensions spécifiques ?
 
@@ -117,7 +115,7 @@ Voir la page [Mise en cache de contenu sécurisé](permissions-cache.md).
 
 ### Comment sécuriser les communications entre les instances Dispatcher et CQ ?
 
-Voir les pages [Liste de contrôle de sécurité de Dispatcher](security-checklist.md) et [Liste de contrôle de sécurité d’AEM](https://experienceleague.adobe.com/docs/experience-manager-64/administering/security/security-checklist.html?lang=fr).
+Voir les pages [Liste de contrôle de sécurité de Dispatcher](security-checklist.md) et [Liste de contrôle de sécurité d’AEM](https://experienceleague.adobe.com/en/docs/experience-manager-64/administering/security/security-checklist).
 
 ### Le problème lié à `jcr:content` de Dispatcher a été remplacé par `jcr%3acontent`.
 
@@ -131,7 +129,7 @@ Pour plus d’informations, voir : [https://sling.apache.org/documentation/the-
 
 ### Comment configurer les agents de purge de Dispatcher sur une instance de publication ?
 
-Voir la page [Réplication](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=fr#configuring-your-replication-agents).
+Voir la page [Réplication](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-your-replication-agents).
 
 ### Comment résoudre les problèmes de purge de Dispatcher ?
 
@@ -141,7 +139,7 @@ Si les opérations de suppression incitent Dispatcher à purger, [utilisez la so
 
 ### Comment vider les ressources DAM du cache de Dispatcher ?
 
-Vous pouvez utiliser la fonctionnalité de « réplication de chaînes ». Lorsque cette fonctionnalité est activée, l’agent de purge de Dispatcher envoie une requête de purge lorsqu’une réplication est reçue de l’instance de création.
+Vous pouvez utiliser la fonctionnalité de « réplication de chaînes ». Lorsque cette fonction est activée, l’agent de purge de Dispatcher envoie une demande de purge lorsqu’une réplication est reçue de l’auteur.
 
 Pour l’activer :
 
@@ -150,10 +148,10 @@ Pour l’activer :
 
 ## Divers
 
-Comment Dispatcher détermine-t-il si un document est à jour ?
-Pour déterminer si un document est à jour, Dispatcher effectue les actions suivantes :
+Comment Dispatcher détermine-t-il si un document est à jour ?
+Pour déterminer si un document est à jour, Dispatcher effectue les actions suivantes :
 
-Il vérifie si le document est soumis à l’invalidation automatique. Si ce n’est pas le cas, le document est considéré comme étant à jour.
+Il vérifie si le document est soumis à l’invalidation automatique. Dans le cas contraire, le document est considéré comme à jour.
 Si le document est configuré pour l’invalidation automatique, Dispatcher vérifie s’il est plus ancien ou plus récent que la dernière modification disponible. S’il est plus ancien, Dispatcher demande la version actuelle à l’instance AEM et remplace la version dans le cache.
 
 ### Comment Dispatcher renvoie-t-il des documents ?

@@ -1,19 +1,15 @@
 ---
 title: Mettre en cache le contenu sécurisé
-seo-title: Caching Secured Content in AEM Dispatcher
 description: Découvrez le fonctionnement de la mise en cache sensible aux autorisations dans Dispatcher.
-seo-description: Learn how permission-sensitive caching works in AEM Dispatcher.
-uuid: abfed68a-2efe-45f6-bdf7-2284931629d6
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 31eaa42b17838d97cacd5c535e04be01a3eb6807
-workflow-type: ht
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
+workflow-type: tm+mt
 source-wordcount: '910'
-ht-degree: 100%
+ht-degree: 89%
 
 ---
 
@@ -36,7 +32,7 @@ Les diagrammes suivants illustrent l’ordre d’apparition des événements lor
 ![](assets/chlimage_1.png)
 
 1. Dispatcher détermine que le contenu demandé est mis en cache et valide.
-1. Dispatcher envoie un message de requête au rendu. La section HEAD comprend toutes les lignes d’en-tête de la requête du navigateur.
+1. Dispatcher envoie un message de requête au rendu. La section HEAD comprend toutes les lignes d’en-tête de la requête du navigateur.
 1. Le rendu appelle le servlet auth checker pour effectuer la vérification de sécurité et répond à Dispatcher. Le message de réponse comprend un code d’état HTTP 200 pour indiquer que la personne est autorisée.
 1. Dispatcher envoie un message de réponse au navigateur, constitué des lignes d’en-tête de la réponse de rendu et du contenu mis en cache dans le corps.
 
@@ -73,8 +69,8 @@ Pour mettre en œuvre la mise en cache sensible aux autorisations, effectuez les
 
 >[!NOTE]
 >
->Lorsqu’un réseau CDN (ou tout autre cache) se trouve devant Dispatcher, vous devez définir les en-têtes de mise en cache en conséquence, afin que le réseau CDN ne mette pas en cache le contenu privé. Par exemple : `Header always set Cache-Control private`.
->Pour AEM as a Cloud Service, voir la page [Mettre en cache](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html?lang=fr) pour en savoir plus sur la définition des en-têtes de mise en cache privés.
+>Lorsqu’un CDN (ou tout autre cache) se trouve devant Dispatcher, vous devez définir les en-têtes de mise en cache en conséquence afin que le CDN ne mette pas en cache le contenu privé. Par exemple : `Header always set Cache-Control private`.
+>Pour AEM as a Cloud Service, voir la section [Mise en cache](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) pour plus d’informations sur la définition des en-têtes de mise en cache privés.
 
 ## Créer le servlet Auth Checker {#create-the-auth-checker-servlet}
 
@@ -82,7 +78,7 @@ Créez et déployez un servlet qui effectue l’authentification et l’autorisa
 
 Le servlet doit être accessible à tous les utilisateurs et utilisatrices. Par conséquent, votre servlet doit étendre la classe `org.apache.sling.api.servlets.SlingSafeMethodsServlet`, qui offre un accès en lecture seule au système.
 
-Le servlet reçoit uniquement les demandes HEAD du rendu. Il suffit donc de mettre en œuvre la méthode `doHead`.
+Le servlet reçoit uniquement les demandes HEAD du rendu. Vous ne devez donc implémenter que la variable `doHead` .
 
 Le rendu inclut l’URI de la ressource demandée sous la forme d’un paramètre de requête HTTP. Par exemple, vous pouvez accéder à un servlet d’autorisation via `/bin/permissioncheck`. Pour effectuer une vérification de sécurité sur la page /content/geometrixx-outdoors/fr.html, la fonctionnalité de rendu inclut l’URL suivante dans la requête HTTP :
 
@@ -151,7 +147,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 >[!NOTE]
 >
->Si vos besoins permettent la mise en cache de documents authentifiés, définissez la propriété /allowAuthorized sous la section /cache sur `/allowAuthorized 1`. Voir [Mise en cache lors de l’utilisation de l’authentification](/help/using/dispatcher-configuration.md) pour plus d’informations.
+>Si vos besoins permettent la mise en cache de documents authentifiés, définissez la propriété /allowAuthorized sous la section /cache sur `/allowAuthorized 1`. Voir la rubrique [Mise en cache lors de l’utilisation de l’authentification](/help/using/dispatcher-configuration.md) pour plus d’informations.
 
 La section auth_checker du fichier dispatcher.any contrôle le comportement de la mise en cache sensible aux autorisations. La section auth_checker comprend les sous-sections suivantes :
 
