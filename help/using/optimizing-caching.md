@@ -10,9 +10,9 @@ index: y
 internal: n
 snippet: y
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1125'
-ht-degree: 78%
+ht-degree: 100%
 
 ---
 
@@ -33,20 +33,20 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 >
 >Les versions de Dispatcher sont indépendantes d’AEM. Vous avez été redirigé vers cette page si vous avez suivi un lien vers la documentation de Dispatcher incluse dans la documentation d’une précédente version d’AEM.
 
-Dispatcher propose plusieurs mécanismes intégrés que vous pouvez utiliser pour optimiser les performances. Dans cette section, vous apprendrez comment concevoir votre site web afin de tirer le meilleur parti des avantages de la mise en cache.
+Dispatcher propose un certain nombre de mécanismes intégrés que vous pouvez utiliser pour optimiser les performances. Dans cette section, vous apprendrez comment concevoir votre site web afin de tirer le meilleur parti des avantages de la mise en cache.
 
 >[!NOTE]
 >
 >Il peut être utile de vous rappeler que le dispatcher stocke le cache sur un serveur web standard. Cela signifie que :
 >
->* peut mettre en cache tout ce que vous pouvez stocker en tant que page et demander à l’aide d’une URL.
->* ne peuvent pas stocker d’autres éléments, tels que des en-têtes HTTP, des cookies, des données de session et des données de formulaire.
+>* vous pouvez mettre en cache tous les éléments enregistrés en tant que page ou demandés à l’aide d’une URL ;
+>* vous ne pouvez pas enregistrer d’autres éléments, tels que des en-têtes HTTP, des cookies, des données de session et des données de formulaire.
 >
->En règle générale, de nombreuses stratégies de mise en cache impliquent la sélection d’URL appropriées et la non-dépendance à ces données supplémentaires.
+>En général, de nombreuses stratégies de mise en cache impliquent de sélectionner les URL appropriées et de ne pas s’en tenir à ces données supplémentaires.
 
-## Utilisation d’un codage cohérent de page  {#using-consistent-page-encoding}
+## Utiliser un encodage cohérent de page {#using-consistent-page-encoding}
 
-Les en-têtes de requête HTTP ne sont pas mis en cache. Des problèmes peuvent donc se produire si vous stockez des informations de codage de page dans l’en-tête . Dans ce cas, lorsque le Dispatcher diffuse une page du cache, le codage par défaut du serveur web est utilisé pour la page. Deux méthodes permettent d’éviter ce problème :
+Les en-têtes de requête HTTP ne sont pas mis en cache. Des problèmes peuvent donc survenir si vous stockez les informations d’encodage de page dans l’en-tête. Dans ce cas, lorsque le Dispatcher diffuse une page du cache, le codage par défaut du serveur web est utilisé pour la page. Deux méthodes permettent d’éviter ce problème :
 
 * Si vous n’utilisez qu’un seul encodage, assurez-vous que le codage utilisé sur le serveur web est identique à celui par défaut du site web AEM.
 * Pour définir le codage, utilisez une balise `<META>` dans la section `head` HTML comme dans l’exemple suivant :
@@ -87,9 +87,9 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->Pour la plupart des aspects de mise en page, il est également possible d’utiliser des feuilles de style et/ou des scripts côté client. En règle générale, ils fonctionnent bien avec la mise en cache.
+>Pour la plupart des aspects de disposition, il est également possible d’utiliser des feuilles de style et/ou des scripts côté client. Ces options fonctionnent généralement très bien avec la mise en cache.
 >
->Cela s’avère également utile pour une version imprimée. Vous pouvez y utiliser une URL telle que :
+>Cette stratégie est également utile pour une version imprimée. Dans ce cas, vous pouvez également utiliser une URL telle que :
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -97,7 +97,7 @@ www.myCompany.com/news/main.large.html
 
 ## Invalidation de fichiers image utilisés comme titres  {#invalidating-image-files-used-as-titles}
 
-Si vous avez rendu des titres de page ou d’autres textes sous forme d’images, stockez les fichiers afin qu’ils soient supprimés lors d’une mise à jour du contenu sur la page :
+Si vous effectuez le rendu de titres de page ou d’un autre texte sous forme d’images, stockez les fichiers afin qu’ils soient supprimés lors de la mise à jour du contenu sur la page :
 
 1. Placez le fichier image dans le même dossier que la page.
 1. Utilisez le format d’affectation de nom suivant pour le fichier image :
@@ -112,13 +112,13 @@ Par exemple, vous pouvez stocker le titre de la page myPage.html dans le fichier
 
 ## Invalidation des fichiers image utilisés pour la navigation  {#invalidating-image-files-used-for-navigation}
 
-Si vous utilisez des images pour les entrées de navigation, la méthode est essentiellement la même que pour les titres, juste un peu plus complexe. Stockez toutes les images de navigation avec les pages cibles. Si vous utilisez deux images pour « normale » et « active », vous pouvez utiliser les scripts suivants :
+Si vous utilisez des images pour les entrées de navigation, la méthode est fondamentalement la même qu’avec les titres, bien qu’un peu plus complexe. Stockez toutes les images de navigation avec les pages cibles. Si vous utilisez deux images pour « normale » et « active », vous pouvez utiliser les scripts suivants :
 
 * Script qui affiche la page, en tant que normale.
 * Un script qui traite les requêtes « .normal » et renvoie l’image normale.
 * Un script qui traite les demandes « .active » et renvoie l’image activée.
 
-Il est important que vous créiez ces images avec le même nom d’utilisateur que la page pour vous assurer qu’une mise à jour du contenu supprime ces images et la page.
+Il est important que vous créiez ces images avec le même nom que la page, afin de vous assurer qu’une mise à jour du contenu supprime ces images et la page.
 
 Pour les pages qui ne sont pas modifiées, les images restent dans le cache, bien que les pages elles-mêmes soient automatiquement invalidées.
 
@@ -141,18 +141,18 @@ Dispatcher ne peut pas mettre en cache les données personnalisées. Il est donc
 
 ## Connexions persistantes {#sticky-connections}
 
-Les [connexions persistantes](dispatcher.md#TheBenefitsofLoadBalancing) garantissent que les documents d’un utilisateur ou d’une utilisatrice sont tous composés sur le même serveur. Si un utilisateur ou une utilisatrice quitte ce dossier et y revient ultérieurement, la connexion reste établie. Définissez un dossier afin qu’il puisse contenir tous les documents nécessitant des connexions persistantes pour le site web. Essayez de ne pas y avoir d’autres documents. Cela impacte l’équilibrage de la charge si vous utilisez des pages personnalisées et des données de session.
+Les [connexions persistantes](dispatcher.md#TheBenefitsofLoadBalancing) garantissent que les documents d’un utilisateur ou d’une utilisatrice sont tous composés sur le même serveur. Si un utilisateur ou une utilisatrice quitte ce dossier et y revient ultérieurement, la connexion reste établie. Définissez un dossier à même de contenir tous les documents qui nécessitent des connexions persistantes sur le site web. Essayez de ne pas y avoir d’autres documents. Cela impacte l’équilibrage de la charge si vous utilisez des pages personnalisées et des données de session.
 
 ## Types MIME {#mime-types}
 
 Un navigateur peut déterminer le type d’un fichier de deux façons différentes :
 
-1. Par son extension (par exemple, .html, .gif et .jpg)
+1. Par son extension (par exemple : .html, .gif et .jpg)
 1. Par le type MIME que le serveur envoie avec le fichier.
 
-Pour la plupart des fichiers, le type MIME est implicite dans l’extension de fichier. C’est-à-dire :
+Pour la plupart des fichiers, le type MIME est implicite dans l’extension de fichier. C’est-à-dire :
 
-1. Par son extension (par exemple, .html, .gif et .jpg)
+1. Par son extension (par exemple : .html, .gif et .jpg)
 1. Par le type MIME que le serveur envoie avec le fichier.
 
 Si le nom de fichier ne comporte aucune extension, il s’affiche sous forme de texte brut.
@@ -162,5 +162,5 @@ Le type MIME fait partie de l’en-tête HTTP et, en tant que tel, Dispatcher ne
 Pour vous assurer que les fichiers sont correctement mis en cache, suivez ces instructions :
 
 * Assurez-vous que les fichiers ont toujours l’extension appropriée.
-* Évitez les scripts génériques de diffusion de fichiers avec des URL de type : download.jsp?file=2214. Réécrivez le script afin qu’il utilise les URL qui contiennent la spécification du fichier. Pour l’exemple précédent, ce serait : `download.2214.pdf`.
+* Évitez les scripts génériques de diffusion de fichiers avec des URL de type : download.jsp?file=2214. Réécrivez le script afin qu’il utilise les URL qui contiennent la spécification du fichier. Dans l’exemple précédent, cela correspond à : `download.2214.pdf`.
 

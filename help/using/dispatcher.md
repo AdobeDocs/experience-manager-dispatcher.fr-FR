@@ -6,9 +6,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3058'
-ht-degree: 94%
+ht-degree: 100%
 
 ---
 
@@ -18,12 +18,12 @@ ht-degree: 94%
 >
 >Les versions de Dispatcher sont indépendantes d’AEM. Vous avez été redirigé vers cette page si vous avez suivi un lien vers la documentation de Dispatcher incluse dans la documentation d’une précédente version d’AEM.
 
-Dispatcher est un outil de mise en cache et d’équilibrage de charge Adobe Experience Manager utilisé avec un serveur web de niveau élevé.
+Dispatcher est l’outil de mise en cache et d’équilibrage de charge d’Adobe Experience Manager, qui peut être utilisé conjointement avec un serveur web d’entreprise.
 
 La procédure de déploiement de Dispatcher est indépendante du serveur web et de la plateforme du système d’exploitation :
 
 1. En savoir plus sur Dispatcher (cette page). Consultez également les [questions fréquentes sur Dispatcher](/help/using/dispatcher-faq.md).
-1. Installez un [serveur web pris en charge](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements) selon la documentation du serveur web.
+1. Installez un [serveur web pris en charge](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements) selon la documentation du serveur web.
 1. [Installez le module Dispatcher](dispatcher-install.md) sur votre serveur web et configurez-le en conséquence.
 1. [Configurez Dispatcher](dispatcher-configuration.md) (fichier dispatcher.any).
 1. [Configurez AEM](page-invalidate.md) pour que les mises à jour de contenu invalident le cache.
@@ -40,7 +40,7 @@ Utilisez les informations suivantes, selon vos besoins :
 
 * [Liste de contrôle de sécurité de Dispatcher](security-checklist.md)
 * [Base de connaissances de Dispatcher](https://helpx.adobe.com/fr/experience-manager/kb/index/dispatcher.html)
-* [Optimiser un site web pour les performances du cache](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
+* [Optimiser un site web pour les performances du cache](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
 * [Utiliser Dispatcher avec plusieurs domaines](dispatcher-domains.md)
 * [Utiliser le protocole SSL avec Dispatcher](dispatcher-ssl.md)
 * [Mettre en œuvre la mise en cache sensible aux autorisations](permissions-cache.md)
@@ -58,7 +58,7 @@ Utilisez les informations suivantes, selon vos besoins :
 Il existe deux approches de base en matière de publication web :
 
 * **Serveurs web statiques** : comme Apache ou IIS, ils sont simples, mais rapides.
-* **Serveurs de gestion de contenu**: fournit du contenu dynamique, en temps réel et intelligent, mais nécessite davantage de temps de calcul et d’autres ressources.
+* **Serveurs de gestion de contenu** : ils fournissent un contenu dynamique, intelligent et en temps réel, mais nécessitent beaucoup plus de temps de calcul et d’autres ressources.
 
 Le Dispatcher permet de créer un environnement à la fois rapide et dynamique. Il fonctionne dans le cadre d’un serveur HTML statique, tel qu’Apache, dans le but de :
 
@@ -81,7 +81,7 @@ Cette section illustre les principes qui sous-tendent ce processus.
 
 Un serveur web statique, tel qu’Apache ou IIS, délivre des fichiers HTML statiques aux visiteurs et visiteuses de votre site web. Les pages statiques sont créées une seule fois, le même contenu est donc diffusé à chaque requête.
 
-Ce processus est simple et efficace. Si un visiteur ou une visiteuse demande un fichier tel qu’une page HTML, le fichier est extrait directement de la mémoire. Dans le pire des cas, il est lu depuis le disque local. Les serveurs web statiques sont disponibles depuis un certain temps, il existe donc un large éventail d&#39;outils pour l&#39;administration et la gestion de la sécurité, et ils sont bien intégrés aux infrastructures réseau.
+Ce processus est simple et efficace. Si un visiteur ou une visiteuse demande un fichier tel qu’une page HTML, le fichier est extrait directement de la mémoire. Dans le pire des cas, il est lu depuis le disque local. Les serveurs web statiques sont disponibles depuis un certain temps. Ils constituent donc une large gamme d’outils d’administration et de gestion de la sécurité et sont bien intégrés aux infrastructures réseau.
 
 ### Serveurs de gestion de contenu  {#content-management-servers}
 
@@ -99,7 +99,7 @@ Ce workflow vous permet de créer un contenu plus riche et dynamique, ce qui aug
 
 >[!NOTE]
 >
->Lorsque la configuration de la mise en cache HTTP est manquante, Dispatcher stocke uniquement le code HTML de la page ; il ne stocke pas les en-têtes HTTP. Ce scénario peut créer un problème si vous utilisez différents codages pour le site web, car ces pages risquent d’être perdues. Pour activer la mise en cache des en-têtes HTTP, voir [Configurer le cache de Dispatcher](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration).
+>Lorsque la configuration de la mise en cache HTTP est manquante, Dispatcher stocke uniquement le code HTML de la page ; il ne stocke pas les en-têtes HTTP. Ce scénario peut créer un problème si vous utilisez différents codages pour le site web, car ces pages risquent d’être perdues. Pour activer la mise en cache des en-têtes HTTP, voir [Configurer le cache de Dispatcher](https://experienceleague.adobe.com/fr/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration).
 
 >[!NOTE]
 >
@@ -153,7 +153,7 @@ Notez également ce qui suit :
 
 ### Déterminer si le document est soumis à la mise en cache
 
-Vous pouvez [définir les documents que Dispatcher met en cache dans le fichier de configuration](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration). Dispatcher vérifie la demande par rapport à la liste des documents pouvant être mis en cache. Si le document ne figure pas dans cette liste, Dispatcher demande le document à l’instance AEM.
+Vous pouvez [définir les documents que Dispatcher met en cache dans le fichier de configuration](https://experienceleague.adobe.com/fr/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration). Dispatcher vérifie la demande par rapport à la liste des documents pouvant être mis en cache. Si le document ne figure pas dans cette liste, Dispatcher demande le document à l’instance AEM.
 
 Dispatcher demande toujours le document directement à l’instance AEM dans les cas suivants :
 
@@ -163,7 +163,7 @@ Dispatcher demande toujours le document directement à l’instance AEM dans les
 
 >[!NOTE]
 >
->Les méthodes GET ou HEAD (pour les en-têtes HTTP) sont mises en cache par Dispatcher. Pour plus d’informations sur la mise en cache des en-têtes de réponse, voir [Mise en cache des en-têtes de réponse HTTP](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration).
+>Les méthodes GET ou HEAD (pour les en-têtes HTTP) sont mises en cache par Dispatcher. Pour plus d’informations sur la mise en cache des en-têtes de réponse, voir [Mise en cache des en-têtes de réponse HTTP](https://experienceleague.adobe.com/fr/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration).
 
 ### Déterminer si un document est mis en cache
 
@@ -172,7 +172,7 @@ Dispatcher stocke les fichiers mis en cache sur le serveur web comme s’ils fai
 * si le document est mis en cache, Dispatcher renvoie le fichier ;
 * sinon, Dispatcher demande le document à l’instance AEM.
 
-### Déterminer si un document est à jour
+### Déterminer si un document est à jour.
 
 Pour savoir si un document est à jour, Dispatcher effectue deux étapes :
 
@@ -201,7 +201,7 @@ Si Dispatcher ne reçoit aucune réponse de la part d’une instance, il transme
 
 >[!NOTE]
 >
->Tandis que l’équilibrage des charges répartit efficacement la charge, la mise en cache contribue à la réduire. Par conséquent, essayez d’optimiser la mise en cache et de réduire la charge globale avant de définir l’équilibrage de chargement. Une bonne mise en cache peut augmenter les performances de l’équilibreur de charge ou le rendre inutile.
+>Tandis que l’équilibrage des charges répartit efficacement la charge, la mise en cache contribue à la réduire. Essayez donc d’optimiser la mise en cache et de réduire la charge globale avant de configurer l’équilibrage de charge. Une bonne mise en cache peut augmenter les performances de l’équilibreur de charge ou le rendre inutile.
 
 >[!CAUTION]
 >
@@ -260,7 +260,7 @@ Habituellement, Dispatcher est le prochain serveur susceptible de servir le docu
 
 ## Contrôler un cache CDN  {#controlling-a-cdn-cache}
 
-Il existe plusieurs façons de contrôler la durée pendant laquelle un réseau de diffusion de contenu met en cache une ressource avant de la récupérer à partir de Dispatcher.
+Il existe plusieurs méthodes de contrôle de la durée pendant laquelle un réseau CDN met en cache une ressource avant qu’elle ne soit récupérée auprès de Dispatcher.
 
 1. Configuration explicite\
    Configurez la durée pendant laquelle des ressources particulières sont conservées dans le cache du réseau CDN, en fonction du type MIME, de l’extension, du type de requête, etc.
@@ -273,7 +273,7 @@ Il existe plusieurs façons de contrôler la durée pendant laquelle un réseau 
 1. Invalidation basée sur l’API\
    La plupart des réseaux CDN offrent également une API REST et/ou SOAP qui permet de supprimer des ressources du cache.
 
-Dans une configuration d’AEM type, la configuration par extension, par chemin ou par les deux, qui peut être réalisée par les points 1 et 2 ci-dessus, offre des possibilités de définir des périodes de mise en cache raisonnables. Cela est effectué pour les ressources fréquemment utilisées qui ne changent pas souvent. Ces exemples incluent des images de conception et des bibliothèques clientes. Lorsque de nouvelles versions sont déployées, une invalidation manuelle est généralement requise.
+Dans une configuration d’AEM type, la configuration par extension, par chemin ou par les deux, qui peut être réalisée par les points 1 et 2 ci-dessus, offre des possibilités de définir des périodes de mise en cache raisonnables. Cette configuration est effectuée pour les ressources fréquemment utilisées qui ne changent pas souvent. Ces exemples incluent des images de conception et des bibliothèques clientes. Lorsque de nouvelles versions sont déployées, une invalidation manuelle est généralement requise.
 
 Si cette approche est utilisée pour mettre en cache le contenu géré, cela implique que les modifications du contenu ne sont visibles pour les utilisateurs et utilisatrices finaux qu’une fois que la période de mise en cache configurée a expiré et que le document est à nouveau récupéré auprès de Dispatcher.
 
@@ -281,13 +281,13 @@ Pour un contrôle davantage affiné, l’invalidation basée sur l’API vous pe
 
 >[!NOTE]
 >
->Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations).
+>Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/fr/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations).
 
 ## Utiliser Dispatcher avec un serveur de création {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
->Si vous utilisez [AEM avec l’interface utilisateur tactile](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), ne mettez **pas** en cache le contenu de l’instance de création. Si la mise en cache a été activée pour l’instance de création, vous devez la désactiver et supprimer le contenu du répertoire du cache. Pour désactiver la mise en cache, modifiez le fichier `author_dispatcher.any` et la propriété `/rule` de la section `/cache` comme suit :
+>Si vous utilisez [AEM avec l’interface utilisateur tactile](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), ne mettez **pas** en cache le contenu de l’instance de création. Si la mise en cache a été activée pour l’instance de création, vous devez la désactiver et supprimer le contenu du répertoire du cache. Pour désactiver la mise en cache, modifiez le fichier `author_dispatcher.any` et la propriété `/rule` de la section `/cache` comme suit :
 
 ```xml
 /rules
@@ -306,7 +306,7 @@ Un Dispatcher peut être utilisé devant une instance de création pour amélior
 1. Ouvrez `author_dispatcher.any` dans un éditeur de texte et apportez les modifications suivantes :
 
    1. Modifiez `/hostname` et `/port` dans la section `/renders` pour qu’ils pointent vers votre instance de création.
-   1. Modifiez `/docroot` dans la section `/cache` pour qu’il pointe vers un répertoire de cache. Si vous utilisez [AEM avec l’interface utilisateur tactile](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), voir l’avertissement ci-dessus.
+   1. Modifiez `/docroot` dans la section `/cache` pour qu’il pointe vers un répertoire de cache. Si vous utilisez [AEM avec l’interface utilisateur tactile](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), voir l’avertissement ci-dessus.
    1. Enregistrez les modifications.
 
 1. Supprimez tous les fichiers existants dans le répertoire `/cache` > `/docroot` que vous avez configuré ci-dessus.

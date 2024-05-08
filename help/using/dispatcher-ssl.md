@@ -10,15 +10,15 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1302'
-ht-degree: 90%
+ht-degree: 100%
 
 ---
 
 # Utiliser le protocole SSL avec Dispatcher {#using-ssl-with-dispatcher}
 
-Utilisez les connexions SSL entre Dispatcher et l’ordinateur de rendu :
+Utilisez les connexions SSL entre Dispatcher et l’ordinateur de rendu :
 
 * [SSL à sens unique](#use-ssl-when-dispatcher-connects-to-aem)
 * [SSL mutuel](#configuring-mutual-ssl-between-dispatcher-and-aem)
@@ -129,16 +129,16 @@ Pour configurer le protocole SSL mutuel, vous avez besoin de certificats signés
 
 Pour configurer le protocole SSL mutuel, procédez comme suit :
 
-1. [Installez](dispatcher-install.md) la version la plus récente de Dispatcher pour votre plateforme. Utilisez un binaire de Dispatcher qui prend en charge le protocole SSL (SSL se trouve dans le nom du fichier, tel que `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
+1. [Installez](dispatcher-install.md) la version la plus récente de Dispatcher pour votre plateforme. Utilisez un fichier binaire de Dispatcher qui prend en charge le protocole SSL (SSL se trouve dans le nom du fichier, par exemple `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
 1. [Créez ou obtenez une certification signée par une autorité de certification](dispatcher-ssl.md#main-pars-title-3) pour Dispatcher et l’instance de rendu.
 1. [Créez un magasin de clés contenant le certificat du rendu](dispatcher-ssl.md#main-pars-title-6) et configurez le service HTTP du rendu.
 1. [Configurez le module de serveur web de Dispatcher](dispatcher-ssl.md#main-pars-title-4) pour le protocole SSL mutuel.
 
 ### Création ou obtention de certificats signés par une autorité de certification  {#creating-or-obtaining-ca-signed-certificates}
 
-Créez ou obtenez les certificats signés par une autorité de certification qui authentifient l’instance de publication et Dispatcher.
+Créez ou obtenez des certificats signés par une autorité de certification qui authentifient l’instance de publication et Dispatcher.
 
-#### Création de l’autorité de certification  {#creating-your-ca}
+#### Créer votre autorité de certification  {#creating-your-ca}
 
 Si vous agissez comme autorité de certification, utilisez [OpenSSL](https://www.openssl.org/) pour créer l’autorité de certification qui signe les certificats du serveur et du client. (Les bibliothèques OpenSSL doivent être installées.) Si vous utilisez une autorité de certification tierce, n’effectuez pas cette procédure.
 
@@ -157,10 +157,10 @@ Si vous agissez comme autorité de certification, utilisez [OpenSSL](https://www
 
 Utilisez OpenSSL pour créer des demandes de certificat à envoyer à l’autorité de certification tierce ou à signer avec votre autorité de certification.
 
-Lorsque vous créez un certificat, OpenSSL utilise la propriété Nom commun pour identifier l’entité titulaire du certificat. Pour le certificat de l’instance de rendu, utilisez le nom d’hôte de l’ordinateur de l’instance comme nom commun si vous configurez Dispatcher pour accepter le certificat. Faites-le uniquement s’il correspond au nom d’hôte de l’instance de publication. Voir [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) .
+Lorsque vous créez un certificat, OpenSSL utilise la propriété Nom commun pour identifier l’entité titulaire du certificat. Pour le certificat de l’instance de rendu, utilisez le nom d’hôte de l’ordinateur de l’instance comme nom commun si vous configurez Dispatcher pour accepter le certificat. Faites-le uniquement s’il correspond au nom de l’hôte de l’instance de publication. Voir la propriété [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11).
 
 1. Ouvrez un terminal et modifiez le répertoire actuel par le répertoire qui contient le fichier CH.sh de vos bibliothèques OpenSSL.
-1. Saisissez la commande suivante et fournissez des valeurs lorsque l’on vous y invite. Si nécessaire, utilisez le nom d’hôte de l’instance de publication comme nom commun. Le nom d’hôte est un nom pouvant être résolu par DNS pour l’adresse IP du rendu :
+1. Saisissez la commande suivante et fournissez des valeurs lorsque l’on vous y invite. Si nécessaire, utilisez le nom d’hôte de l’instance de publication comme Nom commun. Le nom d’hôte est un nom pouvant être résolu par DNS pour l’adresse IP du rendu :
 
    ```shell
    ./CA.sh -newreq
@@ -174,7 +174,7 @@ Lorsque vous créez un certificat, OpenSSL utilise la propriété Nom commun pou
    ./CA.sh -sign
    ```
 
-   Deux fichiers nommés `newcert.pem` et `newkey.pem` sont créés dans le répertoire contenant vos fichiers de gestion d’autorité de certification. Ces deux fichiers sont le certificat public et la clé privée de l’ordinateur de rendu, respectivement.
+   Deux fichiers nommés `newcert.pem` et `newkey.pem` sont créés dans le répertoire contenant vos fichiers de gestion d’autorité de certification. Ces deux fichiers correspondent au certificat public et à la clé privée de l’ordinateur de rendu, respectivement.
 
 1. Renommez `newcert.pem` en `rendercert.pem`, et renommez `newkey.pem` en `renderkey.pem`.
 1. Répétez les étapes 2 et 3 pour créer un certificat et une clé publique pour le module Dispatcher. Assurez-vous d’utiliser un Nom commun spécifique à l’instance Dispatcher.
@@ -247,7 +247,7 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 #### Configuration de l’instance de rendu  {#configuring-the-render-instance}
 
-Pour configurer le service HTTP de l’instance de rendu de sorte qu’il utilise le protocole SSL, utilisez le certificat de rendu avec les instructions de la section *`Enable SSL on the Publish Instance`* section :
+Pour configurer le service HTTP de l’instance de rendu afin qu’il utilise SSL, utilisez le certificat de rendu en suivant les instructions contenues dans la section *`Enable SSL on the Publish Instance`* :
 
 * AEM 6.2 : [activation de HTTP via SSL](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 * AEM 6.1 : [activation de HTTP via SSL](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
