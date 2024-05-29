@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: d8e224401e5ab041bb297b99a99c71a69ca6deac
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '83'
-ht-degree: 73%
+source-wordcount: '82'
+ht-degree: 78%
 
 ---
 
@@ -26,7 +26,7 @@ ht-degree: 73%
    + [Liste de contrôle de sécurité de Dispatcher](security-checklist.md)
    + [Notes de mise à jour d’AEM Dispatcher](release-notes.md)
 + Configurer {#configuring}
-   + [Configuration du Dispatcher AEM](dispatcher-configuration.md)
+   + [Configurer le Dispatcher](dispatcher-configuration.md)
    + [Invalider des pages mises en cache depuis AEM](page-invalidate.md)
    + [Optimiser un site web pour les performances du cache](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [Mettre en cache le contenu sécurisé](permissions-cache.md)

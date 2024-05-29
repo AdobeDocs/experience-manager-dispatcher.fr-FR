@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '1411'
-ht-degree: 73%
+source-wordcount: '1407'
+ht-degree: 74%
 
 ---
 
@@ -124,11 +124,11 @@ Après configuration, lorsque vous activez une page de création à publier, cet
 
 Pour invalider (ou purger) le cache de Dispatcher sans activer de page, vous pouvez émettre une requête HTTP au Dispatcher. Par exemple, vous pouvez créer une application AEM qui permet aux administrateurs et administratrices ou à d’autres applications de purger le cache.
 
-La requête HTTP entraîne AEM Dispatcher à supprimer des fichiers spécifiques du cache. Le Dispatcher actualise ensuite éventuellement le cache avec une nouvelle copie.
+La requête HTTP entraîne Dispatcher à supprimer des fichiers spécifiques du cache. Le Dispatcher actualise ensuite éventuellement le cache avec une nouvelle copie.
 
 ### Suppression de fichiers mis en cache  {#delete-cached-files}
 
-Envoyez une requête HTTP qui entraîne AEM Dispatcher à supprimer des fichiers du cache. Dispatcher met à nouveau les fichiers en cache uniquement lorsqu’il reçoit une requête client pour la page. Cette méthode de suppression de fichiers mis en cache convient aux sites web peu susceptibles de recevoir des requêtes simultanées pour la même page.
+Envoyez une requête HTTP qui entraîne Dispatcher à supprimer des fichiers du cache. Dispatcher met à nouveau les fichiers en cache uniquement lorsqu’il reçoit une requête client pour la page. Cette méthode de suppression de fichiers mis en cache convient aux sites web peu susceptibles de recevoir des requêtes simultanées pour la même page.
 
 La requête HTTP se présente comme suit :
 
@@ -151,7 +151,7 @@ L’invalidation (c’est-à-dire la modification des fichiers .stat) peut être
 
 ### Supprimer et remettre en cache des fichiers {#delete-and-recache-files}
 
-Envoyez une requête HTTP qui entraîne AEM Dispatcher à supprimer les fichiers mis en cache, à récupérer immédiatement le fichier et à le remettre en cache. Supprimez et remettez immédiatement les fichiers en cache lorsque les sites web sont susceptibles de recevoir des requêtes client simultanées pour la même page. La remise en cache immédiate garantit que Dispatcher récupère et met en cache la page une seule fois, au lieu d’une fois pour chacune des requêtes client simultanées.
+Envoyez une requête HTTP qui entraîne Dispatcher à supprimer les fichiers mis en cache, et à récupérer immédiatement le fichier. Supprimez et remettez immédiatement les fichiers en cache lorsque les sites web sont susceptibles de recevoir des requêtes client simultanées pour la même page. La remise en cache immédiate garantit que Dispatcher récupère et met en cache la page une seule fois, au lieu d’une fois pour chacune des requêtes client simultanées.
 
 **Note :** la suppression et la remise en cache ne peuvent être exécutées que sur l’instance de publication. En cas d’exécution depuis l’instance de création, des conditions de concurrence se produisent lorsque les tentatives de remise en cache des ressources ont lieu avant leur publication.
 
@@ -185,7 +185,7 @@ Content-Length: 36
 
 Le code suivant implémente un servlet qui envoie une requête d’invalidation à Dispatcher. Le servlet reçoit un message de requête contenant les paramètres `handle` et `page`. Ces paramètres fournissent la valeur de l’en-tête `CQ-Handle` et le chemin d’accès à la page à remettre en cache, respectivement. Le servlet utilise les valeurs pour construire la requête HTTP pour Dispatcher.
 
-Lorsque le servlet est déployé sur l’instance de publication, l’URL suivante entraîne l’AEM Dispatcher à supprimer la page /content/geometrixx-outdoors/en.html, puis à mettre en cache une nouvelle copie.
+Lorsque le servlet est déployé sur l’instance de publication, l’URL suivante entraîne Dispatcher à supprimer la page /content/geometrixx-outdoors/en.html , puis à mettre en cache une nouvelle copie.
 
 `10.36.79.223:4503/bin/flushcache/html?page=/content/geometrixx-outdoors/en.html&handle=/content/geometrixx-outdoors/en/men.html`
 

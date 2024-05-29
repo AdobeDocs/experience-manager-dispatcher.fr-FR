@@ -5,9 +5,9 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '3083'
+source-wordcount: '3079'
 ht-degree: 82%
 
 ---
@@ -20,7 +20,7 @@ ht-degree: 82%
 
 Dispatcher est l’outil de mise en cache et d’équilibrage de charge d’Adobe Experience Manager, qui peut être utilisé conjointement avec un serveur web d’entreprise.
 
-Le processus de déploiement d’AEM Dispatcher est indépendant du serveur web et de la plateforme du système d’exploitation choisie :
+Le processus de déploiement de Dispatcher est indépendant du serveur web et de la plateforme du système d’exploitation choisie :
 
 1. En savoir plus sur Dispatcher (cette page). Consultez également les [questions fréquentes sur Dispatcher](/help/using/dispatcher-faq.md).
 1. Installez un [serveur web pris en charge](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements) selon la documentation du serveur web.
@@ -30,7 +30,7 @@ Le processus de déploiement d’AEM Dispatcher est indépendant du serveur web 
 
 >[!NOTE]
 >
->Pour mieux comprendre le fonctionnement d’AEM Dispatcher avec AEM :
+>Pour mieux comprendre le fonctionnement de Dispatcher avec AEM :
 >
 >* Voir les [Questions aux expertes et experts de la communauté AEM de juillet 2017](https://communities.adobeconnect.com/pf0gem7igw1f/).
 >* Accédez à [ce référentiel](https://github.com/adobe/aem-dispatcher-experiments). Il contient une collection d’expériences dans un format de laboratoire « à emporter ».
@@ -41,7 +41,7 @@ Utilisez les informations suivantes, selon vos besoins :
 * [Liste de contrôle de sécurité de Dispatcher](security-checklist.md)
 * [Base de connaissances de Dispatcher](https://helpx.adobe.com/fr/experience-manager/kb/index/dispatcher.html)
 * [Optimiser un site web pour les performances du cache](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-* [Utilisation de Dispatcher AEM avec plusieurs domaines](dispatcher-domains.md)
+* [Utilisation de Dispatcher avec plusieurs domaines](dispatcher-domains.md)
 * [Utiliser le protocole SSL avec Dispatcher](dispatcher-ssl.md)
 * [Mettre en œuvre la mise en cache sensible aux autorisations](permissions-cache.md)
 * [Résoudre les problèmes liés à Dispatcher](dispatcher-troubleshooting.md)
@@ -129,7 +129,7 @@ Lors d’une mise à jour du contenu, un ou plusieurs documents AEM sont modifi
 Notez également ce qui suit :
 
 * Les mises à jour de contenu sont généralement utilisées avec un système de création qui &quot;sait&quot; ce qui doit être remplacé.
-* Les mises à jour de contenu affectant les fichiers sont supprimées, mais pas remplacées immédiatement. La prochaine fois qu’un tel fichier est demandé, AEM Dispatcher récupère le nouveau fichier de l’instance AEM et le place dans le cache, en remplaçant l’ancien contenu.
+* Les mises à jour de contenu affectant les fichiers sont supprimées, mais pas remplacées immédiatement. La prochaine fois qu’un tel fichier est demandé, Dispatcher récupère le nouveau fichier de l’instance AEM et le place dans le cache, en remplaçant l’ancien contenu.
 * En règle générale, les images générées automatiquement qui incorporent le texte d’une page sont stockées dans des fichiers image commençant par la même poignée, garantissant ainsi que l’association existe pour la suppression. Par exemple, vous pouvez stocker le texte du titre de la page mypage.html sous la forme de l’image mypage.titlePicture.gif dans le même dossier. De cette façon, l’image est automatiquement supprimée du cache chaque fois que la page est mise à jour. Vous avez donc l’assurance que l’image reflète toujours la version actuelle de la page.
 * Vous pouvez avoir plusieurs fichiers stat, un par dossier de langue, par exemple. Si une page est mise à jour, AEM recherche le dossier parent suivant contenant un fichier stat, et *touche* (modifie) ce fichier.
 

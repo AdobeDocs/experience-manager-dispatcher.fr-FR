@@ -9,9 +9,9 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '1129'
+source-wordcount: '1128'
 ht-degree: 82%
 
 ---
@@ -57,7 +57,7 @@ Les en-têtes de requête HTTP ne sont pas mis en cache. Des problèmes peuvent 
 
 ## Contournement des paramètres d’URL {#avoid-url-parameters}
 
-Si possible, évitez les paramètres d’URL des pages que vous souhaitez mettre en cache. Par exemple, si vous disposez d’une galerie d’images, l’URL suivante n’est jamais mise en cache (sauf si le Dispatcher AEM est [configuré en conséquence](dispatcher-configuration.md#main-pars_title_24)) :
+Si possible, évitez les paramètres d’URL des pages que vous souhaitez mettre en cache. Par exemple, si vous disposez d’une galerie d’images, l’URL suivante n’est jamais mise en cache (sauf si Dispatcher est [configuré en conséquence](dispatcher-configuration.md#main-pars_title_24)) :
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1

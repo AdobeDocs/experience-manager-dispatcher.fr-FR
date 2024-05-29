@@ -1,13 +1,13 @@
 ---
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '72'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '70'
+ht-degree: 88%
 
 ---
-# Documentation du Dispatcher d’Adobe Experience Manager
+# Détection des motifs Adobe Experience Manager
 
-Il s’agit du référentiel relatif à la documentation du Dispatcher d’Adobe Experience Manager.
+Ce référentiel pour la détection des motifs de Adobe Experience Manager.
 
 Vos contributions à la documentation sont les bienvenues. Reportez-vous aux ressources suivantes :
 
