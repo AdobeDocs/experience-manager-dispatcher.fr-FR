@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '539'
-ht-degree: 90%
+ht-degree: 100%
 
 ---
 
@@ -20,9 +20,9 @@ ht-degree: 90%
 
 >[!NOTE]
 >
->Les versions de Dispatcher sont indépendantes d’AEM. Toutefois, la documentation de Dispatcher est incorporée dans la documentation AEM. Utilisez toujours la documentation du Dispatcher incluse dans la documentation pour la dernière version d’AEM.
+>Les versions de Dispatcher sont indépendantes d’AEM. Toutefois, la documentation de Dispatcher est incorporée dans la documentation d’AEM. Utilisez toujours la documentation du Dispatcher incluse dans la documentation pour la dernière version d’AEM.
 >
->Vous avez peut-être été redirigé vers cette page si vous avez suivi un lien vers la documentation de Dispatcher. Ce lien est incorporé dans la documentation d’une version précédente d’AEM.
+>Vous avez peut-être fait l’objet d’une redirection vers cette page si vous avez suivi un lien vers la documentation de Dispatcher. Ce lien est incorporé dans la documentation d’une version précédente d’AEM.
 
 >[!NOTE]
 >
@@ -30,7 +30,7 @@ ht-degree: 90%
 
 ## Vérifier la configuration de base {#check-the-basic-configuration}
 
-Comme toujours, les premières étapes sont de vérifier les principes de base :
+Comme toujours, les premières étapes consistent à vérifier les éléments de base :
 
 * [Confirmer le fonctionnement de base](/help/using/dispatcher-configuration.md#confirming-basic-operation)
 * Passez en revue tous les fichiers journaux du serveur web et de Dispatcher. Si nécessaire, augmentez le paramètre `loglevel` utilisé pour la [journalisation](/help/using/dispatcher-configuration.md#logging) de Dispatcher.

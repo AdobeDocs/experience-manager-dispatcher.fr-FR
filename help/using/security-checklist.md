@@ -1,6 +1,6 @@
 ---
 title: Liste de contrôle de sécurité de Dispatcher
-description: Découvrez la liste de contrôle de sécurité de Dispatcher qui doit être complétée avant la mise en production.
+description: Découvrez la liste de contrôle de sécurité de Dispatcher qui doit être complétée avant le passage en production.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -11,9 +11,9 @@ internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '590'
-ht-degree: 64%
+ht-degree: 100%
 
 ---
 
@@ -38,11 +38,11 @@ Adobe vous recommande de suivre la liste de contrôle suivante avant de passer e
 
 ## Utiliser la version la plus récente de Dispatcher {#use-the-latest-version-of-dispatcher}
 
-Installez la dernière version disponible pour votre plateforme. Mettez à niveau votre instance de Dispatcher pour utiliser la dernière version afin de tirer parti des améliorations apportées au produit et à la sécurité. Voir [Installer Dispatcher](dispatcher-install.md).
+Installez la version la plus récente disponible pour votre plateforme. Mettez à niveau votre instance de Dispatcher afin d’utiliser la dernière version en date et ainsi tirer parti des améliorations apportées au produit et à la sécurité. Voir [Installer Dispatcher](dispatcher-install.md).
 
 >[!NOTE]
 >
->Vous pouvez vérifier la version actuelle de votre installation de Dispatcher en consultant le fichier journal de Dispatcher.
+>Vous pouvez vérifier la version actuelle de votre installation de Dispatcher en consultant le fichier journal du Dispatcher.
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
@@ -52,9 +52,9 @@ Installez la dernière version disponible pour votre plateforme. Mettez à nivea
 
 Adobe recommande de [limiter les clients qui peuvent vider la mémoire cache.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
-## Activation du protocole HTTPS pour la sécurité des couches de transport {#enable-https-for-transport-layer-security}
+## Activer le protocole HTTPS pour la sécurité de la couche de transport (TLS) {#enable-https-for-transport-layer-security}
 
-Adobe recommande d’activer la couche de transfert HTTPS sur les instances d’auteur et de publication.
+Adobe recommande d’activer la couche de transport (TLS) HTTPS sur les instances de création et de publication.
 
 <!-- 
 
@@ -89,23 +89,23 @@ Les listes autorisées sont le meilleur moyen d’assurer un contrôle d’accè
 
 ## Exécuter Dispatcher avec une personne dédiée utilisant le système {#run-dispatcher-with-a-dedicated-system-user}
 
-Lors de la configuration de Dispatcher, assurez-vous que le serveur web est exécuté par un utilisateur dédié disposant de privilèges limités. Il est recommandé d’accorder uniquement l’accès en écriture au dossier du cache de Dispatcher.
+Lors de la configuration du Dispatcher, assurez-vous que le serveur web est exécuté par une personne dédiée disposant des autorisations les plus basses. Il est recommandé d’accorder uniquement un accès en écriture au dossier de cache du Dispatcher.
 
 Les utilisateurs et utilisatrices d’IIS doivent également configurer leur site web comme suit :
 
-1. Dans le paramètre de chemin physique de votre site web, sélectionnez **Connexion en tant qu’utilisateur spécifique**.
+1. Dans le paramètre de chemin physique de votre site web, sélectionnez **Se connecter au nom d’une personne spécifique**.
 1. Définissez l’utilisateur ou l’utilisatrice.
 
 ## Prévention des attaques par déni de service (DoS)  {#prevent-denial-of-service-dos-attacks}
 
 Une attaque par déni de service (DoS) est une tentative de rendre une ressource informatique indisponible à ses utilisateurs et utilisatrices ciblés.
 
-Au niveau de Dispatcher, il existe deux méthodes de configuration pour empêcher les attaques DoS : [Filtres](https://experienceleague.adobe.com/en/docs#/filter)
+Au niveau de Dispatcher, il existe deux méthodes de configuration permettant d’empêcher les attaques DoS : [Filtres](https://experienceleague.adobe.com/fr/docs#/filter).
 
 * Utilisez le module mod_rewrite (par exemple, [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)) pour effectuer des validations d’URL (si les règles de modèle d’URL ne sont pas trop complexes).
 
 * Empêchez Dispatcher de mettre en cache les URL dotées d’extensions frauduleuses à l’aide de [filtres](dispatcher-configuration.md#configuring-access-to-content-filter).\
-   Par exemple, modifiez les règles de mise en cache afin de limiter la mise en cache des types MIME prévus, par exemple :
+  Par exemple, modifiez les règles de mise en cache afin de limiter la mise en cache des types MIME prévus, par exemple :
 
    * `.html`
    * `.jpg`
@@ -116,9 +116,9 @@ Au niveau de Dispatcher, il existe deux méthodes de configuration pour empêche
    * `.pdf`
    * `.ppt`
 
-  Un exemple de fichier de configuration peut être consulté pour [limitation de l&#39;accès externe](#restrict-access). Elle comprend des restrictions pour les types MIME.
+  Un exemple de fichier de configuration peut être consulté pour la [restriction de l’accès externe](#restrict-access). Celui-ci inclut des restrictions pour les types MIME.
 
-Pour activer la fonctionnalité complète sur les instances de publication, configurez les filtres afin d’empêcher l’accès aux noeuds suivants :
+Pour activer l’ensemble des fonctionnalités sur les instances de publication, configurez les filtres pour empêcher l’accès aux nœuds suivants :
 
 * `/etc/`
 * `/libs/`
@@ -148,7 +148,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Configurer Dispatcher pour empêcher les attaques CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM fournit un [framework](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) visant à empêcher les attaques CSRF. Pour utiliser correctement cette structure, placez sur la liste autorisée la prise en charge du jeton CSRF dans Dispatcher en procédant comme suit :
+AEM fournit un [framework](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) visant à empêcher les attaques CSRF. Pour utiliser correctement ce framework, autorisez la prise en charge des jetons CSRF dans Dispatcher en procédant comme suit :
 
 1. Créez un filtre pour autoriser le chemin d’accès `/libs/granite/csrf/token.json` ;
 1. Ajoutez l’en-tête `CSRF-Token` à la section `clientheaders` de la configuration Dispatcher.
@@ -161,5 +161,5 @@ Pour plus d’informations sur le détournement de clic, consultez le site de l�
 
 ## Effectuer un test de pénétration {#perform-a-penetration-test}
 
-Adobe recommande vivement d’effectuer un test de pénétration de votre infrastructure AEM avant de passer en production.
+Adobe vous recommande fortement d’effectuer un test de pénétration de votre infrastructure AEM avant le passage en production.
 
