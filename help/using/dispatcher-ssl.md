@@ -1,6 +1,6 @@
 ---
-title: Utiliser le protocole SSL avec Dispatcher
-description: Découvrez comment configurer Dispatcher pour communiquer avec AEM à l’aide de connexions SSL.
+title: Utiliser le protocole SSL avec le Dispatcher
+description: Découvrez comment configurer le Dispatcher pour communiquer avec AEM à l’aide de connexions SSL.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -10,15 +10,15 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1310'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
-# Utiliser le protocole SSL avec Dispatcher {#using-ssl-with-dispatcher}
+# Utiliser le protocole SSL avec le Dispatcher {#using-ssl-with-dispatcher}
 
-Utilisez les connexions SSL entre Dispatcher et l’ordinateur de rendu :
+Utilisez les connexions SSL entre le Dispatcher et l’ordinateur de rendu :
 
 * [SSL à sens unique](#use-ssl-when-dispatcher-connects-to-aem)
 * [SSL mutuel](#configuring-mutual-ssl-between-dispatcher-and-aem)
@@ -29,7 +29,7 @@ Utilisez les connexions SSL entre Dispatcher et l’ordinateur de rendu :
 
 ## Utiliser le protocole SSL lorsque Dispatcher se connecte à AEM {#use-ssl-when-dispatcher-connects-to-aem}
 
-Configurez Dispatcher pour communiquer avec l’instance de rendu AEM ou CQ à l’aide de connexions SSL.
+Configurez le Dispatcher pour communiquer avec l’instance de rendu AEM ou CQ à l’aide de connexions SSL.
 
 Avant de configurer Dispatcher, configurez AEM ou CQ pour utiliser SSL :
 
@@ -117,11 +117,11 @@ L’exemple de fichier `dispatcher.any` suivant affiche les valeurs des propri�
 Pour utiliser le protocole SSL mutuel, configurez les connexions entre Dispatcher et l’ordinateur de rendu (généralement une instance de publication AEM ou CQ) :
 
 * Dispatcher se connecte à l’instance de rendu via SSL.
-* L’instance de rendu vérifie la validité du certificat de Dispatcher.
+* L’instance de rendu vérifie la validité du certificat du Dispatcher.
 * Dispatcher vérifie que l’autorité de certification du certificat de l’instance de rendu est approuvée.
 * (Facultatif) Dispatcher vérifie que le certificat de l’instance de rendu correspond à l’adresse du serveur de l’instance de rendu.
 
-Pour configurer le protocole SSL mutuel, vous avez besoin de certificats signés avec une autorité de certification approuvée. Les certificats auto-signés ne sont pas appropriés. Vous pouvez faire office d’autorité de certification ou utiliser les services d’une autorité de certification tierce pour signer vos certificats. Pour configurer le protocole SSL mutuel, vous devez disposer des éléments suivants :
+Pour configurer le protocole SSL mutuel, vous avez besoin de certificats signés par une autorité de certification approuvée (CA). Les certificats auto-signés ne sont pas appropriés. Vous pouvez faire office d’autorité de certification ou utiliser les services d’une autorité de certification tierce pour signer vos certificats. Pour configurer le protocole SSL mutuel, vous devez disposer des éléments suivants :
 
 * Des certificats signés pour l’instance de rendu et Dispatcher.
 * Le certificat de l’autorité de certification (si vous faites office d’autorité de certification).
@@ -130,8 +130,8 @@ Pour configurer le protocole SSL mutuel, vous avez besoin de certificats signés
 Pour configurer le protocole SSL mutuel, procédez comme suit :
 
 1. [Installez](dispatcher-install.md) la version la plus récente de Dispatcher pour votre plateforme. Utilisez un fichier binaire de Dispatcher qui prend en charge le protocole SSL (SSL se trouve dans le nom du fichier, par exemple `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
-1. [Création ou obtention d’un certificat signé par une autorité de certification](dispatcher-ssl.md#main-pars-title-3) pour Dispatcher et l’instance de rendu.
-1. [Création d’un fichier de stockage de clés contenant le certificat de rendu](dispatcher-ssl.md#main-pars-title-6) et configurez le service HTTP du rendu.
+1. [Créez ou obtenez un certificat signé par une autorité de certification](dispatcher-ssl.md#main-pars-title-3) pour le Dispatcher et l’instance de rendu.
+1. [Créez un magasin de clés contenant le certificat du rendu](dispatcher-ssl.md#main-pars-title-6) et configurez le service HTTP du rendu.
 1. [Configurez le module de serveur web de Dispatcher](dispatcher-ssl.md#main-pars-title-4) pour le protocole SSL mutuel.
 
 ### Création ou obtention de certificats signés par une autorité de certification  {#creating-or-obtaining-ca-signed-certificates}
@@ -157,7 +157,7 @@ Si vous agissez comme autorité de certification, utilisez [OpenSSL](https://www
 
 Utilisez OpenSSL pour créer des demandes de certificat à envoyer à l’autorité de certification tierce ou à signer avec votre autorité de certification.
 
-Lorsque vous créez un certificat, OpenSSL utilise la propriété Nom commun pour identifier l’entité titulaire du certificat. Pour le certificat de l’instance de rendu, utilisez le nom d’hôte de l’ordinateur de l’instance comme nom commun si vous configurez Dispatcher pour accepter le certificat. Effectuez cette procédure uniquement si elle correspond au nom d’hôte de l’instance de publication. Voir la propriété [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11).
+Lorsque vous créez un certificat, OpenSSL utilise la propriété Nom commun pour identifier l’entité titulaire du certificat. Pour le certificat de l’instance de rendu, utilisez le nom d’hôte de l’ordinateur de l’instance comme nom commun si vous configurez Dispatcher pour accepter le certificat. Suivez cette procédure uniquement s’il correspond au nom de l’hôte de l’instance de publication. Voir la propriété [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11).
 
 1. Ouvrez un terminal et modifiez le répertoire actuel par le répertoire qui contient le fichier CH.sh de vos bibliothèques OpenSSL.
 1. Saisissez la commande suivante et fournissez des valeurs lorsque l’on vous y invite. Si nécessaire, utilisez le nom d’hôte de l’instance de publication comme Nom commun. Le nom d’hôte est un nom pouvant être résolu par DNS pour l’adresse IP du rendu :
@@ -285,8 +285,8 @@ Combinez le certificat de Dispatcher et la clé privée non chiffrée en un seul
 
 Ajoutez les propriétés suivantes à la [configuration du module de Dispatcher](dispatcher-install.md#main-pars-55-35-1022) (dans `httpd.conf`):
 
-* `DispatcherCertificateFile` : chemin d’accès au fichier de certificat unifié de Dispatcher, contenant le certificat public et la clé privée non chiffrée. Ce fichier est utilisé lorsque le serveur SSL demande le certificat client de Dispatcher.
-* `DispatcherCACertificateFile`: chemin d’accès au fichier de certificat de l’autorité de certification. Utilisé si le serveur SSL présente une autorité de certification qui n’est pas approuvée par une autorité racine.
+* `DispatcherCertificateFile` : chemin d’accès au fichier de certificat unifié de Dispatcher, contenant le certificat public et la clé privée non chiffrée. Ce fichier est utilisé lorsque le serveur SSL demande le certificat client du Dispatcher.
+* `DispatcherCACertificateFile` : chemin d’accès au fichier de certificat de l’autorité de certification. Utilisé si le serveur SSL présente une autorité de certification qui n’est pas approuvée par une autorité racine.
 * `DispatcherCheckPeerCN` : spécification de l’activation (`On`) ou de la désactivation (`Off`) de la vérification des noms d’hôte pour les certificats du serveur distant.
 
 Le code suivant est un exemple de configuration :

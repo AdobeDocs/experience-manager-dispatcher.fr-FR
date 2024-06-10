@@ -1,6 +1,6 @@
 ---
-title: Utilisation de Dispatcher avec plusieurs domaines
-description: Découvrez comment utiliser Dispatcher pour traiter les demandes de page dans plusieurs domaines web.
+title: Utiliser le Dispatcher avec plusieurs domaines
+description: Découvrez comment utiliser le Dispatcher pour traiter les requêtes de pages dans plusieurs domaines web.
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -8,9 +8,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '2929'
-ht-degree: 87%
+ht-degree: 100%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 87%
 >
 >Les versions de Dispatcher sont indépendantes d’AEM. Vous avez peut-être fait l’objet d’une redirection vers cette page si vous avez suivi un lien vers la documentation de Dispatcher incluse dans la documentation CQ et AEM.
 
-Utilisez Dispatcher pour traiter les demandes de page dans plusieurs domaines web tout en prenant en charge les conditions suivantes :
+Utilisez le Dispatcher pour traiter les demandes de pages dans plusieurs domaines web tout en prenant en charge les conditions suivantes :
 
 * Le contenu web des deux domaines est stocké dans un référentiel AEM unique.
 * Les fichiers du cache de Dispatcher peuvent être invalidés séparément pour chaque domaine.
@@ -38,7 +38,7 @@ Par exemple, une entreprise publie des sites web pour deux de leurs marques : M
 
 Les pages pour `BrandA.com` sont stockées ci-dessous `/content/sitea`. Les requêtes client pour l’URL `https://BrandA.com/en.html` sont renvoyées à la page rendue pour le nœud `/content/sitea/en`. De même, les pages pour `BrandB.com` sont stockées sous `/content/siteb`.
 
-Lorsque Dispatcher est utilisé pour mettre en cache du contenu, associez l’URL de la page dans la requête HTTP client, le chemin d’accès au fichier mis en cache correspondant et le chemin d’accès au fichier correspondant dans le référentiel.
+Lorsque le Dispatcher est utilisé pour mettre en cache du contenu, des associations doivent être effectuées entre l’URL de la page de la requête HTTP client, le chemin d’accès au fichier mis en cache correspondant et le chemin d’accès au fichier correspondant dans le référentiel.
 
 ## Demandes clients
 
@@ -46,9 +46,9 @@ Lorsque les clientes et clients envoient des requêtes HTTP au serveur web, l’
 
 ![](assets/chlimage_1-8.png)
 
-1. Le système de noms de domaine détecte l’adresse IP du serveur Web qui est enregistré pour le nom de domaine dans la requête HTTP.
+1. Le système de noms de domaine détecte l’adresse IP du serveur web enregistré pour le nom de domaine dans la requête HTTP.
 1. La requête HTTP est envoyée au serveur web.
-1. La requête HTTP est transmise à Dispatcher.
+1. La requête HTTP est transmise au Dispatcher.
 1. Dispatcher détermine si les fichiers mis en cache sont valides. Si tel est le cas, les fichiers mis en cache sont servis au client ou à la cliente.
 1. Si les fichiers mis en cache ne sont pas valides, Dispatcher demande les pages nouvellement rendues à l’instance de publication AEM.
 
@@ -64,12 +64,12 @@ Lorsque les agents de réplication de purge de Dispatcher demandent que ce derni
 
 Pour utiliser Dispatcher avec plusieurs domaines, vous devez configurer AEM, Dispatcher et votre serveur web. Les solutions décrites dans cette page sont générales et s’appliquent à la plupart des environnements. En raison de la complexité de certaines topologies AEM, votre solution peut nécessiter d’autres configurations personnalisées afin de résoudre des problèmes spécifiques. Vous devrez probablement adapter les exemples en fonction de votre infrastructure informatique et de vos politiques de gestion existantes.
 
-## Mappage des URL {#url-mapping}
+## Mappage d’URL {#url-mapping}
 
-Pour permettre la résolution des URL de domaine et des chemins de contenu vers des fichiers mis en cache, un chemin de fichier ou une URL de page doit être traduit au cours du processus. Des descriptions des stratégies courantes suivantes sont fournies, dans lesquelles les traductions de chemin ou d’URL se produisent à différents stades du processus :
+Pour permettre la résolution des URL de domaine et des chemins de contenu vers des fichiers mis en cache, un chemin de fichier ou une URL de page doivent être traduits au cours du processus. Des descriptions des stratégies courantes suivantes sont fournies, dans lesquelles les traductions de chemin ou d’URL se produisent à différents stades du processus :
 
 * (Recommandé) L’instance de publication AEM utilise le mappage Sling pour la résolution des ressources afin d’implémenter des règles de réécriture d’URL internes. Les URL de domaine sont traduites en chemins de référentiel de contenu. Voir [AEM réécrit les URL entrantes](#aem-rewrites-incoming-urls).
-* Le serveur web utilise des règles de réécriture d’URL internes qui traduisent les URL de domaine en chemins de mise en cache. Voir [Le serveur web réécrit les URL entrantes](#the-web-server-rewrites-incoming-urls).
+* Le serveur web utilise des règles de réécriture des URL internes qui traduisent les URL de domaine en chemins d’accès au cache. Voir [Le serveur web réécrit les URL entrantes](#the-web-server-rewrites-incoming-urls).
 
 Il est souhaitable d’utiliser des URL courtes pour les pages web. En règle générale, les URL des pages reflètent la structure des dossiers du référentiel contenant le contenu web. Cependant, les URL ne sont pas en mesure de lire les nœuds les plus élevés du référentiel, tels que `/content`. Le client ne connaît pas nécessairement la structure du référentiel AEM.
 
@@ -138,7 +138,7 @@ Définissez des hôtes virtuels sur le serveur web afin qu’une racine de docum
 L’exemple de fichier suivant `httpd.conf` configure deux domaines virtuels pour un serveur web Apache :
 
 * Les noms des serveurs (qui coïncident avec les noms des domaines) sont branda.com (ligne 16) et brandb.com (ligne 30).
-* La racine du document de chaque domaine virtuel est le répertoire du cache Dispatcher qui contient les pages du site. (Lignes 17 et 31)
+* La racine du document de chaque domaine virtuel est le répertoire dans le cache du Dispatcher qui contient les pages du site. (Lignes 17 et 31)
 
 Avec cette configuration, le serveur web effectue les actions suivantes lorsqu’il reçoit une requête pour `https://branda.com/en/products.html` :
 
@@ -201,16 +201,16 @@ Les hôtes virtuels héritent de la valeur de propriété [DispatcherConfig](dis
 Pour prendre en charge les URL qui incluent des noms de domaine et leurs hôtes virtuels correspondants, définissez les batteries Dispatcher suivantes :
 
 * Configurez une batterie Dispatcher pour chaque hôte virtuel. Ces fermes de serveurs traitent les demandes provenant du serveur web pour chaque domaine, vérifient les fichiers mis en cache et demandent des pages aux rendus.
-* Configurez une ferme de serveurs de Dispatcher utilisée pour invalider le contenu du cache, quel que soit le domaine auquel le contenu appartient. Cette batterie gère les requêtes d’invalidation de fichiers provenant des agents de réplication Dispatcher de purge.
+* Configurez une batterie Dispatcher utilisée pour invalider le contenu dans le cache, quel que soit le domaine auquel appartient le contenu. Cette batterie gère les requêtes d’invalidation de fichiers provenant des agents de réplication Dispatcher de purge.
 
 ### Création de fermes de serveurs de Dispatcher pour les hôtes virtuels
 
 Les fermes de serveurs pour les hôtes virtuels doivent comporter les configurations suivantes afin que les URL des requêtes HTTP du client soient résolues sur les fichiers appropriés du cache de Dispatcher :
 
-* La propriété `/virtualhosts` est définie sur le nom de domaine. Cette propriété permet à Dispatcher d’associer la ferme de serveurs au domaine.
+* La propriété `/virtualhosts` est définie sur le nom de domaine. Cette propriété permet au Dispatcher d’associer la batterie au domaine.
 * La propriété `/filter` autorise l’accès au chemin d’accès de l’URL de requête tronquée après la partie du nom de domaine. Par exemple, pour l’URL `https://branda.com/en.html`, le chemin d’accès est interprété comme `/en.html` afin que le filtre autorise l’accès à ce chemin.
 
-* La variable `/docroot` est définie sur le chemin d’accès du répertoire racine. En d’autres termes, le répertoire racine du contenu du site du domaine dans le cache de Dispatcher. Ce chemin est utilisé comme préfixe pour l’URL concaténée de la demande d’origine. Par exemple, la docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` entraîne la résolution de la requête pour `https://branda.com/en.html` vers le fichier `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
+* La propriété `/docroot` est définie sur le chemin du répertoire racine. En d’autres termes, le répertoire racine du contenu du site du domaine dans le cache du Dispatcher. Ce chemin est utilisé comme préfixe pour l’URL concaténée de la demande d’origine. Par exemple, la docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` entraîne la résolution de la requête pour `https://branda.com/en.html` vers le fichier `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
 
 De plus, l’instance de publication d’AEM doit être désignée comme rendu pour l’hôte virtuel. Configurez d&#39;autres propriétés de batterie le cas échéant. Le code suivant est une configuration de batterie abrégée pour le domaine branda.com :
 
@@ -236,11 +236,11 @@ De plus, l’instance de publication d’AEM doit être désignée comme rendu p
 
 ### Création d’une ferme de serveurs de Dispatcher pour l’invalidation du cache
 
-Une batterie Dispatcher est requise pour traiter les requêtes d&#39;invalidation de fichiers mis en cache. Cette ferme de serveurs doit pouvoir accéder aux fichiers .stat dans la variable `docroot` répertoires de chaque hôte virtuel.
+Une batterie Dispatcher est requise pour traiter les requêtes d&#39;invalidation de fichiers mis en cache. Cette batterie doit pouvoir accéder aux fichiers .stat dans les répertoires `docroot` de chaque hôte virtuel.
 
-Les configurations de propriété suivantes permettent à Dispatcher de résoudre les fichiers du référentiel de contenu AEM à partir des fichiers du cache :
+Les configurations de propriétés suivantes permettent au Dispatcher de résoudre les fichiers du référentiel de contenu AEM à partir des fichiers présents dans le cache :
 
-* La variable `/docroot` est définie sur la valeur par défaut. `docroot` du serveur web. En règle générale, le /`docroot` est le répertoire dans lequel la variable `/content` est créé. Un exemple de valeur pour Apache sous Linux® est `/usr/lib/apache/httpd-2.4.3/htdocs`.
+* La propriété `/docroot` est définie sur le répertoire `docroot` par défaut du serveur web. En règle générale, il s’agit du répertoire `docroot` dans lequel le dossier `/content` est créé. Un exemple de valeur pour Apache sous Linux® est `/usr/lib/apache/httpd-2.4.3/htdocs`.
 * La propriété `/filter` permet d’accéder aux fichiers en-dessous du répertoire `/content`.
 
 La propriété`/statfileslevel` doit être suffisamment élevée pour que les fichiers .stat soient créés dans le répertoire racine de chaque hôte virtuel. Cette propriété permet au cache de chaque domaine d’être invalidé séparément. Pour l’exemple de configuration, une valeur `/statfileslevel` de `2` crée des fichiers .stat dans le répertoire `*docroot*/content/sitea` et le répertoire `*docroot*/content/siteb`.
@@ -302,7 +302,7 @@ Après avoir créé le mappage pour la page de contenu, pour découvrir les mapp
 
 ### Exemple de nœuds de mappage de ressources
 
-Le tableau suivant répertorie les nœuds qui mettent en œuvre le mappage des ressources pour le domaine marquea.com. Des nœuds similaires sont créés pour le domaine `brandb.com`, par exemple `/etc/map/http/brandb.com`. Dans tous les cas, les mappages sont requis lorsque les références dans la page de HTML ne se résolvent pas correctement dans le contexte de Sling.
+Le tableau suivant répertorie les nœuds qui mettent en œuvre le mappage des ressources pour le domaine marquea.com. Des nœuds similaires sont créés pour le domaine `brandb.com`, par exemple `/etc/map/http/brandb.com`. Dans tous les cas, des mappages sont requis lorsque les références dans la page HTML ne se résolvent pas correctement dans le contexte Sling.
 
 | Chemin d’accès du nœud | Type | Propriété |
 |--- |--- |--- |
@@ -344,11 +344,11 @@ Configurez les aspects suivants sur le serveur web :
 
 L’exemple de fichier httpd.conf suivant configure deux hôtes virtuels pour un serveur web Apache :
 
-* Les noms de serveur (qui correspondent aux noms de domaine) sont `brandA.com` (Ligne 16) et `brandB.com` (Ligne 32).
+* Les noms des serveurs (qui coïncident avec les noms des domaines) sont `brandA.com` (ligne 16) et `brandB.com` (ligne 32).
 
-* La racine du document de chaque domaine virtuel est le répertoire du cache Dispatcher qui contient les pages du site. (Lignes 20 et 33)
-* La règle de réécriture d’URL pour chaque domaine virtuel est une expression régulière. L’expression régulière préfixe le chemin d’accès à la page demandée. Il comporte le préfixe du chemin d’accès aux pages du cache. (Lignes 19 et 35)
-* La propriété `DispatherUseProcessedURL` est définie sur `1`. (Ligne 10)
+* La racine du document de chaque domaine virtuel est le répertoire dans le cache du Dispatcher qui contient les pages du site. (Lignes 20 et 33)
+* La règle de réécriture d’URL pour chaque domaine virtuel est une expression régulière. L’expression régulière préfixe le chemin d’accès à la page demandée. Elle comporte le préfixe du chemin d’accès aux pages du cache. (Lignes 19 et 35)
+* La propriété `DispatherUseProcessedURL` est définie sur `1`. (Ligne 10)
 
 Par exemple, le serveur web effectue les actions suivantes lorsqu’il reçoit une demande avec l’URL `https://brandA.com/en/products.html` :
 
@@ -417,7 +417,7 @@ Lorsque le serveur web réécrit les URL, Dispatcher a besoin d’une seule ferm
 
 L’exemple de fichier de configuration suivant est basé sur l’exemple de fichier `dispatcher.any` qui est installé avec Dispatcher. Les modifications suivantes sont nécessaires pour la prise en charge des configurations de serveur web du fichier `httpd.conf` précédent :
 
-* La propriété `/virtualhosts` force Dispatcher à traiter les requêtes des domaines `brandA.com` et `brandB.com`. (Ligne 12)
+* La propriété `/virtualhosts` force Dispatcher à traiter les requêtes des domaines `brandA.com` et `brandB.com`. (Ligne 12)
 * La propriété `/statfileslevel` est définie sur 2, de sorte que des fichiers .stat sont créés dans chaque répertoire qui contient le contenu web du domaine (ligne 41) : `/statfileslevel "2"`
 
 Comme d’habitude, la racine du document du cache est identique à la racine du document du serveur web (ligne 40) : `/usr/lib/apache/httpd-2.4.3/htdocs`
@@ -512,7 +512,7 @@ Le module de [réécriture Sling](https://sling.apache.org/documentation/bundles
 
 ### Pipeline de module de réécriture par défaut d’AEM  {#the-aem-default-rewriter-pipeline}
 
-AEM utilise un module de réécriture de pipeline par défaut qui traite les documents du type text/html :
+AEM utilise un module de réécriture de pipeline par défaut qui traite les documents de type texte/HTML :
 
 * Le générateur analyse les documents HTML et génère des événements SAX lorsqu’il rencontre des éléments a, d’image, de zone, de formulaire, de base, de lien, de script et de corps. L’alias du générateur est `htmlparser`.
 * Le pipeline inclut les transformateurs suivants : `linkchecker`, `mobile`, `mobiledebug`, `contentsync`. Le transformateur `linkchecker` externalise les chemins d’accès aux fichiers HTML ou HTM référencés pour éviter les liens rompus.

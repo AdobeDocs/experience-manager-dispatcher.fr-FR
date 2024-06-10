@@ -3,9 +3,9 @@ title: Problèmes fréquents de Dispatcher
 description: Problèmes fréquents d’Adobe Experience Manager Dispatcher.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1547'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
@@ -17,13 +17,13 @@ ht-degree: 89%
 
 ### Qu’est-ce que Dispatcher ?
 
-Dispatcher est également un outil de mise en cache Adobe Experience Manager, ou l’outil d’équilibrage de charge, ou les deux, qui permet de créer un environnement de création web rapide et dynamique. Pour la mise en cache, Dispatcher fonctionne comme faisant partie d’un serveur HTTP, tel qu’Apache. Il a pour but de stocker (ou de &quot;mettre en cache&quot;) la plus grande partie du contenu statique du site web. Et accéder aussi rarement que possible à la mise en page du moteur du site web. Dans un rôle d’équilibrage de charge, Dispatcher répartit les requêtes des utilisateurs et utilisatrices (charge) sur différentes instances (rendus) AEM.
+Le Dispatcher est l’outil d’équilibrage de charge et/ou de mise en cache d’Adobe Experience Manager qui permet de créer un environnement de création web rapide et dynamique. Pour la mise en cache, Dispatcher fonctionne comme faisant partie d’un serveur HTTP, tel qu’Apache. Il a pour but de stocker (ou de « mettre en cache ») la plus grande partie possible du contenu statique du site web, et d’accéder le moins souvent possible à la mise en page du moteur du site web. Dans un rôle d’équilibrage de charge, Dispatcher répartit les requêtes des utilisateurs et utilisatrices (charge) sur différentes instances (rendus) AEM.
 
-Pour la mise en cache, le module Dispatcher utilise la capacité du serveur web à fournir du contenu statique. Dispatcher place les documents mis en cache à la racine du document sur le serveur Web.
+Pour la mise en cache, le module Dispatcher utilise la capacité du serveur web à fournir du contenu statique. Le Dispatcher place les documents mis en cache à la racine du document du serveur web.
 
 ### Comment Dispatcher effectue-t-il la mise en cache ?
 
-Dispatcher utilise la capacité du serveur web pour diffuser du contenu statique. Dispatcher stocke les documents mis en cache à la racine du document sur le serveur Web. Dispatcher dispose de deux méthodes principales pour mettre à jour le contenu du cache lorsque des modifications sont apportées au site web.
+Dispatcher utilise la capacité du serveur web pour diffuser du contenu statique. Le Dispatcher stocke les documents mis en cache à la racine du document du serveur web. Dispatcher dispose de deux méthodes principales pour mettre à jour le contenu du cache lorsque des modifications sont apportées au site web.
 
 * Les **mises à jour de contenu** suppriment les pages qui ont été modifiées, ainsi que les fichiers qui leur sont directement associés.
 * **L’invalidation automatique** invalide automatiquement les parties du cache susceptibles d’être obsolètes après une mise à jour. Par exemple, l’invalidation automatique marque les pages correspondantes comme étant obsolètes, sans rien supprimer.
@@ -70,7 +70,7 @@ Pour plus d’informations, voir [Utiliser Dispatcher avec plusieurs domaines](d
 
 Vous pouvez utiliser la fonctionnalité de [connexions persistantes](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor), qui garantit que tous les documents d’un utilisateur sont traités sur la même instance d’AEM. Cette fonctionnalité est importante si vous utilisez des pages personnalisées et des données de session. Les données sont stockées sur l’instance. Par conséquent, les requêtes suivantes, émanant du même utilisateur, doivent renvoyer à cette instance. Dans le cas contraire, les données seront perdues.
 
-Les connexions persistantes limitent la capacité de Dispatcher à optimiser les requêtes. Vous devez les utiliser uniquement en cas de besoin. Vous pouvez spécifier le dossier contenant les documents &quot;persistants&quot;, assurant ainsi que tous les documents de ce dossier sont traités dans la même instance pour un utilisateur.
+Les connexions persistantes limitent la capacité de Dispatcher à optimiser les requêtes. Vous devez les utiliser uniquement en cas de besoin. Vous pouvez spécifier le dossier qui contient les documents « persistants », assurant ainsi que tous les documents de ce dossier sont composés dans la même instance pour chaque utilisateur ou utilisatrice.
 
 ### Puis-je utiliser des connexions persistantes et la mise en cache en tandem ?
 
@@ -119,7 +119,7 @@ Voir les pages [Liste de contrôle de sécurité de Dispatcher](security-checkli
 
 ### Le problème lié à `jcr:content` de Dispatcher a été remplacé par `jcr%3acontent`.
 
-**Question** : l’entreprise a récemment rencontré un problème au niveau de Dispatcher. Un des appels AJAX qui récupérait des données du référentiel CQ avait `jcr:content` dans . Il a été codé en `jcr%3acontent`, ce qui entraîne un jeu de résultats incorrect.
+**Question** : l’entreprise a récemment rencontré un problème au niveau de Dispatcher. Un des appels AJAX qui obtenait des données d’un référentiel CQ contenait `jcr:content`. Il a été codé en `jcr%3acontent`, ce qui entraîne un jeu de résultats incorrect.
 
 **Réponse** : utilisez la méthode `ResourceResolver.map()` pour obtenir une URL « conviviale » qui permet d’utiliser/de recevoir des requêtes de Dispatcher et de résoudre le problème de mise en cache avec Dispatcher. La méthode map() code les deux-points `:` en caractères de soulignement et la méthode resolve() les décode au format lisible SLING JCR. Utilisez la méthode map() pour générer l’URL utilisée dans l’appel AJAX.
 
@@ -139,13 +139,13 @@ Si les opérations de suppression incitent Dispatcher à purger, [utilisez la so
 
 ### Comment vider les ressources DAM du cache de Dispatcher ?
 
-Vous pouvez utiliser la fonctionnalité de « réplication de chaînes ». Lorsque cette fonction est activée, l’agent de vidage de Dispatcher envoie une demande de vidage lorsqu’une réplication est reçue de l’instance d’auteur.
+Vous pouvez utiliser la fonctionnalité de « réplication de chaînes ». Lorsque cette fonctionnalité est activée, l’agent de purge du Dispatcher envoie une requête de purge lorsqu’une réplication est reçue de l’instance de création.
 
 Pour l’activer :
 
 1. [Suivez les étapes ci-dessous](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) pour créer des agents de purge sur publication.
 1. Accédez à la configuration de chaque agent.
-1. Sur le **Triggers** , vérifiez les **À réception** de la boîte.
+1. Dans l’onglet **Déclencheurs**, vérifiez la zone **À réception**.
 
 ## Divers
 

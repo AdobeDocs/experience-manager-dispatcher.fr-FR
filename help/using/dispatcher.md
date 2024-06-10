@@ -6,9 +6,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3079'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 97%
 
 Dispatcher est l’outil de mise en cache et d’équilibrage de charge d’Adobe Experience Manager, qui peut être utilisé conjointement avec un serveur web d’entreprise.
 
-Le processus de déploiement de Dispatcher est indépendant du serveur web et de la plateforme du système d’exploitation choisie :
+La procédure de déploiement du Dispatcher est indépendante du serveur web et de la plateforme du système d’exploitation :
 
 1. En savoir plus sur Dispatcher (cette page). Consultez également les [questions fréquentes sur Dispatcher](/help/using/dispatcher-faq.md).
 1. Installez un [serveur web pris en charge](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements) selon la documentation du serveur web.
@@ -30,7 +30,7 @@ Le processus de déploiement de Dispatcher est indépendant du serveur web et de
 
 >[!NOTE]
 >
->Pour mieux comprendre le fonctionnement de Dispatcher avec AEM :
+>Pour mieux comprendre le fonctionnement du Dispatcher avec AEM, procédez comme suit :
 >
 >* Voir les [Questions aux expertes et experts de la communauté AEM de juillet 2017](https://communities.adobeconnect.com/pf0gem7igw1f/).
 >* Accédez à [ce référentiel](https://github.com/adobe/aem-dispatcher-experiments). Il contient une collection d’expériences dans un format de laboratoire « à emporter ».
@@ -41,8 +41,8 @@ Utilisez les informations suivantes, selon vos besoins :
 * [Liste de contrôle de sécurité de Dispatcher](security-checklist.md)
 * [Base de connaissances de Dispatcher](https://helpx.adobe.com/fr/experience-manager/kb/index/dispatcher.html)
 * [Optimiser un site web pour les performances du cache](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-* [Utilisation de Dispatcher avec plusieurs domaines](dispatcher-domains.md)
-* [Utiliser le protocole SSL avec Dispatcher](dispatcher-ssl.md)
+* [Utiliser le Dispatcher avec plusieurs domaines](dispatcher-domains.md)
+* [Utiliser le protocole SSL avec le Dispatcher](dispatcher-ssl.md)
 * [Mettre en œuvre la mise en cache sensible aux autorisations](permissions-cache.md)
 * [Résoudre les problèmes liés à Dispatcher](dispatcher-troubleshooting.md)
 * [Questions fréquentes sur les problèmes fréquents de Dispatcher](dispatcher-faq.md)
@@ -129,7 +129,7 @@ Lors d’une mise à jour du contenu, un ou plusieurs documents AEM sont modifi
 Notez également ce qui suit :
 
 * Les mises à jour de contenu sont généralement utilisées avec un système de création qui « sait » ce qui doit être remplacé.
-* Les fichiers concernés par une mise à jour de contenu sont supprimés, mais pas remplacés immédiatement. La prochaine fois qu’un tel fichier est demandé, Dispatcher récupère le nouveau fichier de l’instance AEM et le place dans le cache, en remplaçant l’ancien contenu.
+* Les fichiers concernés par une mise à jour de contenu sont supprimés, mais pas remplacés immédiatement. Lorsqu’un tel fichier est à nouveau demandé, le Dispatcher récupère le nouveau fichier depuis l’instance AEM et le place dans le cache, écrasant ainsi l’ancien contenu.
 * En règle générale, les images générées automatiquement qui incorporent le texte d’une page sont stockées dans des fichiers image commençant par la même poignée, garantissant ainsi que l’association existe pour la suppression. Par exemple, vous pouvez stocker le texte du titre de la page mypage.html sous la forme de l’image mypage.titlePicture.gif dans le même dossier. De cette façon, l’image est automatiquement supprimée du cache chaque fois que la page est mise à jour. Vous avez donc l’assurance que l’image reflète toujours la version actuelle de la page.
 * Vous pouvez avoir plusieurs fichiers stat, un par dossier de langue, par exemple. Si une page est mise à jour, AEM recherche le dossier parent suivant contenant un fichier stat, et *touche* (modifie) ce fichier.
 

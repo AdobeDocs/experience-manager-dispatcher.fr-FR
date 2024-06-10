@@ -1,8 +1,8 @@
 ---
 source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '500'
-ht-degree: 77%
+ht-degree: 100%
 
 ---
 # Contribution à la documentation d’Adobe Experience Manager Screens
@@ -36,13 +36,13 @@ La méthode choisie dépend de votre aisance pour modifier vous-même la documen
 
 Vous avez une suggestion, une observation à propos des documents actuels ou une question sur la manière dont un élément est décrit ? Créez ensuite un problème. Les propositions relatives aux problèmes sont également excellentes si vous souhaitez apporter votre contribution, mais que vous n’êtes pas habitué(e) à modifier les documents ou à générer vous-même une demande d’extraction.
 
-Ils vous permettent de décrire facilement votre proposition d’amélioration des documents et un membre de l’équipe AEM Docs pourra la consulter. Cliquez sur **Enregistrer un problème** en haut du panneau de navigation de droite d’une page pour créer un problème.
+Ils vous permettent de décrire facilement votre proposition d’amélioration des documents et un membre de l’équipe AEM Docs pourra la consulter. Pour créer un problème, cliquez sur le lien **Soumettre un problème** en haut du panneau de navigation de droite, sur n’importe quelle page.
 
 ### Créer une demande d’extraction {#create-a-pull-request}
 
-Si vous rencontrez un problème et savez exactement comment le résoudre, envisagez de créer une demande d’extraction. Les demandes d’extraction vous permettent d’apporter vos propres modifications à la documentation. Un membre de l’équipe AEM Docs passe en revue les modifications à inclure. Cliquez sur **Modifier cette page** dans la partie supérieure du panneau de navigation de droite d’une page pour apporter les modifications suggérées et créer la requête d’extraction.
+Si vous rencontrez un problème et savez exactement comment le résoudre, envisagez de créer une demande d’extraction. Les demandes d’extraction vous permettent d’apporter vos propres modifications à la documentation. Un membre de l’équipe d’AEM Docs examine les modifications à inclure. Cliquez sur le lien **Modifier cette page** en haut du panneau de navigation de droite de n’importe quelle page pour appliquer vos modifications proposées et créer la demande d’extraction.
 
-Toutes les requêtes de tirage doivent avoir une [contrat de licence du contributeur ou CLA](https://opensource.adobe.com/cla.html) qui est signé. Le CLA autorise les Adobes à redistribuer vos contributions dans le cadre du projet. Vous n’avez besoin de soumettre un CLA Adobe qu’une seule fois. Par conséquent, si vous l’avez déjà soumis, vous n’avez rien à faire.
+Toutes les demandes d’extraction doivent posséder un [contrat de licence de contributeur ou de contributrice (CLA)](https://opensource.adobe.com/cla.html) signé. Le CLA permet d’autoriser Adobe à redistribuer vos contributions dans le cadre du projet. Vous n’avez besoin de soumettre un CLA Adobe qu’une seule fois. Par conséquent, si vous l’avez déjà soumis, vous n’avez rien à faire.
 
 ### Présentation rapide en vidéo
 
@@ -54,7 +54,7 @@ Regardez la vidéo suivante pour un aperçu rapide de la création de problèmes
 
 Si vous êtes un collaborateur ou une collaboratrice d’Adobe et souhaitez faire une contribution, utilisez l’organisation `AdobeDocs` dans notre référentiel git d’entreprise.
 
-Adobe est heureux de toute contribution et examine votre contribution si elle est effectuée sur le référentiel public. Cependant, les demandes d’extraction des personnes travaillant pour Adobe sont plus faciles à traiter et peuvent être approuvées plus rapidement dans le référentiel interne de l’entreprise. Veillez à ce que toute information de propriété exclusive ne soit abordée que sur le référentiel de l’entreprise.
+Adobe accueille avec enthousiasme toute contribution et examine votre contribution si celle-ci est effectuée dans le référentiel public. Cependant, les demandes d’extraction des personnes travaillant pour Adobe sont plus faciles à traiter et peuvent être approuvées plus rapidement dans le référentiel interne de l’entreprise. Veillez à ce que toute information de propriété exclusive ne soit abordée que sur le référentiel de l’entreprise.
 
 ## Informations supplémentaires
 
