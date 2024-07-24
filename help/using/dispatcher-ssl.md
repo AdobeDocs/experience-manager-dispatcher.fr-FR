@@ -10,9 +10,9 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 971cffd4f7ba8b1fa88a8af620a723ce59957007
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1305'
-ht-degree: 98%
+ht-degree: 100%
 
 ---
 
@@ -31,10 +31,10 @@ Utilisez les connexions SSL entre le Dispatcher et l’ordinateur de rendu :
 
 Configurez le Dispatcher pour communiquer avec l’instance de rendu AEM ou CQ à l’aide de connexions SSL.
 
-Avant de configurer Dispatcher, configurez AEM ou CQ pour utiliser SSL. Pour plus d’informations, consultez :
+Avant de configurer Dispatcher, configurez AEM ou CQ pour utiliser SSL. Pour plus d’informations, consultez ce qui suit :
 
-* [SSL/TLS par défaut](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/ssl-by-default)
-* [Utilisation de l’assistant SSL dans AEM](https://experienceleague.adobe.com/en/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
+* [SSL/TLS par défaut](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/security/ssl-by-default)
+* [Utiliser l’assistant SSL dans AEM](https://experienceleague.adobe.com/fr/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
 
 ### En-têtes de requêtes associés au protocole SSL {#ssl-related-request-headers}
 
