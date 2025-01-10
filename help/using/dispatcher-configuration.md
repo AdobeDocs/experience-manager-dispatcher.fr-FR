@@ -2,10 +2,10 @@
 title: Configurer le Dispatcher AEM
 description: Découvrez comment configurer le Dispatcher. Découvrez la prise en charge d’IPv4 et d’IPv6, les fichiers de configuration, les variables d’environnement et l’attribution de noms à l’instance. Découvrez comment définir des batteries, identifier des hôtes virtuels, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
 workflow-type: tm+mt
-source-wordcount: '8876'
-ht-degree: 100%
+source-wordcount: '8938'
+ht-degree: 99%
 
 ---
 
@@ -945,6 +945,21 @@ Utilisez la procédure suivante pour autoriser l’accès aux URL de redirection
 1. Pour chaque URL de redirection vers un microsite que vous avez configurée pour une page d’AEM ou de CQ, assurez-vous que la configuration de [`/filter`](#configuring-access-to-content-filter) refuse l’URL. Si nécessaire, ajoutez un filtre qui refuse l’URL.
 1. Ajoutez la section `/vanity_urls` sous la section `/farms`.
 1. Redémarrez le serveur web Apache.
+
+Un nouveau paramètre `/loadOnStartup` a été ajouté à Dispatcher **version 4.3.6**. En utilisant ce paramètre, vous pouvez configurer le chargement des URL Vanity au démarrage, comme suit :
+
+En ajoutant des `/loadOnStartup 0` (voir l’exemple ci-dessous), vous pouvez désactiver le chargement des URL Vanity au démarrage.
+
+```
+/vanity_urls {
+        /url "/libs/granite/dispatcher/content/vanityUrls.html"
+        /file "/tmp/vanity_urls"
+        /loadOnStartup 0
+        /delay 60
+      } 
+```
+
+Pendant que `/loadOnStartup 1` charge les URL de redirection vers un microsite au démarrage. Gardez à l’esprit que `/loadOnStartup 1` est la valeur par défaut actuelle de ce paramètre.
 
 ## Transférer des requêtes de syndication - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
