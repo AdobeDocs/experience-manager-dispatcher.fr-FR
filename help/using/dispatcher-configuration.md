@@ -3,9 +3,9 @@ title: Configurer le Dispatcher AEM
 description: Découvrez comment configurer le Dispatcher. Découvrez la prise en charge d’IPv4 et d’IPv6, les fichiers de configuration, les variables d’environnement et l’attribution de noms à l’instance. Découvrez comment définir des batteries, identifier des hôtes virtuels, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8938'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -17,7 +17,7 @@ ht-degree: 99%
 
 Les sections suivantes décrivent comment configurer divers aspects de Dispatcher.
 
-## Prise en charge d’IPv6 et IPv4  {#support-for-ipv-and-ipv}
+## Prise en charge d’IPv6 et IPv4 {#support-for-ipv-and-ipv}
 
 Vous pouvez installer tous les éléments d’AEM et de Dispatcher sur des réseaux IPv4 et IPv6. Voir [IPV4 et IPV6](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv).
 
@@ -566,7 +566,7 @@ La section `/filter` se compose d’une série de règles qui refusent ou autori
 >
 >Purgez le cache à chaque fois qu’une modification est apportée aux règles de filtrage.
 
-### Définir un filtre  {#defining-a-filter}
+### Définir un filtre {#defining-a-filter}
 
 Chaque élément de la section `/filter` comprend un type et un modèle associé à un élément spécifique de la ligne de requête ou à l’intégralité de la ligne de demande. Chaque filtre peut contenir les éléments suivants :
 
@@ -946,9 +946,9 @@ Utilisez la procédure suivante pour autoriser l’accès aux URL de redirection
 1. Ajoutez la section `/vanity_urls` sous la section `/farms`.
 1. Redémarrez le serveur web Apache.
 
-Un nouveau paramètre `/loadOnStartup` a été ajouté à Dispatcher **version 4.3.6**. En utilisant ce paramètre, vous pouvez configurer le chargement des URL Vanity au démarrage, comme suit :
+Avec la **version 4.3.6** de Dispatcher, un nouveau paramètre `/loadOnStartup` a été ajouté. En utilisant ce paramètre, vous pouvez configurer le chargement des URL de redirection au démarrage, comme suit :
 
-En ajoutant des `/loadOnStartup 0` (voir l’exemple ci-dessous), vous pouvez désactiver le chargement des URL Vanity au démarrage.
+En ajoutant `/loadOnStartup 0` (voir l’exemple ci-dessous), vous pouvez désactiver le chargement des URL de redirection au démarrage.
 
 ```
 /vanity_urls {
@@ -959,7 +959,7 @@ En ajoutant des `/loadOnStartup 0` (voir l’exemple ci-dessous), vous pouvez d�
       } 
 ```
 
-Pendant que `/loadOnStartup 1` charge les URL de redirection vers un microsite au démarrage. Gardez à l’esprit que `/loadOnStartup 1` est la valeur par défaut actuelle de ce paramètre.
+Pendant que `/loadOnStartup 1` charge les URL de redirection au démarrage. Gardez à l’esprit que `/loadOnStartup 1` est la valeur par défaut actuelle de ce paramètre.
 
 ## Transférer des requêtes de syndication - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
@@ -1012,7 +1012,7 @@ Un exemple de section cache pourrait ressembler à ce qui suit :
 >
 >Pour la mise en cache sensible aux autorisations, lisez [Mise en cache de contenu sécurisé](permissions-cache.md).
 
-### Indication du répertoire du cache  {#specifying-the-cache-directory}
+### Indication du répertoire du cache {#specifying-the-cache-directory}
 
 La propriété `/docroot` identifie le répertoire dans lequel les fichiers mis en cache sont stockés.
 
@@ -1462,7 +1462,7 @@ Le score de la catégorie d’un rendu est basé sur les temps de réponse préc
 >
 >Si vous n’utilisez pas l’équilibrage de charge, vous pouvez ignorer cette section.
 
-### Définition des catégories de statistiques  {#defining-statistics-categories}
+### Définition des catégories de statistiques {#defining-statistics-categories}
 
 Définissez une catégorie pour chaque type de document pour lequel vous souhaitez conserver les statistiques de sélection du rendu. La section `/statistics` contient une section `/categories`. Pour définir une catégorie, ajoutez une ligne sous la section `/categories` au format suivant :
 
@@ -1513,7 +1513,7 @@ Si aucune propriété `/unavailablePenalty` n’existe, la valeur `"1"` est util
 /unavailablePenalty "1"
 ```
 
-## Identifier un dossier de connexions persistantes - `/stickyConnectionsFor`  {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
+## Identifier un dossier de connexions persistantes - `/stickyConnectionsFor` {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
 
 La propriété `/stickyConnectionsFor` définit un dossier contenant des documents persistants. Cette propriété est accessible à l’aide de l’URL. Dispatcher envoie toutes les requêtes, d’un utilisateur ou d’une utilisatrice unique qui se trouve dans ce dossier, à la même instance de rendu. Les connexions persistantes garantissent que les données de session sont présentes et cohérentes pour tous les documents. Ce mécanisme utilise le cookie `renderid`.
 
@@ -1602,7 +1602,7 @@ Pour activer le basculement, ajoutez la ligne suivante à la ferme de serveurs (
 >
 >Pour réessayer les demandes HTTP qui contiennent un corps, Dispatcher envoie un en-tête de demande `Expect: 100-continue` au rendu avant de mettre en file d’attente les contenus réels. CQ 5.5 avec CQSE répond immédiatement avec 100 (CONTINUER) ou un code d’erreur. D’autres conteneurs de servlets sont également pris en charge.
 
-## Ignorer les erreurs d’interruption - `/ignoreEINTR`  {#ignoring-interruption-errors-ignoreeintr}
+## Ignorer les erreurs d’interruption - `/ignoreEINTR` {#ignoring-interruption-errors-ignoreeintr}
 
 >[!CAUTION]
 >
@@ -1644,7 +1644,7 @@ Les valeurs `glob` peuvent inclure des caractères génériques et des caractèr
 | `?` | Correspond à tout caractère unique. Utilisation en dehors des classes de caractères. Dans une classe de caractères, ce caractère est interprété littéralement. | `*outdoors/??/*`<br/> correspond aux pages du site geometrixx-outdoors dans n’importe quelle langue. Par exemple, la demande HTTP suivante correspond au modèle glob :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La demande suivante ne correspond pas au modèle glob : <br/><ul><li>&quot;GET /content/geometrixx-outdoors/fr.html&quot;</li></ul> |
 | `[ and ]` | Marque le début et la fin d’une classe de caractères. Les classes de caractères peuvent inclure une ou plusieurs plages de caractères et des caractères uniques.<br/>Une correspondance se produit si le caractère cible correspond à n’importe quel caractère de la classe de caractères ou d’une plage définie.<br/>Si le crochet fermant n’est pas inclus, le modèle ne produit pas de correspondance. | `*[o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Correspond aux requêtes HTTP suivantes : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indique une plage de caractères. À utiliser dans des classes de caractères. En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[m-p]men.html*`Correspond à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | Annule le caractère ou la classe de caractères qui suit. À utiliser uniquement pour annuler des caractères et des plages de caractères dans des classes de caractères. Équivalent au `^ wildcard` <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[!o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | Annule le caractère ou la classe de caractères qui suit. À utiliser uniquement pour annuler des caractères et des plages de caractères dans des classes de caractères. Équivalent au `^ wildcard`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[!o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Annule le caractère ou la plage de caractères qui suit. À utiliser pour annuler uniquement des caractères et des plages de caractères dans des classes de caractères. Équivalent au caractère générique `!`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | Les exemples pour le caractère générique `!` s’appliquent, en remplaçant les caractères `!` dans les exemples de motifs par des caractères `^`. |
 
 
