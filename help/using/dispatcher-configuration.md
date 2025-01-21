@@ -3,9 +3,9 @@ title: Configurer le Dispatcher AEM
 description: Découvrez comment configurer le Dispatcher. Découvrez la prise en charge d’IPv4 et d’IPv6, les fichiers de configuration, les variables d’environnement et l’attribution de noms à l’instance. Découvrez comment définir des batteries, identifier des hôtes virtuels, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: da9bf0c1f4cceccfc6be9f4871a21d2bb703f0a4
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8938'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -355,7 +355,7 @@ Dispatcher détecte la valeur d’hôte virtuel correspondant le mieux comme sui
 * Si aucune valeur `virtualhosts` ne comporte les parties `scheme` et `uri` qui correspondent aux parties `scheme` et `uri` de la requête, l’hôte virtuel rencontré en premier qui correspond à la partie `host` de la requête est utilisé.
 * Si aucune valeur `virtualhosts` ne comporte une partie host qui correspond à la partie host de la demande, l’hôte virtuel le plus élevé de la batterie la plus élevée est utilisé.
 
-Par conséquent, vous devez placer l’hôte virtuel par défaut en haut de la propriété `virtualhosts`. Placez-le dans la ferme la plus élevée de votre fichier `dispatcher.any`.
+Par conséquent, vous devez placer l’hôte virtuel par défaut en haut de la propriété `virtualhosts`. Placez-le dans la batterie la plus haute de votre fichier `dispatcher.any`.
 
 ### Exemple de résolution du nom d’hôte virtuel {#example-virtual-host-resolution}
 
