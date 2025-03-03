@@ -8,9 +8,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: b8dc67a9633c1a459a2851f4be99a5fcbec7fe79
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3008'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
@@ -198,9 +198,9 @@ Les hôtes virtuels héritent de la valeur de propriété [DispatcherConfig](dis
 
 >[!NOTE]
 >
->Sur AEM as a Cloud Service, une configuration vhost distincte doit être utilisée avec un DocumentRoot à un niveau supérieur à chacune des sous-pages. Cette opération est gérée par défaut dans l’archétype, mais lorsque plusieurs DocumentRoots sont utilisés, une configuration vhost de priorité supérieure doit être utilisée afin que l’invalidation du cache puisse être traitée pour l’ensemble du cache, car elle ne peut pas être configurée séparément pour chaque site. Le ServerAlias de cette nouvelle configuration doit accepter l’en-tête hôte « localhost ».
+>Sur AEM as a Cloud Service, une configuration vhost distincte doit être utilisée avec un DocumentRoot à un niveau supérieur à chacune des sous-pages. Cette opération est gérée par défaut dans l’archétype, mais lorsque plusieurs DocumentRoots sont utilisés, une configuration vhost de priorité supérieure doit être utilisée afin que l’invalidation du cache puisse être traitée pour l’ensemble du cache, car elle ne peut pas être configurée séparément pour chaque site. Le ServerAlias de cette nouvelle configuration doit accepter l’en-tête hôte « localhost ».
 
-### Configuration de Dispatcher pour gérer plusieurs domaines  {#configure-dispatcher-to-handle-multiple-domains}
+### Configurer Dispatcher pour gérer plusieurs domaines {#configure-dispatcher-to-handle-multiple-domains}
 
 Pour prendre en charge les URL qui incluent des noms de domaine et leurs hôtes virtuels correspondants, définissez les batteries Dispatcher suivantes :
 
