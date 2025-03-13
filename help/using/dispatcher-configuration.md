@@ -3,9 +3,9 @@ title: Configurer le Dispatcher AEM
 description: Découvrez comment configurer le Dispatcher. Découvrez la prise en charge d’IPv4 et d’IPv6, les fichiers de configuration, les variables d’environnement et l’attribution de noms à l’instance. Découvrez comment définir des batteries, identifier des hôtes virtuels, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: a9ef9d7d2fe5c421cd8039579fd84961ea901def
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8941'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1037,7 +1037,7 @@ Le fichier stat n’a aucun contenu. Lorsque le contenu est mis à jour, le Disp
 
 La propriété `/serveStaleOnError` contrôle si Dispatcher renvoie des documents invalidés lorsque le serveur de rendu renvoie une erreur. Par défaut, lorsqu’un fichier .stat est modifié et invalide le contenu mis en cache, le Dispatcher supprime le contenu mis en cache. Cette action est effectuée la prochaine fois que celle-ci fait l’objet d’une requête.
 
-Si `/serveStaleOnError` est défini sur `"1"`, Dispatcher ne supprime pas le contenu invalidé du cache, sauf si le serveur de rendu renvoie une réponse de succès. Une réponse 502, 503 ou 504 d’AEM ou un délai d’expiration de connexion entraîne la diffusion par le Dispatcher du contenu obsolète et la réponse avec un statut HTTP 111 (échec de la revalidation).
+Si `/serveStaleOnError` est défini sur `"1"`, Dispatcher ne supprime pas le contenu invalidé du cache, sauf si le serveur de rendu renvoie une réponse de succès. Dans le cas d’un code de réponse 502, 503 ou 504 d’AEM ou d’une expiration de la connexion, le Dispatcher diffuse le contenu obsolète et répond avec le code de statut HTTP 111 (Échec de la revalidation).
 
 ### Mettre en cache lors de l’utilisation de l’authentification {#caching-when-authentication-is-used}
 
