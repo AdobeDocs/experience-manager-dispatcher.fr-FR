@@ -6,14 +6,14 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '924'
-ht-degree: 100%
+source-wordcount: '923'
+ht-degree: 97%
 
 ---
 
-# Mettre en cache le contenu sécurisé {#caching-secured-content}
+# Mettre en cache du contenu sécurisé {#caching-secured-content}
 
 La mise en cache sensible aux autorisations vous permet de mettre en cache des pages sécurisées. Le Dispatcher vérifie les autorisations d’accès à une page d’un utilisateur ou d’une utilisatrice avant de diffuser la page mise en cache.
 
@@ -56,7 +56,7 @@ Les diagrammes suivants illustrent l’ordre d’apparition des événements lor
 1. Le rendu appelle le servlet d’autorisation d’AEM (il ne s’agit pas du servlet AuthChecker du Dispatcher) pour effectuer une vérification de sécurité. Lorsque la personne est autorisée, le rendu inclut la page rendue dans le corps du message de réponse.
 1. Dispatcher transfère la réponse au navigateur. Dispatcher ajoute le corps du message de réponse du rendu au cache.
 
-## Mettre en œuvre la mise en cache sensible aux autorisations {#implementing-permission-sensitive-caching}
+## Implémenter la mise en cache sensible aux autorisations {#implementing-permission-sensitive-caching}
 
 Pour mettre en œuvre la mise en cache sensible aux autorisations, effectuez les tâches suivantes :
 
@@ -70,7 +70,7 @@ Pour mettre en œuvre la mise en cache sensible aux autorisations, effectuez les
 >[!NOTE]
 >
 >Lorsqu’un réseau CDN (ou tout autre cache) se trouve devant Dispatcher, vous devez définir les en-têtes de mise en cache en conséquence, afin que le réseau CDN ne mette pas en cache le contenu privé. Par exemple : `Header always set Cache-Control private`.
->Pour AEM as a Cloud Service, voir la page [Mettre en cache](https://experienceleague.adobe.com/fr/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) pour en savoir plus sur la définition des en-têtes de mise en cache privés.
+>>Pour AEM as a Cloud Service, voir la page [Mettre en cache](https://experienceleague.adobe.com/fr/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) pour en savoir plus sur la définition des en-têtes de mise en cache privés.
 
 ## Créer le servlet Auth Checker {#create-the-auth-checker-servlet}
 
@@ -92,7 +92,7 @@ L’exemple de servlet suivant obtient l’URL de la ressource demandée à part
 
 >[!NOTE]
 >
->La valeur de la propriété sling.servlet.paths doit être activée dans le service Sling Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver).
+>La valeur de la propriété sling.servlet.paths doit être activée dans le service `Sling` Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver).
 
 ### Exemple de servlet  {#example-servlet}
 

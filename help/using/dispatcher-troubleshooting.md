@@ -1,5 +1,5 @@
 ---
-title: Résoudre les problèmes liés à Dispatcher
+title: Résolution des problèmes liés à Dispatcher
 description: Découvrez comment résoudre les problèmes liés à Dispatcher.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -9,14 +9,14 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '539'
-ht-degree: 100%
+source-wordcount: '472'
+ht-degree: 93%
 
 ---
 
-# Résoudre les problèmes liés à Dispatcher {#troubleshooting-dispatcher-problems}
+# Résolution des problèmes liés à Dispatcher {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
@@ -26,7 +26,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Pour plus d’informations, voir les sections [Base de connaissances de Dispatcher](https://helpx.adobe.com/fr/experience-manager/kb/index/dispatcher.html), [Dépannage des problèmes de purge de Dispatcher](https://experienceleague.adobe.com/search.html?lang=fr#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) et les [Questions fréquentes sur les problèmes fréquents de Dispatcher](dispatcher-faq.md).
+>Pour plus d’informations<!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[ consultez la ](https://experienceleague.adobe.com/search.html?lang=fr#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager])Résolution des problèmes de purge du Dispatcher[ et la ](dispatcher-faq.md)FAQ des problèmes fréquents de Dispatcher.
 
 ## Vérifier la configuration de base {#check-the-basic-configuration}
 
@@ -45,7 +45,7 @@ Comme toujours, les premières étapes consistent à vérifier les éléments de
 
       * Ces filtres ont-ils un impact sur le sujet que vous étudiez ?
 
-## Outils de diagnostic IIS {#iis-diagnostic-tools}
+## Outils de diagnostic IIS {#iis-diagnostic-tools}
 
 IIS propose divers outils de trace, en fonction de la version :
 
@@ -54,16 +54,17 @@ IIS propose divers outils de trace, en fonction de la version :
 
 Ces outils peuvent vous aider à surveiller l’activité.
 
-## IIS et « Erreur 404 - Page introuvable » (404 Not Found) {#iis-and-not-found}
+<!-- Both URLs in this topic 404! >
+## IIS and 404 Not Found {#iis-and-not-found}
 
-Lorsque vous utilisez IIS, une erreur `404 Not Found` peut survenir dans plusieurs cas de figure. Si cela se produit, consultez les articles suivants de la base de connaissances.
+When using IIS, you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
 
-* [IIS 6/7 : la méthode POST renvoie 404.](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
-* [IIS 6 : les requêtes aux URL qui contiennent le chemin de base `/bin` renvoient `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html).
+* [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
+* [IIS 6: Requests to URLs that contain the base path `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-Vérifiez également que la racine du cache de Dispatcher et la racine du document IIS sont placées dans le même répertoire.
+Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
 
-## Problèmes lors de la suppression de modèles de workflow {#problems-deleting-workflow-models}
+## Problèmes de suppression des modèles de workflow {#problems-deleting-workflow-models}
 
 **Symptômes**
 
