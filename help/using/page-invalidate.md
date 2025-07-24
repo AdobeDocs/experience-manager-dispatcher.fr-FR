@@ -26,7 +26,7 @@ Le compte d’utilisateur ou d’utilisatrice `admin` par défaut est utilisé p
 
 Pour plus d’informations, consultez la section [Configurer les utilisateurs de la réplication et du transport](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) de la liste de contrôle de sécurité d’AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/fr/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Invalidation du cache de Dispatcher à partir de l’environnement de création {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
