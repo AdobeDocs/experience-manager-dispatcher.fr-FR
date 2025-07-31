@@ -1,5 +1,5 @@
 ---
-title: Mettre en cache le contenu sécurisé
+title: Mise en cache de contenu sécurisé
 description: Découvrez le fonctionnement de la mise en cache sensible aux autorisations dans Dispatcher.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -7,13 +7,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '923'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
-# Mettre en cache du contenu sécurisé {#caching-secured-content}
+# Mise en cache de contenu sécurisé {#caching-secured-content}
 
 La mise en cache sensible aux autorisations vous permet de mettre en cache des pages sécurisées. Le Dispatcher vérifie les autorisations d’accès à une page d’un utilisateur ou d’une utilisatrice avant de diffuser la page mise en cache.
 
@@ -70,7 +70,7 @@ Pour mettre en œuvre la mise en cache sensible aux autorisations, effectuez les
 >[!NOTE]
 >
 >Lorsqu’un réseau CDN (ou tout autre cache) se trouve devant Dispatcher, vous devez définir les en-têtes de mise en cache en conséquence, afin que le réseau CDN ne mette pas en cache le contenu privé. Par exemple : `Header always set Cache-Control private`.
->&#x200B;>Pour AEM as a Cloud Service, voir la page [Mettre en cache](https://experienceleague.adobe.com/fr/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) pour en savoir plus sur la définition des en-têtes de mise en cache privés.
+>>Pour AEM as a Cloud Service, voir la page [Mettre en cache](https://experienceleague.adobe.com/fr/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) pour en savoir plus sur la définition des en-têtes de mise en cache privés.
 
 ## Créer le servlet Auth Checker {#create-the-auth-checker-servlet}
 
@@ -94,7 +94,7 @@ L’exemple de servlet suivant obtient l’URL de la ressource demandée à part
 >
 >La valeur de la propriété sling.servlet.paths doit être activée dans le service `Sling` Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver).
 
-### Exemple de servlet  {#example-servlet}
+### Exemple de servlet {#example-servlet}
 
 ```java
 package com.adobe.example;

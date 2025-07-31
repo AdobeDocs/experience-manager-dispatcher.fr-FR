@@ -1,5 +1,5 @@
 ---
-title: Résolution des problèmes liés à Dispatcher
+title: Résoudre les problèmes liés à Dispatcher
 description: Découvrez comment résoudre les problèmes liés à Dispatcher.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -10,13 +10,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '472'
-ht-degree: 93%
+ht-degree: 100%
 
 ---
 
-# Résolution des problèmes liés à Dispatcher {#troubleshooting-dispatcher-problems}
+# Résoudre les problèmes liés à Dispatcher {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
@@ -26,7 +26,7 @@ ht-degree: 93%
 
 >[!NOTE]
 >
->Pour plus d’informations<!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[ consultez la ](https://experienceleague.adobe.com/search.html?lang=fr#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager])Résolution des problèmes de purge du Dispatcher[ et la ](dispatcher-faq.md)FAQ des problèmes fréquents de Dispatcher.
+>Pour plus d’informations, consultez les sections <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Résoudre les problèmes liés à la purge du cache de Dispatcher](https://experienceleague.adobe.com/search.html?lang=fr#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) et les [Questions fréquentes sur les problèmes les plus courants de Dispatcher](dispatcher-faq.md).
 
 ## Vérifier la configuration de base {#check-the-basic-configuration}
 
@@ -45,7 +45,7 @@ Comme toujours, les premières étapes consistent à vérifier les éléments de
 
       * Ces filtres ont-ils un impact sur le sujet que vous étudiez ?
 
-## Outils de diagnostic IIS {#iis-diagnostic-tools}
+## Outils de diagnostic IIS {#iis-diagnostic-tools}
 
 IIS propose divers outils de trace, en fonction de la version :
 
@@ -64,7 +64,7 @@ When using IIS, you might experience `404 Not Found` being returned in various s
 
 Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
 
-## Problèmes de suppression des modèles de workflow {#problems-deleting-workflow-models}
+## Problèmes lors de la suppression de modèles de workflow {#problems-deleting-workflow-models}
 
 **Symptômes**
 

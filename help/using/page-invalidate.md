@@ -1,5 +1,5 @@
 ---
-title: Invalidation Des Pages Mises En Cache À Partir D’AEM
+title: Invalider des pages mises en cache à partir d’AEM
 description: Découvrez comment configurer l’interaction entre Dispatcher et AEM pour assurer une gestion efficace du cache.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -10,25 +10,25 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1407'
-ht-degree: 95%
+ht-degree: 100%
 
 ---
 
-# Invalidation des pages mises en cache à partir d’AEM {#invalidating-cached-pages-from-aem}
+# Invalider des pages mises en cache à partir d’AEM {#invalidating-cached-pages-from-aem}
 
 Lors de l’utilisation de Dispatcher avec AEM, vous devez configurer l’interaction pour assurer une gestion efficace du cache. En fonction de votre environnement, la configuration peut également augmenter les performances.
 
-## Configurer des comptes utilisateur AEM {#setting-up-aem-user-accounts}
+## Configurer des comptes d’utilisateurs et d’utilisatrices AEM {#setting-up-aem-user-accounts}
 
 Le compte d’utilisateur ou d’utilisatrice `admin` par défaut est utilisé pour authentifier les agents de réplication qui sont installés par défaut. Vous devez créer un compte d’utilisateur ou d’utilisatrice dédié à utiliser avec des agents de réplication.
 
-Pour plus d’informations, consultez la section [Configurer les utilisateurs de la réplication et du transport](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) de la liste de contrôle de sécurité d’AEM.
+Pour plus d’informations, consultez la section [Configurer la réplication et le transport d’utilisateurs et d’utilisatrices](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) de la liste de contrôle de sécurité d’AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/fr/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
-## Invalidation du cache de Dispatcher à partir de l’environnement de création {#invalidating-dispatcher-cache-from-the-authoring-environment}
+## Invalider le cache de Dispatcher à partir de l’environnement de création {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
 Un agent de réplication de l’instance de création AEM envoie une demande d’invalidation du cache à Dispatcher lorsqu’une page est publiée. Dispatcher actualise le fichier dans le cache, le cas échéant, lorsque du nouveau contenu est publié.
 
@@ -80,7 +80,7 @@ Cette approche présente deux problèmes potentiels :
 
 * La publication et l’invalidation du cache ont lieu en même temps. En fonction du moment, un utilisateur ou une utilisatrice peut demander une page juste après sa suppression du cache et juste avant la publication de la nouvelle page. AEM renvoie désormais l’ancienne page et Dispatcher la met à nouveau en cache. La situation est plus problématique pour les grands sites.
 
-## Invalidation du cache Dispatcher à partir d’une instance de publication {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## Invalider le cache de Dispatcher à partir d’une instance de publication {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 Dans certains cas, vous pouvez améliorer les performances en transférant la gestion des caches de l’environnement de création à une instance de publication. C’est alors l’environnement de publication (et non l’environnement de création AEM) qui envoie une requête d’invalidation du cache à Dispatcher lorsqu’une page publiée est reçue.
 
@@ -120,7 +120,7 @@ Après configuration, lorsque vous activez une page de création à publier, cet
 
 1. `<publishserver> 13:29:47 127.0.0.1 POST /dispatcher/invalidate.cache 200`
 
-## Invalidation manuelle du cache de Dispatcher {#manually-invalidating-the-dispatcher-cache}
+## Invalider manuellement le cache de Dispatcher {#manually-invalidating-the-dispatcher-cache}
 
 Pour invalider (ou purger) le cache de Dispatcher sans activer de page, vous pouvez émettre une requête HTTP au Dispatcher. Par exemple, vous pouvez créer une application AEM qui permet aux administrateurs et administratrices ou à d’autres applications de vider le cache.
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-Les chemins d’accès des pages à remettre en cache immédiatement sont listés sur des lignes séparées dans le corps du message. La valeur de `CQ-Handle` est le chemin d’accès d’une page qui invalide les pages à remettre en cache. (Voir le paramètre `/statfileslevel` de l’élément de configuration [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) L’exemple de message de requête HTTP suivant supprime et met en cache le `/content/geometrixx-outdoors/en.html page` :
+Les chemins d’accès des pages à remettre en cache immédiatement sont listés sur des lignes séparées dans le corps du message. La valeur de `CQ-Handle` est le chemin d’accès d’une page qui invalide les pages à remettre en cache. (Voir le paramètre `/statfileslevel` de l’élément de configuration [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) L’exemple de message de requête HTTP suivant supprime et met de nouveau la `/content/geometrixx-outdoors/en.html page` en cache :
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
@@ -181,7 +181,7 @@ Content-Length: 36
 /content/geometrixx-outdoors/en.html
 ```
 
-### Exemple de servlet de purge {#example-flush-servlet}
+### Exemple de servlet de vidage {#example-flush-servlet}
 
 Le code suivant implémente un servlet qui envoie une requête d’invalidation à Dispatcher. Le servlet reçoit un message de requête contenant les paramètres `handle` et `page`. Ces paramètres fournissent la valeur de l’en-tête `CQ-Handle` et le chemin d’accès à la page à remettre en cache, respectivement. Le servlet utilise les valeurs pour construire la requête HTTP pour Dispatcher.
 

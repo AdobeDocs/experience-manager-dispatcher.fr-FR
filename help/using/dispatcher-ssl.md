@@ -1,6 +1,6 @@
 ---
-title: Utiliser SSL avec Dispatcher
-description: Découvrez comment configurer le Dispatcher pour communiquer avec AEM à l’aide de connexions SSL.
+title: Utiliser le protocole SSL avec Dispatcher
+description: Découvrez comment configurer Dispatcher de sorte qu’il communique avec AEM à l’aide de connexions SSL.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -10,13 +10,13 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1305'
-ht-degree: 91%
+ht-degree: 100%
 
 ---
 
-# Utiliser SSL avec Dispatcher {#using-ssl-with-dispatcher}
+# Utiliser le protocole SSL avec Dispatcher {#using-ssl-with-dispatcher}
 
 Utilisez les connexions SSL entre le Dispatcher et l’ordinateur de rendu :
 
@@ -27,16 +27,16 @@ Utilisez les connexions SSL entre le Dispatcher et l’ordinateur de rendu :
 >
 >Les opérations liées aux certificats SSL sont liées à des produits tiers. Elles ne sont pas couvertes par le contrat d’assistance et de maintenance Adobe Platinum.
 
-## Utiliser SSL lorsque Dispatcher se connecte à AEM {#use-ssl-when-dispatcher-connects-to-aem}
+## Utiliser le protocole SSL lorsque Dispatcher se connecte à AEM {#use-ssl-when-dispatcher-connects-to-aem}
 
-Configurez le Dispatcher pour communiquer avec l’instance de rendu AEM ou CQ à l’aide de connexions SSL.
+Configurez Dispatcher de sorte qu’il communique avec l’instance de rendu AEM ou CQ en utilisant des connexions SSL.
 
 Avant de configurer Dispatcher, configurez AEM ou CQ pour utiliser SSL. Pour plus d’informations, consultez ce qui suit :
 
 * [SSL/TLS par défaut](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/security/ssl-by-default)
 * [Utiliser l’assistant SSL dans AEM](https://experienceleague.adobe.com/fr/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
 
-### En-têtes de requête liés à SSL {#ssl-related-request-headers}
+### En-têtes de requêtes associés au protocole SSL {#ssl-related-request-headers}
 
 Lorsque Dispatcher reçoit une requête HTTPS, il inclut les en-têtes suivants dans la requête suivante qu’il envoie à AEM ou CQ :
 
@@ -111,7 +111,7 @@ L’exemple de fichier `dispatcher.any` suivant affiche les valeurs des propri�
 }
 ```
 
-## Configuration du SSL mutuel entre Dispatcher et AEM {#configuring-mutual-ssl-between-dispatcher-and-aem}
+## Configurer un SSL mutuel entre Dispatcher et AEM {#configuring-mutual-ssl-between-dispatcher-and-aem}
 
 Pour utiliser le protocole SSL mutuel, configurez les connexions entre Dispatcher et l’ordinateur de rendu (généralement une instance de publication AEM ou CQ) :
 
@@ -133,13 +133,13 @@ Pour configurer le protocole SSL mutuel, procédez comme suit :
 1. [Créez un magasin de clés contenant le certificat du rendu](dispatcher-ssl.md#main-pars-title-6) et configurez le service HTTP du rendu.
 1. [Configurez le module de serveur web de Dispatcher](dispatcher-ssl.md#main-pars-title-4) pour le protocole SSL mutuel.
 
-### Créer ou obtenir des certificats signés par une autorité de certification {#creating-or-obtaining-ca-signed-certificates}
+### Créer ou obtenir des certificats signés par une autorité de certification {#creating-or-obtaining-ca-signed-certificates}
 
 Créez ou obtenez des certificats signés par une autorité de certification qui authentifient l’instance de publication et Dispatcher.
 
-#### Création de votre autorité de certification {#creating-your-ca}
+#### Créer votre autorité de certification {#creating-your-ca}
 
-Si vous agissez comme autorité de certification, utilisez [OpenSSL](https://www.openssl.org/) pour créer l’autorité de certification qui signe les certificats du serveur et du client. (Les bibliothèques OpenSSL doivent être installées.) Si vous utilisez une autorité de certification tierce, n’effectuez pas cette procédure.
+Si vous agissez comme autorité de certification, utilisez [OpenSSL](https://www.openssl.org/) pour créer l’autorité de certification qui signe les certificats du serveur et du client. (Les bibliothèques OpenSSL doivent être installées sur votre système.) Si vous utilisez une autorité de certification tierce, n’effectuez pas cette procédure.
 
 1. Ouvrez un terminal et modifiez le répertoire actuel par le répertoire qui contient le fichier `CA.sh`, par exemple `/usr/local/ssl/misc`.
 1. Pour créer l’autorité de certification, saisissez la commande suivante, puis fournissez des valeurs lorsque l’on vous y invite :
@@ -152,7 +152,7 @@ Si vous agissez comme autorité de certification, utilisez [OpenSSL](https://www
    >
    >Plusieurs propriétés dans le fichier `openssl.cnf` déterminent le comportement du script CA.sh. Modifiez ce fichier selon les besoins avant de créer votre autorité de certification.
 
-#### Création des certificats {#creating-the-certificates}
+#### Créer les certificats {#creating-the-certificates}
 
 Utilisez OpenSSL pour créer des demandes de certificat à envoyer à l’autorité de certification tierce ou à signer avec votre autorité de certification.
 
@@ -179,11 +179,11 @@ Lorsque vous créez un certificat, OpenSSL utilise la propriété Nom commun pou
 1. Répétez les étapes 2 et 3 pour créer un certificat et une clé publique pour le module Dispatcher. Assurez-vous d’utiliser un Nom commun spécifique à l’instance Dispatcher.
 1. Renommez `newcert.pem` en `dispcert.pem`, et renommez `newkey.pem` en `dispkey.pem`.
 
-### Configurer SSL sur l’ordinateur de rendu {#configuring-ssl-on-the-render-computer}
+### Configurer le protocole SSL sur l’ordinateur de rendu {#configuring-ssl-on-the-render-computer}
 
 Configurez le protocole SSL sur l’instance de rendu à l’aide des fichiers `rendercert.pem` et `renderkey.pem`.
 
-#### Convertissez le certificat de rendu au format JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
+#### Convertir le certificat du rendu au format JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
 
 Utilisez la commande suivante pour convertir le certificat de rendu, qui est un fichier PEM, en fichier PKCS#12. Incluez également le certificat de l’autorité de certification qui a signé le certificat de rendu :
 
@@ -206,7 +206,7 @@ Utilisez la commande suivante pour convertir le certificat de rendu, qui est un 
    keytool -changealias -alias 1 -destalias jettyhttp -keystore render.keystore
    ```
 
-#### Ajouter le certificat d’autorité de certification au TrustStore du rendu {#adding-the-ca-cert-to-the-render-s-truststore}
+#### Ajouter le certificat de l’autorité de certification au TrustStore de l’ordinateur de rendu {#adding-the-ca-cert-to-the-render-s-truststore}
 
 Si vous agissez comme autorité de certification, importez votre certificat d’autorité de certification dans un magasin de clés. Configurez ensuite la JVM qui exécute l’instance de rendu pour qu’elle fasse confiance au magasin de clés.
 
@@ -244,7 +244,7 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
    CQ_JVM_OPTS='-server -Xmx2048m -XX:MaxPermSize=512M -Djavax.net.ssl.trustStore=/usr/lib/cq6.0/publish/ssl/cacerts.keystore'
    ```
 
-#### Configuration de l’instance de rendu {#configuring-the-render-instance}
+#### Configurer l’instance de rendu {#configuring-the-render-instance}
 
 Pour configurer le service HTTP de l’instance de rendu afin qu’il utilise SSL, utilisez le certificat de rendu en suivant les instructions contenues dans la section *`Enable SSL on the Publish Instance`* :
 
@@ -252,11 +252,11 @@ Pour configurer le service HTTP de l’instance de rendu afin qu’il utilise SS
 * AEM 6.1 : [activation de HTTP via SSL](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 * Anciennes versions d’AEM : voir [cette page](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions).
 
-### Configuration de SSL pour le module Dispatcher {#configuring-ssl-for-the-dispatcher-module}
+### Configurer le protocole SSL pour le module Dispatcher {#configuring-ssl-for-the-dispatcher-module}
 
 Pour configurer Dispatcher de sorte qu’il utilise le protocole SSL mutuel, préparez le certificat de Dispatcher, puis configurez le module de serveur web.
 
-### Création d’un certificat Dispatcher unifié {#creating-a-unified-dispatcher-certificate}
+### Créer un certificat Dispatcher unifié {#creating-a-unified-dispatcher-certificate}
 
 Combinez le certificat de Dispatcher et la clé privée non chiffrée en un seul fichier PEM. Utilisez un éditeur de texte ou la commande `cat` pour créer un fichier semblable à l’exemple suivant :
 

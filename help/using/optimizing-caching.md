@@ -1,23 +1,23 @@
 ---
-title: Optimisation d’un site web pour les performances du cache
-description: Apprenez comment concevoir votre site web afin de tirer le meilleur parti des avantages de la mise en cache.
+title: Optimiser les performances de mise en cache d’un site web
+description: Découvrez comment concevoir votre site web afin de tirer le meilleur parti des avantages de la mise en cache.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/fr/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1128'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
 
-# Optimisation d’un site web pour les performances du cache {#optimizing-a-website-for-cache-performance}
+# Optimiser les performances de mise en cache d’un site web {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 
@@ -44,9 +44,9 @@ Dispatcher propose un certain nombre de mécanismes intégrés que vous pouvez u
 >
 >En général, de nombreuses stratégies de mise en cache impliquent de sélectionner les URL appropriées et de ne pas s’en tenir à ces données supplémentaires.
 
-## Utiliser un codage de page cohérent {#using-consistent-page-encoding}
+## Utiliser un encodage de page cohérent {#using-consistent-page-encoding}
 
-Les en-têtes de requête HTTP ne sont pas mis en cache. Des problèmes peuvent donc survenir si vous stockez les informations d’encodage de page dans l’en-tête. Dans ce cas, lorsque le Dispatcher diffuse une page du cache, le codage par défaut du serveur web est utilisé pour la page. Deux méthodes permettent d’éviter ce problème :
+Les en-têtes de requête HTTP ne sont pas mis en cache. Des problèmes peuvent donc survenir si vous stockez des informations de codage de page dans l’en-tête. Dans ce cas, lorsque le Dispatcher diffuse une page du cache, le codage par défaut du serveur web est utilisé pour la page. Deux méthodes permettent d’éviter ce problème :
 
 * Si vous n’utilisez qu’un seul encodage, assurez-vous que le codage utilisé sur le serveur web est identique à celui par défaut du site web AEM.
 * Pour définir le codage, utilisez une balise `<META>` dans la section `head` HTML comme dans l’exemple suivant :
@@ -95,7 +95,7 @@ www.myCompany.com/news/main.large.html
 >
 >À l’aide de l’extension métacaractère du script de la définition du modèle, vous pouvez spécifier un script distinct qui effectue le rendu des pages d’impression.
 
-## Invalidation des fichiers image utilisés comme titres {#invalidating-image-files-used-as-titles}
+## Invalider des fichiers image utilisés comme titres {#invalidating-image-files-used-as-titles}
 
 Si vous effectuez le rendu de titres de page ou d’un autre texte sous forme d’images, stockez les fichiers afin qu’ils soient supprimés lors de la mise à jour du contenu sur la page :
 
@@ -110,7 +110,7 @@ Par exemple, vous pouvez stocker le titre de la page myPage.html dans le fichier
 >
 >Le fichier image n’existe pas nécessairement sur l’instance AEM. Vous pouvez utiliser un script qui crée dynamiquement le fichier image. Dispatcher stocke ensuite le fichier sur le serveur web.
 
-## Invalidation des fichiers image utilisés pour la navigation {#invalidating-image-files-used-for-navigation}
+## Invalider des fichiers image utilisés pour la navigation {#invalidating-image-files-used-for-navigation}
 
 Si vous utilisez des images pour les entrées de navigation, la méthode est fondamentalement la même qu’avec les titres, bien qu’un peu plus complexe. Stockez toutes les images de navigation avec les pages cibles. Si vous utilisez deux images pour « normale » et « active », vous pouvez utiliser les scripts suivants :
 

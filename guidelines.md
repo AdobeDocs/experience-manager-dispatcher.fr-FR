@@ -1,8 +1,8 @@
 ---
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '714'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 # Instructions relatives à la contribution à la documentation d’Adobe Experience Manager
@@ -31,7 +31,7 @@ La documentation d’AEM couvre les cas d’utilisation standard. Les cas d’ut
 
 La documentation d’AEM couvre les cas d’utilisation standard. Pour cette raison, les bugs, les effets qu’ils causent et leurs solutions de contournement ne sont pas documentés.
 
-Les exceptions à cette règle s’appliquent aux notes de mise à jour dans lesquelles les problèmes connus peuvent être répertoriés avec les solutions possibles approuvées par la gestion des produits.
+Les notes de mise à jour constituent une exception à cette règle. Les problèmes connus peuvent y être répertoriés avec des solutions possibles qui ont été approuvées par l’équipe de gestion des produits.
 
 ### Les contributions à la documentation ne sont pas destinées à répondre aux questions techniques.
 
