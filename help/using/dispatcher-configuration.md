@@ -2,10 +2,10 @@
 title: Configurer AEM Dispatcher
 description: Découvrez comment configurer le Dispatcher. Découvrez la prise en charge d’IPv4 et d’IPv6, les fichiers de configuration, les variables d’environnement et l’attribution de noms à l’instance. Découvrez comment définir des batteries, identifier des hôtes virtuels, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '8937'
-ht-degree: 100%
+source-git-commit: fbfbe76b730d4037cccb400b70619fbe24b3b1bc
+workflow-type: tm+mt
+source-wordcount: '8938'
+ht-degree: 99%
 
 ---
 
@@ -209,7 +209,7 @@ Chaque propriété /farm peut contenir les propriétés enfants suivantes :
 | [/failover](#using-the-failover-mechanism) | Renvoyez les requêtes vers différents rendus en cas d’échec de la requête d’origine. |
 | [/auth_checker](permissions-cache.md) | Pour la mise en cache sensible aux autorisations, lisez [Mise en cache de contenu sécurisé](permissions-cache.md). |
 
-## Spécifier une page par défaut (IIS uniquement) - `/homepage` {#specify-a-default-page-iis-only-homepage}
+## Spécifiez une page par défaut (IIS uniquement) - /homepage {#specify-a-default-page-iis-only-homepage}
 
 >[!CAUTION]
 >
