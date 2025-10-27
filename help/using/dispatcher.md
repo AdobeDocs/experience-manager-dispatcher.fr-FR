@@ -5,10 +5,10 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '3073'
-ht-degree: 100%
+source-git-commit: 5cdfdb6d49f7d37a309fef9c5a4eb72409b54b13
+workflow-type: tm+mt
+source-wordcount: '3075'
+ht-degree: 99%
 
 ---
 
@@ -87,7 +87,7 @@ Ce processus est simple et efficace. Si un visiteur ou une visiteuse demande un 
 
 ![](assets/chlimage_1-4.png)
 
-Si vous utilisez un CMS (serveur de gestion du contenu), tel qu’AEM, un moteur de disposition avancé traite la requête d’un visiteur ou d’une visiteuse. Le moteur lit le contenu d’un référentiel qui, combiné aux styles, formats et droits d’accès, transforme le contenu en un document adapté aux besoins et aux droits du visiteur ou de la visiteuse.
+Si vous utilisez un CMS (serveur de gestion de contenu), tel qu’AEM, un moteur de disposition avancé traite la requête d’un visiteur ou d’une visiteuse. Le moteur lit le contenu d’un référentiel qui, combiné aux styles, formats et droits d’accès, transforme le contenu en un document adapté aux besoins et aux droits du visiteur ou de la visiteuse.
 
 Ce workflow vous permet de créer un contenu plus riche et dynamique, ce qui augmente la flexibilité et les fonctionnalités de votre site web. Cependant, le moteur de disposition nécessite davantage de puissance de traitement qu’un serveur statique. Cette configuration est donc susceptible de provoquer des ralentissements si de nombreuses personnes utilisent le système.
 
@@ -129,7 +129,7 @@ Lors d’une mise à jour du contenu, un ou plusieurs documents AEM sont modifi
 Notez également ce qui suit :
 
 * Les mises à jour de contenu sont généralement utilisées avec un système de création qui « sait » ce qui doit être remplacé.
-* Les fichiers concernés par une mise à jour de contenu sont supprimés, mais pas remplacés immédiatement. Lorsqu’un tel fichier est à nouveau demandé, le Dispatcher récupère le nouveau fichier depuis l’instance AEM et le place dans le cache, écrasant ainsi l’ancien contenu.
+* Les fichiers concernés par une mise à jour de contenu sont supprimés, mais pas remplacés immédiatement. La prochaine fois qu’un tel fichier est demandé, le Dispatcher récupère le nouveau fichier de l’instance AEM et le place dans le cache, remplaçant ainsi l’ancien contenu.
 * En règle générale, les images générées automatiquement qui incorporent le texte d’une page sont stockées dans des fichiers image commençant par la même poignée, garantissant ainsi que l’association existe pour la suppression. Par exemple, vous pouvez stocker le texte du titre de la page mypage.html sous la forme de l’image mypage.titlePicture.gif dans le même dossier. De cette façon, l’image est automatiquement supprimée du cache chaque fois que la page est mise à jour. Vous avez donc l’assurance que l’image reflète toujours la version actuelle de la page.
 * Vous pouvez avoir plusieurs fichiers stat, un par dossier de langue, par exemple. Si une page est mise à jour, AEM recherche le dossier parent suivant contenant un fichier stat, et *touche* (modifie) ce fichier.
 
