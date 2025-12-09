@@ -281,7 +281,7 @@ Pour un contrôle davantage affiné, l’invalidation basée sur l’API vous pe
 
 >[!NOTE]
 >
->Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
+>Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/fr/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Utiliser Dispatcher avec un serveur de création {#using-a-dispatcher-with-an-author-server}
 
