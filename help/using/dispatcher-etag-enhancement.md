@@ -67,6 +67,6 @@ Après avoir activé la variable d’environnement et déployé les modification
 
 Pour obtenir des conseils de base destinés aux clients sur la mise en cache des en-têtes et la gestion des `ETag` dans Dispatcher, consultez :
 
-- [Configuration de Dispatcher - Mise en cache des en-têtes de réponse HTTP](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
+- [Configuration de Dispatcher - Mise en cache des en-têtes de réponse HTTP](https://experienceleague.adobe.com/fr/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
 
 « Cette fonctionnalité est disponible dans Dispatcher `2.0.264` (AEM SDK `2026.2.24464`). Lorsqu’il est activé, Dispatcher peut valider les `If-None-Match` par rapport aux valeurs `ETag` mises en cache et renvoyer des `304 Not Modified` sur les accès au cache. Dans AEM as a Cloud Service, cela est pris en charge et peut être activé via la configuration de l’environnement Cloud Manager. »
