@@ -2,10 +2,10 @@
 title: Configurer AEM Dispatcher
 description: Découvrez comment configurer le Dispatcher. Découvrez la prise en charge d’IPv4 et d’IPv6, les fichiers de configuration, les variables d’environnement et l’attribution de noms à l’instance. Découvrez comment définir des batteries, identifier des hôtes virtuels, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: fbfbe76b730d4037cccb400b70619fbe24b3b1bc
-workflow-type: ht
-source-wordcount: '8938'
-ht-degree: 100%
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '9194'
+ht-degree: 99%
 
 ---
 
@@ -225,7 +225,7 @@ Comment Type: draft
 <p>Typically this situation occurs when a user specifies an URL for which neither IIS or AEM provides an automatic redirection target. For example, if the AEM render instance is shut down after the content is cached, the content redirect URL is unavailable.</p> 
 <p>The following example configuration displays the <span class="code">index.html</span> page in such circumstances:</p>
 
- -->
+-->
 
 <!-- 
 
@@ -235,7 +235,7 @@ Comment Type: draft
   /homepage&nbsp;"/index.html" 
 </codeblock>
 
- -->
+-->
 
 <!-- 
 
@@ -243,7 +243,7 @@ Comment Type: draft
 
 <p>The <span class="code">/homepage</span> section is located inside the <span class="code">/farms</span> section, for example:<br /> </p>
 
- -->
+-->
 
 <!-- 
 
@@ -253,7 +253,7 @@ Comment Type: draft
   #name&nbsp;of&nbsp;dispatcher!!discoiqbr!!/name&nbsp;"day&nbsp;sites"!!discoiqbr!!!!discoiqbr!!#farms&nbsp;section&nbsp;defines&nbsp;a&nbsp;list&nbsp;of&nbsp;farms&nbsp;or&nbsp;sites!!discoiqbr!!/farms!!discoiqbr!!{!!discoiqbr!!&nbsp;&nbsp;&nbsp;/daycom!!discoiqbr!!&nbsp;&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/homepage&nbsp;"/index.html"!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...!!discoiqbr!!&nbsp;&nbsp;&nbsp;}!!discoiqbr!!&nbsp;&nbsp;&nbsp;/docdaycom!!discoiqbr!!&nbsp;&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...!!discoiqbr!!&nbsp;&nbsp;&nbsp;}!!discoiqbr!!} 
 </codeblock>
 
- -->
+-->
 
 ## Spécifier les en-têtes HTTP à transmettre {#specifying-the-http-headers-to-pass-through-clientheaders}
 
@@ -507,13 +507,13 @@ La section d’exemple `/renders` suivante répartit les requêtes de rendu de m
 
 **/timeout**
 
-Indique le délai de connexion (en millisecondes) pour accéder à l’instance AEM. La valeur par défaut est `"0"`, ce qui amène Dispatcher à attendre indéfiniment.
+Indique le délai d’expiration de connexion (en millisecondes) pour accéder à l’instance AEM. La valeur par défaut est `"0"`, ce qui amène Dispatcher à attendre indéfiniment.
 
 **/receiveTimeout**
 
 Indique la durée (en millisecondes) autorisée d’une réponse. La valeur par défaut est `"600000"`, ce qui amène Dispatcher à attendre pendant 10 minutes. Une valeur définie sur `"0"` élimine le délai d’expiration.
 
-Si le délai est atteint pendant l’analyse des en-têtes de réponse, un état HTTP 504 (passerelle erronée) est renvoyé. Si le délai d’expiration est atteint pendant la lecture du corps de la réponse, Dispatcher renvoie la réponse incomplète au client. Il supprime également tout fichier du cache qui peut avoir été écrit.
+Si le délai d’expiration est atteint pendant l’analyse des en-têtes de réponse, un état HTTP 504 (passerelle erronée) est renvoyé. Si le délai d’expiration est atteint pendant la lecture du corps de la réponse, Dispatcher renvoie la réponse incomplète au client. Il supprime également tout fichier du cache qui peut avoir été écrit.
 
 **/ipv4**
 
@@ -719,7 +719,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 <p>We should mention the config files that are shipped with the dispatcher distribution and only give a few examples here. This aims to avoid confusion and reduce content maintenance.<br /> </p>
 
- -->
+-->
 
 ```xml
   /filter
@@ -778,10 +778,11 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 >
 >Lorsque le filtre est utilisé avec Apache, concevez les modèles d’URL de filtre selon la propriété DispatcherUseProcessedURL du module de Dispatcher. (Voir [Serveur web Apache - Configuration du serveur web Apache pour Dispatcher](dispatcher-install.md##apache-web-server-configure-apache-web-server-for-dispatcher)).
 
-<!----
+<!--
 >[!NOTE]
 >
->Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. -->
+>Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. 
+-->
 
 Tenez compte des recommandations suivantes si vous choisissez d’étendre l’accès :
 
@@ -912,7 +913,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">For https://jira.corp.adobe.com/browse/DOC-4812</p> 
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
- -->
+-->
 
 Configurez le Dispatcher pour activer l’accès aux URL de redirection configurées pour vos pages AEM.
 
@@ -1037,7 +1038,7 @@ Le fichier stat n’a aucun contenu. Lorsque le contenu est mis à jour, le Disp
 
 La propriété `/serveStaleOnError` contrôle si Dispatcher renvoie des documents invalidés lorsque le serveur de rendu renvoie une erreur. Par défaut, lorsqu’un fichier .stat est modifié et invalide le contenu mis en cache, le Dispatcher supprime le contenu mis en cache. Cette action est effectuée la prochaine fois que celle-ci fait l’objet d’une requête.
 
-Si `/serveStaleOnError` est défini sur `"1"`, Dispatcher ne supprime pas le contenu invalidé du cache, sauf si le serveur de rendu renvoie une réponse de succès. Dans le cas d’un code de réponse 502, 503 ou 504 d’AEM ou d’une expiration de la connexion, le Dispatcher diffuse le contenu obsolète et répond avec le code de statut HTTP 111 (Échec de la revalidation).
+Si `/serveStaleOnError` est défini sur `"1"`, Dispatcher ne supprime pas le contenu invalidé du cache, sauf si le serveur de rendu renvoie une réponse de succès. Dans le cas d’un code de réponse 502, 503 ou 504 d’AEM ou d’une temporisation de la connexion, le Dispatcher diffuse le contenu obsolète et répond avec le code de statut HTTP 111 (Échec de la revalidation).
 
 ### Mettre en cache lorsque l’authentification est utilisée {#caching-when-authentication-is-used}
 
@@ -1130,7 +1131,7 @@ Comment Type: draft
  <p> </p> 
 </note>
 
- -->
+-->
 
 <!-- 
 
@@ -1138,7 +1139,7 @@ Comment Type: draft
 
 <p>The following rule caches all documents in compressed form; Apache can return either the uncompressed or the compressed form to the client:</p>
 
- -->
+-->
 
 <!-- 
 
@@ -1148,7 +1149,7 @@ Comment Type: draft
   /rules!!discoiqbr!!&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;/rulelabel&nbsp;&nbsp;{&nbsp;&nbsp;/glob&nbsp;"*"&nbsp;/type&nbsp;"allow"&nbsp;&nbsp;/compress&nbsp;"gzip"&nbsp;}!!discoiqbr!!&nbsp;&nbsp;} 
 </codeblock>
 
- -->
+-->
 
 <!-- 
 
@@ -1158,7 +1159,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 <p>Hidden the <span class="code">mod_gzip</span> content as requested in CQDOC-11124.</p>
 
- -->
+-->
 
 ### Invalider des fichiers par niveau de dossier {#invalidating-files-by-folder-level}
 
@@ -1304,7 +1305,7 @@ Pour spécifier les paramètres qui sont ignorés, ajoutez les règles glob à l
 >[!NOTE]
 >
 >Lorsque vous configurez la propriété glob, faites-la correspondre au nom du paramètre de requête. Par exemple, pour ignorer le paramètre « p1 » de l’URL suivante `http://example.com/path/test.html?p1=test&p2=v2`, la propriété glob doit être :
->> `/0002 { /glob "p1" /type "allow" }`
+> `/0002 { /glob "p1" /type "allow" }`
 
 Dans l’exemple suivant, Dispatcher ignore tous les paramètres, à l’exception du paramètre `nocache`. Par conséquent, Dispatcher ne met jamais en cache les URL de requête qui incluent le paramètre `nocache` :
 
@@ -1642,13 +1643,14 @@ Les valeurs `glob` peuvent inclure des caractères génériques et des caractèr
 |--- |--- |--- |
 | `*` | Correspond à aucune ou à plusieurs instances contiguës de n’importe quel caractère de la chaîne. Le dernier caractère de la correspondance est déterminé par l’une des situations suivantes : <br/>un caractère de la chaîne correspond au caractère suivant dans le modèle, et le caractère du modèle possède les caractéristiques suivantes :<br/><ul><li>Pas un `*`</li><li>Pas un `?`</li><li>Un caractère littéral (incluant un espace) ou une classe de caractères.</li><li>La fin du motif est atteinte.</li></ul>Dans une classe de caractères, le caractère est interprété littéralement. | `*/geo*`Correspond à n’importe quelle page sous les nœud `/content/geometrixx` et `/content/geometrixx-outdoors`. Les demandes HTTP suivantes correspondent au modèle glob : <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*`<br/>Représente n’importe quelle page sous le nœud `/content/geometrixx-outdoors`. Par exemple, la demande HTTP suivante correspond au modèle glob :<br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | Correspond à tout caractère unique. Utilisation en dehors des classes de caractères. Dans une classe de caractères, ce caractère est interprété littéralement. | `*outdoors/??/*`<br/> correspond aux pages du site geometrixx-outdoors dans n’importe quelle langue. Par exemple, la demande HTTP suivante correspond au modèle glob :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La demande suivante ne correspond pas au modèle glob : <br/><ul><li>&quot;GET /content/geometrixx-outdoors/fr.html&quot;</li></ul> |
-| `[ and ]` | Marque le début et la fin d’une classe de caractères. Les classes de caractères peuvent inclure une ou plusieurs plages de caractères et des caractères uniques.<br/>Une correspondance se produit si le caractère cible correspond à n’importe quel caractère de la classe de caractères ou d’une plage définie.<br/>Si le crochet fermant n’est pas inclus, le modèle ne produit pas de correspondance. | `*[o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Correspond aux requêtes HTTP suivantes : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | Marque le début et la fin d’une classe de caractères. Les classes de caractères peuvent inclure une ou plusieurs plages de caractères et des caractères uniques.<br/>Une correspondance a lieu si le caractère cible correspond à l’un des caractères de la classe de caractères ou dans une plage définie.<br/>Si le crochet fermant n’est pas inclus, le motif ne produit aucune correspondance. | `*[o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Correspond aux requêtes HTTP suivantes : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indique une plage de caractères. À utiliser dans des classes de caractères. En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[m-p]men.html*`Correspond à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | Annule le caractère ou la classe de caractères qui suit. À utiliser uniquement pour annuler des caractères et des plages de caractères dans des classes de caractères. Équivalent au `^ wildcard`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[!o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | Annule le caractère ou la classe de caractères qui suit. À utiliser uniquement pour annuler des caractères et des plages de caractères dans des classes de caractères. Équivalent à la `^ wildcard`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[!o]men.html*`<br/>Correspond à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Annule le caractère ou la plage de caractères qui suit. À utiliser pour annuler uniquement des caractères et des plages de caractères dans des classes de caractères. Équivalent au caractère générique `!`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | Les exemples pour le caractère générique `!` s’appliquent, en remplaçant les caractères `!` dans les exemples de motifs par des caractères `^`. |
 
 
-<!--- need to troubleshoot table
+<!--
+need to troubleshoot table
 
 The following table describes the wildcard characters.
 

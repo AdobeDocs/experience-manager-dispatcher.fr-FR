@@ -5,9 +5,9 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
 workflow-type: tm+mt
-source-wordcount: '3065'
+source-wordcount: '3227'
 ht-degree: 98%
 
 ---
@@ -40,7 +40,7 @@ Utilisez les informations suivantes, selon vos besoins :
 
 * [Liste de contrôle de sécurité de Dispatcher](security-checklist.md)
 <!-- URL is 404! * [The Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html) -->
-* [Optimiser un site web pour les performances de mise en cache](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
+* [Optimisation d’un site web pour les performances du cache](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
 * [Utiliser le Dispatcher avec plusieurs domaines](dispatcher-domains.md)
 * [Utiliser le protocole SSL avec le Dispatcher](dispatcher-ssl.md)
 * [Mettre en œuvre la mise en cache sensible aux autorisations](permissions-cache.md)
@@ -258,7 +258,7 @@ Le « serveur suivant le plus proche » dépend de votre configuration spécif
 
 Habituellement, Dispatcher est le prochain serveur susceptible de servir le document à partir d’un cache et d’influencer les en-têtes de réponse renvoyés au serveur CDN.
 
-## Contrôler le cache d’un réseau de diffusion de contenu  {#controlling-a-cdn-cache}
+## Contrôler le cache d’un réseau de diffusion de contenu {#controlling-a-cdn-cache}
 
 Il existe plusieurs méthodes de contrôle de la durée pendant laquelle un CDN met en cache une ressource avant qu’elle ne soit récupérée auprès de Dispatcher.
 
@@ -281,7 +281,7 @@ Pour un contrôle davantage affiné, l’invalidation basée sur l’API vous pe
 
 >[!NOTE]
 >
->Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/fr/docs/events/experience-manager-gems-recordings/overview#).
+>Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Utiliser Dispatcher avec un serveur de création {#using-a-dispatcher-with-an-author-server}
 
@@ -312,13 +312,13 @@ Un Dispatcher peut être utilisé devant une instance de création pour amélior
 1. Supprimez tous les fichiers existants dans le répertoire `/cache` > `/docroot` que vous avez configuré ci-dessus.
 1. Redémarrez le serveur web.
 
->[!NOTE]
->
->Avec la configuration `author_dispatcher.any` fournie, lorsque vous installez un pack de fonctionnalités CQ5, un correctif ou un package de code d’application qui affecte tout contenu situé dans `/libs` ou `/apps`, vous devez supprimer les fichiers mis en cache. Les fichiers se trouvent dans ces répertoires dans le cache du Dispatcher. Cela garantit que la prochaine fois qu’ils seront demandés, ce sont les fichiers nouvellement mis à niveau qui seront récupérés, et non les anciens fichiers mis en cache.
+   >[!NOTE]
+   >
+   >Avec la configuration `author_dispatcher.any` fournie, lorsque vous installez un pack de fonctionnalités CQ5, un correctif ou un package de code d’application qui affecte tout contenu situé dans `/libs` ou `/apps`, vous devez supprimer les fichiers mis en cache. Les fichiers se trouvent dans ces répertoires dans le cache du Dispatcher. Cela garantit que la prochaine fois qu’ils seront demandés, ce sont les fichiers nouvellement mis à niveau qui seront récupérés, et non les anciens fichiers mis en cache.
 
->[!CAUTION]
->
->Si vous avez utilisé le Dispatcher de création configuré précédemment et si vous avez activé un *agent de purge de Dispatcher*, procédez comme suit :
+   >[!CAUTION]
+   >
+   >Si vous avez utilisé le Dispatcher de création configuré précédemment et si vous avez activé un *agent de purge de Dispatcher*, procédez comme suit :
 
 1. Supprimez ou désactivez l’agent de purge du **Dispatcher de création** sur votre instance de création AEM.
 1. Rétablissez la configuration de Dispatcher de création en suivant les nouvelles instructions ci-dessus.
@@ -326,7 +326,9 @@ Un Dispatcher peut être utilisé devant une instance de création pour amélior
 <!--
 [Author Dispatcher configuration file (Dispatcher 4.1.2 or later)](assets/author_dispatchernew.any)
 -->
-<!--[!NOTE]
+
+<!--
+>[!NOTE]
 >
 >A related knowledge base article can be found here:  
 >[How to configure the dispatcher in front of an authoring environment](https://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)

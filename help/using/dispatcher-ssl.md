@@ -5,14 +5,14 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-index: y
+index: true
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1305'
-ht-degree: 100%
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '1390'
+ht-degree: 98%
 
 ---
 
@@ -34,7 +34,7 @@ Configurez Dispatcher de sorte qu’il communique avec l’instance de rendu AEM
 Avant de configurer Dispatcher, configurez AEM ou CQ pour utiliser SSL. Pour plus d’informations, consultez ce qui suit :
 
 * [SSL/TLS par défaut](https://experienceleague.adobe.com/fr/docs/experience-manager-65/content/security/ssl-by-default)
-* [Utiliser l’assistant SSL dans AEM](https://experienceleague.adobe.com/fr/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
+* [Utiliser l’assistant SSL dans AEM](https://experienceleague.adobe.com/fr/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
 
 ### En-têtes de requêtes associés au protocole SSL {#ssl-related-request-headers}
 
@@ -139,7 +139,7 @@ Créez ou obtenez des certificats signés par une autorité de certification qui
 
 #### Créer votre autorité de certification {#creating-your-ca}
 
-Si vous agissez comme autorité de certification, utilisez [OpenSSL](https://www.openssl.org/) pour créer l’autorité de certification qui signe les certificats du serveur et du client. (Les bibliothèques OpenSSL doivent être installées sur votre système.) Si vous utilisez une autorité de certification tierce, n’effectuez pas cette procédure.
+Si vous agissez comme autorité de certification, utilisez [OpenSSL](https://www.openssl.org/) pour créer l’autorité de certification qui signe les certificats du serveur et du client. (Les bibliothèques OpenSSL doivent être installées.) Si vous utilisez une autorité de certification tierce, n’effectuez pas cette procédure.
 
 1. Ouvrez un terminal et modifiez le répertoire actuel par le répertoire qui contient le fichier `CA.sh`, par exemple `/usr/local/ssl/misc`.
 1. Pour créer l’autorité de certification, saisissez la commande suivante, puis fournissez des valeurs lorsque l’on vous y invite :
