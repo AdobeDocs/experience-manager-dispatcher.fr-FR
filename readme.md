@@ -1,16 +1,10 @@
 ---
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: ht
-source-wordcount: '70'
-ht-degree: 100%
+source-git-commit: d889ccdf4b8ea169a21658e8a2251e70dfa5596c
+workflow-type: tm+mt
+source-wordcount: '7'
+ht-degree: 0%
 
 ---
-# Détection des motifs Adobe Experience Manager
+# ARCHIVÉ
 
-Ce référentiel relatif à la détection des motifs Adobe Experience Manager.
-
-Vos contributions à la documentation sont les bienvenues. Reportez-vous aux ressources suivantes :
-
-* [contributing.md](contributing.md) Pour obtenir un aperçu de la contribution à la documentation.
-* [guidelines.md](guidelines.md) Pour obtenir une vue d’ensemble de ce qui est attendu dans les contributions et comment composer vos contributions à la documentation.
-* [code-of-conduct.md](code-of-conduct.md) Pour obtenir une vue d’ensemble du type de comportement qu’Adobe attend de vous lorsque vous contribuez à ce projet de documentation.
+Ce référentiel a été migré vers <https://github.com/Adobe-Enterprise-Docs/experience-manager-dispatcher.en>
