@@ -2,10 +2,10 @@
 title: Configurer AEM Dispatcher
 description: Découvrez comment configurer le Dispatcher. Découvrez la prise en charge d’IPv4 et d’IPv6, les fichiers de configuration, les variables d’environnement et l’attribution de noms à l’instance. Découvrez comment définir des batteries, identifier des hôtes virtuels, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+source-git-commit: 97c7cec0b89dd20532e35e026281c19a55aa61f9
 workflow-type: tm+mt
 source-wordcount: '9194'
-ht-degree: 99%
+ht-degree: 97%
 
 ---
 
@@ -127,7 +127,7 @@ Par exemple, si les fichiers allant de `farm_1.any` à `farm_5.any` contiennent 
 
 Vous pouvez utiliser des variables d’environnement dans des propriétés à valeur de chaîne dans le fichier dispatcher.any au lieu de coder en dur les valeurs. Pour inclure la valeur d’une variable d’environnement, utilisez le format `${variable_name}`.
 
-Par exemple, si le fichier dispatcher.any se trouve dans le même répertoire que le répertoire de cache, la valeur de la propriété [docroot](#specifying-the-cache-directory) suivante peut être utilisée :
+Par exemple, si le fichier `dispatcher.any` se trouve dans le même répertoire que le répertoire du cache, la valeur suivante peut être utilisée pour la propriété [docroot](#specifying-the-cache-directory) :
 
 ```xml
 /docroot "${PWD}/cache"
@@ -319,7 +319,7 @@ La propriété `/virtualhosts` définit une liste de toutes les combinaisons de 
 ```
 
 * `scheme` : (facultatif) soit `https://` soit `https://.`
-* `host` : nom ou adresse IP de l’ordinateur hôte ainsi que le numéro de port, le cas échéant. (Voir[&#x200B; https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23).)
+* `host` : nom ou adresse IP de l’ordinateur hôte ainsi que le numéro de port, le cas échéant. (Voir[ https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23).)
 * `uri` : (facultatif) chemin d’accès aux ressources.
 
 L’exemple de configuration suivant traite des requêtes pour les domaines `.com` et `.ch` de myCompany, ainsi que tous les domaines de mySubDivision :
@@ -1643,9 +1643,9 @@ Les valeurs `glob` peuvent inclure des caractères génériques et des caractèr
 |--- |--- |--- |
 | `*` | Correspond à aucune ou à plusieurs instances contiguës de n’importe quel caractère de la chaîne. Le dernier caractère de la correspondance est déterminé par l’une des situations suivantes : <br/>un caractère de la chaîne correspond au caractère suivant dans le modèle, et le caractère du modèle possède les caractéristiques suivantes :<br/><ul><li>Pas un `*`</li><li>Pas un `?`</li><li>Un caractère littéral (incluant un espace) ou une classe de caractères.</li><li>La fin du motif est atteinte.</li></ul>Dans une classe de caractères, le caractère est interprété littéralement. | `*/geo*`Correspond à n’importe quelle page sous les nœud `/content/geometrixx` et `/content/geometrixx-outdoors`. Les demandes HTTP suivantes correspondent au modèle glob : <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*`<br/>Représente n’importe quelle page sous le nœud `/content/geometrixx-outdoors`. Par exemple, la demande HTTP suivante correspond au modèle glob :<br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | Correspond à tout caractère unique. Utilisation en dehors des classes de caractères. Dans une classe de caractères, ce caractère est interprété littéralement. | `*outdoors/??/*`<br/> correspond aux pages du site geometrixx-outdoors dans n’importe quelle langue. Par exemple, la demande HTTP suivante correspond au modèle glob :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La demande suivante ne correspond pas au modèle glob : <br/><ul><li>&quot;GET /content/geometrixx-outdoors/fr.html&quot;</li></ul> |
-| `[ and ]` | Marque le début et la fin d’une classe de caractères. Les classes de caractères peuvent inclure une ou plusieurs plages de caractères et des caractères uniques.<br/>Une correspondance a lieu si le caractère cible correspond à l’un des caractères de la classe de caractères ou dans une plage définie.<br/>Si le crochet fermant n’est pas inclus, le motif ne produit aucune correspondance. | `*[o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Correspond aux requêtes HTTP suivantes : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | Marque le début et la fin d’une classe de caractères. Les classes de caractères peuvent inclure une ou plusieurs plages de caractères et des caractères uniques.<br/>Une correspondance a lieu si le caractère cible correspond à l’un des caractères de la classe de caractères ou dans une plage définie.<br/>Si le crochet fermant n’est pas inclus, le modèle ne produit pas de correspondance. | `*[o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Correspond aux requêtes HTTP suivantes : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indique une plage de caractères. À utiliser dans des classes de caractères. En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[m-p]men.html*`Correspond à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | Annule le caractère ou la classe de caractères qui suit. À utiliser uniquement pour annuler des caractères et des plages de caractères dans des classes de caractères. Équivalent à la `^ wildcard`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[ !o]men.html*`<br/>Correspond à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/> Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | Annule le caractère ou la classe de caractères qui suit. À utiliser uniquement pour annuler des caractères et des plages de caractères dans des classes de caractères. Équivalent au `^ wildcard`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[!o]men.html*`<br/>Correspond à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Annule le caractère ou la plage de caractères qui suit. À utiliser pour annuler uniquement des caractères et des plages de caractères dans des classes de caractères. Équivalent au caractère générique `!`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | Les exemples pour le caractère générique `!` s’appliquent, en remplaçant les caractères `!` dans les exemples de motifs par des caractères `^`. |
 
 
@@ -1870,18 +1870,18 @@ Vous trouverez ci-dessous une liste contenant les en-têtes de réponse que `X-D
   Le fichier cible est contenu dans le cache et Dispatcher a déterminé que sa diffusion était valide.
 * **mise en cache**\
   Le fichier cible n’est pas contenu dans le cache et Dispatcher a déterminé que la mise en cache de la sortie et sa diffusion étaient valides.
-* **Mise en cache : le fichier stat est plus récent**
+* **mise en cache : le fichier stat est plus récent**
 Le fichier cible est contenu dans le cache. Cependant, un fichier stat encore plus récent peut l’invalider. Dispatcher supprime le fichier cible, le crée à nouveau à partir de la sortie et le diffuse.
-* **Mise en cache impossible : pas de racine de document existante**
-La configuration de la batterie ne contient pas de racine de document (élément de configuration `cache.docroot`).
+* **impossible de mettre en cache : racine du document inexistante**
+La configuration de la ferme ne contient pas de racine de document (élément de configuration `cache.docroot`).
 * **mise en cache impossible : chemin du fichier de cache trop long**\
   Le fichier cible (concaténation de la racine du document et du fichier URL) dépasse le nom de fichier le plus long possible sur le système.
 * **mise en cache impossible : chemin du fichier temporaire trop long**\
   Le modèle de nom de fichier temporaire dépasse la longueur du plus long nom de fichier possible sur le système. Dispatcher crée d’abord un fichier temporaire, avant de créer ou de remplacer effectivement le fichier mis en cache. Le nom de fichier temporaire est le nom du fichier cible auquel sont ajoutés les caractères `_YYYYXXXXXX`, où `Y` et `X` sont remplacés pour créer un nom unique.
 * **Mise en cache impossible : l’URL de la requête n’a pas d’extension.**\
   L’URL de la demande n’a pas d’extension ou un chemin suit l’extension du fichier, par exemple : `/test.html/a/path`.
-* **Mise en cache impossible : la requête doit être GET ou HEAD**.
-La méthode HTTP n’est ni GET ni HEAD. Dispatcher suppose que la sortie contient des données dynamiques qui ne doivent pas être mises en cache.
+* **impossible à mettre en cache : la requête devait être un GET ou un HEAD**
+La méthode HTTP n’est ni une GET ni une HEAD. Dispatcher suppose que la sortie contient des données dynamiques qui ne doivent pas être mises en cache.
 * **mise en cache impossible : la requête contenait une chaîne de requête**\
   La requête contenait une chaîne de requête. Dispatcher suppose que la sortie dépend de la chaîne de requête donnée et n’effectue donc pas de mise en cache.
 * **Mise en cache impossible : la personne gestionnaire de session doit s’authentifier.**\
@@ -1896,10 +1896,10 @@ La méthode HTTP n’est ni GET ni HEAD. Dispatcher suppose que la sortie conti
   Les règles de cache de la ferme de serveurs interdisent explicitement la mise en cache de la sortie de certaines URL de demande.
 * **mise en cache impossible : autorisation d’accès refusée**\
   Le vérificateur d’autorisation de la ferme de serveurs a refusé l’accès au fichier mis en cache.
-* **Mise en cache impossible : la session n’est pas valide.**
-Une personne gestionnaire de session (la configuration contient un nœud `sessionmanagement`) gère le cache de la batterie et la session de l’utilisateur ou de l’utilisatrice est invalide ou n’est plus valide.
-* **mise en cache impossible : la réponse contient`no_cache`**.
-Le serveur distant a renvoyé un en-tête `Dispatcher: no_cache`, interdisant à Dispatcher de mettre en cache la sortie.
-* **mise en cache impossible : la longueur du contenu de la réponse est zéro**.
-La longueur du contenu de la réponse est zéro ; Dispatcher ne crée pas de fichier de longueur nulle.
+* **impossible de mettre en cache : la session n’est pas valide**
+Un gestionnaire de sessions (la configuration contient un nœud `sessionmanagement`) régit le cache de la ferme de serveurs et la session de l’utilisateur n’est pas ou n’est plus valide.
+* **impossible à mettre en cache : la réponse contient`no_cache`**
+Le serveur distant a renvoyé un en-tête `Dispatcher: no_cache`, interdisant au Dispatcher de mettre en cache la sortie.
+* **impossible de mettre en cache : la longueur du contenu de la réponse est nulle**
+La longueur du contenu de la réponse est nulle ; le Dispatcher ne crée pas de fichier de longueur nulle.
 
