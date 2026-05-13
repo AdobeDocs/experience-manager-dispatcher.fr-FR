@@ -5,10 +5,14 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: f4ed724deccf14c570ca873728a97d0ae5fe0e4f
+TQID: https://experienceleague.adobe.com/9k2g0y1gnTAwUmLbFw4ZXAfE3z3Y8tAggojWRBknhTg
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87cid: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: '1105'
-ht-degree: 93%
+source-wordcount: 1345
+ht-degree: 80%
 
 ---
 
@@ -19,7 +23,7 @@ ht-degree: 93%
 |  |  |
 |--- |--- |
 | Produits | Adobe Experience Manager (AEM) Dispatcher |
-| Version | 4,3,8 |
+| Version | 4.3.8 |
 | Type | Version mineure |
 | Date | 20 novembre 2025 |
 | URL de téléchargement | <ul><li>[Apache 2.4](#apache)</li><li>[Microsoft® Internet Information Services (IIS)](#iis)</li></ul> |
@@ -41,7 +45,7 @@ Pour obtenir des instructions détaillées, voir [Installation de Dispatcher](di
 
 **Améliorations** :
 
-* DISP-1040 - Implémentez `/allowedClients` dans la configuration du Dispatcher pour contrôler quelles adresses IP peuvent effectuer des invalidations du cache et bloquer ou supprimer des en-têtes (`handle`, `cq-handle`, etc.), sauf nécessité explicite
+* DISP-1040 - Implémentez `/allowedClients` dans la configuration du Dispatcher pour contrôler quelles adresses IP peuvent effectuer des invalidations du cache et bloquer ou supprimer des en-têtes (`handle`, `cq-handle`, etc.) sauf si nécessaire explicitement
 * DISP-1046 - stale-while-error doit également gérer les réponses 429 d’AEM
 * SKYOPS-107219 - Optimisez l’implémentation actuelle du chargement de vanityUrls
 

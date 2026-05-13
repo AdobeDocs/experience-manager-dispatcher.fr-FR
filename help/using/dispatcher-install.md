@@ -1,15 +1,19 @@
 ---
 title: Installer Dispatcher
-description: Découvrez comment installer le module Dispatcher sur Microsoft® Internet Information Server, Apache Web Server, et Sun Java™ Web Server-iPlanet.
+description: Découvrez comment installer le module Dispatcher sur Microsoft&reg ; Internet Information Server, Apache Web Server et Sun Java &trade ; Web Server-iPlanet.
 contentOwner: User
 converted: true
 topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '3720'
-ht-degree: 100%
+TQID: https://experienceleague.adobe.com/o-B8WewNSKJhcw8UXJsWg6scuVEgrUU30R1q6VkYMnQ
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 3754
+ht-degree: 97%
 
 ---
 
@@ -49,7 +53,7 @@ Le tableau suivant indique l’identifiant de serveur web utilisé dans les noms
 
 >[!NOTE]
 >
->Les clientes et clients effectuant une mise à niveau spécifique de la version 4.3.3 vers la version 4.3.4 devraient remarquer un comportement différent dans la façon dont les en-têtes de mise en cache sont définis pour le contenu ne pouvant pas être mis en cache. Pour en savoir plus sur ce changement, consultez la page [Notes de mise à jour](/help/using/release-notes.md#nov).
+>Les clientes et clients effectuant une mise à niveau spécifique de la version 4.3.3 vers la version 4.3.4 devraient remarquer un comportement différent dans la façon dont les en-têtes de mise en cache sont définis pour le contenu ne pouvant pas être mis en cache. Pour en savoir plus sur cette modification, consultez la page [Notes de mise à jour](/help/using/release-notes.md#nov).
 
 Chaque archive contient les fichiers suivants :
 
@@ -91,7 +95,7 @@ Comment Type: draft
 Pour plus d’informations sur l’installation de ce serveur web, consultez les ressources suivantes :
 
 * Documentation de Microsoft® sur Internet Information Server
-* [« Site officiel Microsoft® IIS »](https://www.iis.net/)
+* [« Site officiel ® IIS »](https://www.iis.net/)
 
 ### Composants IIS requis {#required-iis-components}
 
@@ -150,7 +154,7 @@ Le tableau suivant décrit chaque propriété.
 | `logfile` | Emplacement du fichier `dispatcher.log`. Si cet emplacement n’est pas défini, les messages du journal se déplacent vers le journal des événements de Windows. |
 | `loglevel` | Définit le niveau de journalisation utilisé pour générer les messages vers le journal des événements. Les valeurs suivantes peuvent être spécifiées au niveau de journalisation pour le fichier journal : <br/> 0 - Messages d’erreur uniquement. <br/>1 - Erreurs et avertissements. <br/>2 - Erreurs, avertissements et messages d’information <br/>3 - Erreurs, avertissements, messages d’information et de débogage. <br/>**Note** : définissez le niveau de journalisation sur 3 pendant l’installation et le test, puis repassez à 0 lors de l’exécution dans un environnement de production. |
 | `replaceauthorization` | Spécifie le mode de gestion des en-têtes d’autorisation de la requête HTTP. Les valeurs suivantes sont valides :<br/> 0 - Les en-têtes d’autorisation ne sont pas modifiés. <br/>1 - Remplace n’importe quel en-tête appelé « Authorization » autre que l’en-tête « Basic » par son équivalent `Basic <IIS:LOGON\_USER>`.<br/> |
-| `servervariables` | Définit le mode de traitement des variables du serveur.<br/>0 - Les variables du serveur IIS ne sont envoyées ni au Dispatcher ni à AEM. <br/>1 - Toutes les variables du serveur IIS (telles que `LOGON\_USER, QUERY\_STRING, ...`) sont envoyées à Dispatcher avec les en-têtes de requêtes (et également à l’instance AEM si les éléments ne sont pas présents dans le cache).  <br/>Les variables de serveur incluent `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` et beaucoup d’autres. Voir la documentation d’IIS pour obtenir la liste complète des variables, avec des informations. |
+| `servervariables` | Définit la manière dont les variables de serveur sont traitées.<br/>0 - Les variables de serveur IIS ne sont pas envoyées au Dispatcher ou à AEM. <br/>1 - Toutes les variables du serveur IIS (telles que `LOGON\_USER, QUERY\_STRING, ...`) sont envoyées à Dispatcher avec les en-têtes de requêtes (et également à l’instance AEM si les éléments ne sont pas présents dans le cache).  <br/>Les variables de serveur incluent `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` et beaucoup d’autres. Voir la documentation d’IIS pour obtenir la liste complète des variables, avec des informations. |
 | `enable_chunked_transfer` | Définit s’il faut activer (1) ou désactiver le transfert de bloc (0) pour la réponse client. La valeur par défaut est 0. |
 
 Un exemple de configuration :
@@ -409,9 +413,9 @@ Vous trouverez les paramètres de configuration dans le tableau suivant :
 | DispatcherConfig | Emplacement et nom du fichier de configuration de Dispatcher. <br/>Lorsque cette propriété est située dans la configuration du serveur principal, tous les hôtes virtuels héritent de la valeur de la propriété. Toutefois, les hôtes virtuels peuvent inclure une propriété DispatcherConfig pour remplacer la configuration du serveur principal. |
 | DispatcherLog | Emplacement et nom du fichier journal. |
 | DispatcherLogLevel | Niveau de journal du fichier journal : <br/>0 - Erreurs <br/>1 - Avertissements <br/>2 - Informations <br/>3 - Débogage <br/>**Note** : définissez le niveau de journal sur 3 pendant l’installation et le test, puis sur 0 lors de l’exécution dans un environnement de production. |
-| DispatcherNoServerHeader | *Ce paramètre est obsolète et inefficace.*<br/><br/> Définit l’en-tête du serveur à utiliser : <br/>.<ul><li>Non défini ou 0 - L’en-tête du serveur HTTP contient la version AEM. </li><li>1 - L’en-tête du serveur Apache est utilisé.</li></ul> |
+| DispatcherNoServerHeader | *Ce paramètre est obsolète et inefficace.*<br/><br/> Définit l&#39;en-tête du serveur à utiliser : <br/><ul><li>Non défini ou 0 - L’en-tête du serveur HTTP contient la version AEM. </li><li>1 - L’en-tête du serveur Apache est utilisé.</li></ul> |
 | DispatcherDeclineRoot | Définit s’il faut refuser des requêtes à la racine « / » : <br/>**0** - Accepte les demandes à / <br/>**1** - Le Dispatcher ne gère pas les requêtes envoyées à /. Utilisez plutôt mod_alias pour le mappage correct. |
-| DispatcherUseProcessedURL | Définit s’il faut utiliser des URL prétraitées pour tout traitement supplémentaire par Dispatcher : <br/>**0** - utilise l’URL d’origine transmise au serveur web. <br/>**1** - Dispatcher utilise l’URL déjà traitée par les gestionnaires qui précèdent Dispatcher (c’est-à-dire `mod_rewrite`) à la place de l’URL d’origine transmise au serveur web. Par exemple, l’URL d’origine ou l’URL traitée est mise en correspondance avec des filtres de Dispatcher. L’URL est également utilisée comme base de la structure des fichiers du cache. Consultez la documentation du site web Apache pour plus d’informations sur mod_rewrite, par exemple Apache 2.4. Lorsque vous utilisez mod_rewrite, utilisez l’indicateur « passthrough » (passage au gestionnaire suivant) pour forcer le moteur de réécriture à définir le champ URI de la structure interne request_rec sur la valeur du champ du nom de fichier. |
+| DispatcherUseProcessedURL | Définit s’il faut utiliser des URL prétraitées pour tout traitement supplémentaire par Dispatcher : <br/>**0** - utilise l’URL d’origine transmise au serveur web. <br/>**1** - Dispatcher utilise l’URL déjà traitée par les gestionnaires qui précèdent Dispatcher (c’est-à-dire `mod_rewrite`) à la place de l’URL d’origine transmise au serveur web. Par exemple, l’URL d’origine ou l’URL traitée est mise en correspondance avec des filtres de Dispatcher. L’URL est également utilisée comme base de la structure des fichiers du cache. Consultez la documentation du site web Apache pour plus d’informations sur mod_rewrite ; par exemple, Apache 2.4. Lors de l’utilisation de mod_rewrite, utilisez l’indicateur « passthrough » (transmettez au gestionnaire suivant) pour forcer le moteur de réécriture à définir le champ URI de la structure request_rec interne sur la valeur du champ filename . |
 | DispatcherPassError | Définit la façon de prendre en charge les codes d’erreur pour le traitement de ErrorDocument : <br/>**0** - Dispatcher met en file d’attente toutes les réponses d’erreur envoyées au client. <br/>**1** - Dispatcher ne met pas en file d’attente une réponse d’erreur envoyée au client (si le code d’état est supérieur ou égal à 400). Il transmet plutôt le code d’état à Apache, ce qui permet à une directive ErrorDocument de traiter ce dernier. <br/>**Plage de codes** - Indiquez une plage de codes d’erreur pour lesquels la réponse est transmise à Apache. D’autres codes d’erreur sont transmis au client. Par exemple, la configuration suivante transmet les réponses au client pour l’erreur 412 et toutes les autres erreurs sont transmises à Apache : DispatcherPassError 400-411,413-417 |
 | DispatcherKeepAliveTimeout | Spécifie le délai d’expiration de conservation, en secondes. Depuis la version 4.2.0 de Dispatcher, la valeur de persistance par défaut est 60. La valeur 0 désactive la persistance. |
 | DispatcherNoCanonURL | Si vous définissez ce paramètre sur Activé, l’URL brute est transmise au serveur principal au lieu de l’URL canonisée. Elle remplace alors les paramètres de DispatcherUseProcessedURL. La valeur par défaut est Désactivé. <br/>**Note** : les règles de filtrage de la configuration Dispatcher sont toujours évaluées par rapport à l’URL expurgée et non à l’URL brute. |

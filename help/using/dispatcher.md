@@ -5,10 +5,15 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+TQID: https://experienceleague.adobe.com/Ir-slXay90FcQsvKGLioMgFhmhsaTfkYxIQJzfjDsfY
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: b1210526-416b-4ef6-bcc0-1692e99f30e9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: '3227'
-ht-degree: 98%
+source-wordcount: 3227
+ht-degree: 96%
 
 ---
 
@@ -191,11 +196,11 @@ L’équilibrage de charge consiste à répartir la charge de calcul du site web
 
 Les avantages sont les suivants :
 
-* **Puissance de traitement accrue**
-En pratique, cela signifie que Dispatcher partage des requêtes de document entre plusieurs instances d’AEM. Chaque instance ayant moins de documents à traiter, les délais de réponse sont plus rapides. Dispatcher conserve les statistiques internes pour chaque catégorie de document afin qu’il puisse estimer la charge et distribuer les requêtes efficacement.
+* **puissance de traitement accrue**
+En pratique, la puissance de traitement accrue signifie que le Dispatcher partage les demandes de documents entre plusieurs instances d’AEM. Chaque instance ayant moins de documents à traiter, les délais de réponse sont plus rapides. Dispatcher conserve les statistiques internes pour chaque catégorie de document afin qu’il puisse estimer la charge et distribuer les requêtes efficacement.
 
-* **Couverture de sécurité accrue**
-Si Dispatcher ne reçoit aucune réponse de la part d’une instance, il transmet automatiquement les requêtes à l’une des autres instances. Si une instance n’est plus disponible, le seul effet est un ralentissement du site, proportionnel à la puissance de calcul perdue. Cependant, tous les services continuent.
+* **couverture à sécurité intégrée accrue**
+Si le Dispatcher ne reçoit pas de réponse d’une instance, il relaie automatiquement les requêtes vers l’une des autres instances. Si une instance n’est plus disponible, le seul effet est un ralentissement du site, proportionnel à la puissance de calcul perdue. Cependant, tous les services continuent.
 
 * Vous pouvez également gérer différents sites web sur le même serveur web statique.
 
@@ -281,7 +286,7 @@ Pour un contrôle davantage affiné, l’invalidation basée sur l’API vous pe
 
 >[!NOTE]
 >
->Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/fr/docs/events/experience-manager-gems-recordings/overview#).
+>Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Utiliser Dispatcher avec un serveur de création {#using-a-dispatcher-with-an-author-server}
 
