@@ -7,9 +7,22 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '2986'
+TQID: https://experienceleague.adobe.com/aNgoMYEPgCXSaSS4YOpmeZvlNx29K1cfBmBy80wS3Iw
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2:
+  - id: eb3ad9f8-54a2-45f3-abb1-d3976415a718
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 3042
 ht-degree: 100%
 
 ---
@@ -148,7 +161,7 @@ Avec cette configuration, le serveur web effectue les actions suivantes lorsqu�
 
 * Transfère l’URL à Dispatcher.
 
-### httpd.conf  {#httpd-conf}
+### httpd.conf {#httpd-conf}
 
 ```xml
 # load the Dispatcher module
@@ -362,7 +375,7 @@ Par exemple, le serveur web effectue les actions suivantes lorsqu’il reçoit u
 * Réécrit l’URL pour qu’elle devienne `/content/sitea/en/products.html.`
 * Transfère l’URL à Dispatcher.
 
-### httpd.conf  {#httpd-conf-1}
+### httpd.conf {#httpd-conf-1}
 
 ```xml
 # load the Dispatcher module
@@ -516,7 +529,7 @@ Le module de réécriture [`Sling`](https://sling.apache.org/documentation/bundl
 
 ![](assets/chlimage_1-15.png)
 
-### Pipeline de module de réécriture par défaut d’AEM  {#the-aem-default-rewriter-pipeline}
+### Pipeline de module de réécriture par défaut d’AEM {#the-aem-default-rewriter-pipeline}
 
 AEM utilise un module de réécriture de pipeline par défaut qui traite les documents de type texte/HTML :
 
@@ -544,7 +557,7 @@ Pour créer un composant du transformateur et l’utiliser dans un pipeline, eff
 
 >[!NOTE]
 >
->Pour créer votre projet Maven, utilisez l’archétype [multimodule](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions) du plug-in package de contenu Maven. Les POM créent et installent automatiquement un package de contenu.
+>Pour créer votre projet Maven, utilisez l’archétype [multimodule](https://experienceleague.adobe.com/fr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions) du plug-in module de contenu Maven. Les POM créent et installent automatiquement un module de contenu.
 
 Les exemples suivants mettent en œuvre un transformateur qui réécrit les références aux fichiers image.
 

@@ -9,10 +9,18 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1407'
-ht-degree: 100%
+TQID: https://experienceleague.adobe.com/yeMU0lrfxz38PkwRYZ6tcXVBp4obt9qxJAiGi0GGsX4
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 1447
+ht-degree: 98%
 
 ---
 
@@ -52,7 +60,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 Procédez comme suit pour configurer un agent de réplication sur l’instance de création AEM. La configuration invalide le cache du Dispatcher lors de l’activation de la page :
 
-1. Ouvrez la console d’outils AEM. (`https://localhost:4502/miscadmin#/etc`)
+1. Ouvrez la console Outils AEM. (`https://localhost:4502/miscadmin#/etc`)
 1. Ouvrez l’agent de réplication requis sous Outils/réplication/Agents sur l’instance d’auteur. Vous pouvez utiliser l’agent de purge de Dispatcher installé par défaut.
 1. Cliquez sur Modifier puis, dans l’onglet Paramètres, assurez-vous que l’option **Activé** est sélectionnée.
 
@@ -126,7 +134,7 @@ Pour invalider (ou purger) le cache de Dispatcher sans activer de page, vous pou
 
 La requête HTTP entraîne la suppression de fichiers spécifiques du cache par le Dispatcher. Le Dispatcher actualise ensuite éventuellement le cache avec une nouvelle copie.
 
-### Suppression de fichiers mis en cache  {#delete-cached-files}
+### Suppression de fichiers mis en cache {#delete-cached-files}
 
 Cela produit une requête HTTP qui entraîne la suppression de fichiers du cache par le Dispatcher. Dispatcher met à nouveau les fichiers en cache uniquement lorsqu’il reçoit une requête client pour la page. Cette méthode de suppression de fichiers mis en cache convient aux sites web peu susceptibles de recevoir des requêtes simultanées pour la même page.
 
@@ -169,7 +177,7 @@ page_path1
 page_pathn
 ```
 
-Les chemins d’accès des pages à remettre en cache immédiatement sont listés sur des lignes séparées dans le corps du message. La valeur de `CQ-Handle` est le chemin d’accès d’une page qui invalide les pages à remettre en cache. (Voir le paramètre `/statfileslevel` de l’élément de configuration [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) L’exemple de message de requête HTTP suivant supprime et met de nouveau la `/content/geometrixx-outdoors/en.html page` en cache :
+Les chemins d’accès des pages à remettre en cache immédiatement sont listés sur des lignes séparées dans le corps du message. La valeur de `CQ-Handle` est le chemin d’accès d’une page qui invalide les pages à remettre en cache. (Voir le paramètre `/statfileslevel` de l’élément de configuration [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) L’exemple de message de requête HTTP suivant supprime et met en cache le `/content/geometrixx-outdoors/en.html page` :
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  

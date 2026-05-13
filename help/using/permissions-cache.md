@@ -6,9 +6,17 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '923'
+TQID: https://experienceleague.adobe.com/oBC-6k0HhbUhVz-Q55DypYbl3PCJ8PYpXT6-zk6sz-s
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 948
 ht-degree: 100%
 
 ---
@@ -27,7 +35,7 @@ Les méthodes d’authentification et d’autorisation étant spécifiques au d�
 
 Les diagrammes suivants illustrent l’ordre d’apparition des événements lorsqu’un navigateur web demande une page pour laquelle on utilise la mise en cache sensible aux autorisations.
 
-## La page est mise en cache et l’utilisateur est autorisé  {#page-is-cached-and-user-is-authorized}
+## La page est mise en cache et l’utilisateur est autorisé {#page-is-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1.png)
 
@@ -36,7 +44,7 @@ Les diagrammes suivants illustrent l’ordre d’apparition des événements lor
 1. Le rendu appelle le servlet auth checker pour effectuer la vérification de sécurité et répond à Dispatcher. Le message de réponse comprend un code d’état HTTP 200 pour indiquer que la personne est autorisée.
 1. Dispatcher envoie un message de réponse au navigateur, constitué des lignes d’en-tête de la réponse de rendu et du contenu mis en cache dans le corps.
 
-## La page n’est pas mise en cache et l’utilisateur est autorisé  {#page-is-not-cached-and-user-is-authorized}
+## La page n’est pas mise en cache et l’utilisateur est autorisé {#page-is-not-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1-1.png)
 
@@ -45,7 +53,7 @@ Les diagrammes suivants illustrent l’ordre d’apparition des événements lor
 1. Le rendu appelle le servlet d’autorisation d’AEM (il ne s’agit pas du servlet AuthChecker du Dispatcher) pour effectuer une vérification de sécurité. Lorsque la personne est autorisée, le rendu inclut la page rendue dans le corps du message de réponse.
 1. Dispatcher transfère la réponse au navigateur. Dispatcher ajoute le corps du message de réponse du rendu au cache.
 
-## L’utilisateur n’est pas autorisé  {#user-is-not-authorized}
+## L’utilisateur n’est pas autorisé {#user-is-not-authorized}
 
 ![](assets/chlimage_1-2.png)
 
@@ -70,7 +78,7 @@ Pour mettre en œuvre la mise en cache sensible aux autorisations, effectuez les
 >[!NOTE]
 >
 >Lorsqu’un réseau CDN (ou tout autre cache) se trouve devant Dispatcher, vous devez définir les en-têtes de mise en cache en conséquence, afin que le réseau CDN ne mette pas en cache le contenu privé. Par exemple : `Header always set Cache-Control private`.
->>Pour AEM as a Cloud Service, voir la page [Mettre en cache](https://experienceleague.adobe.com/fr/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) pour en savoir plus sur la définition des en-têtes de mise en cache privés.
+>Pour AEM as a Cloud Service, voir la page [Mettre en cache](https://experienceleague.adobe.com/fr/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) pour en savoir plus sur la définition des en-têtes de mise en cache privés.
 
 ## Créer le servlet Auth Checker {#create-the-auth-checker-servlet}
 
@@ -163,7 +171,7 @@ Lorsque Dispatcher démarre, son fichier journal comprend le message de débogag
 
 L’exemple de section auth_checker suivant configure le Dispatcher pour utiliser le servlet de la rubrique précédente. La section des filtres entraîne des vérifications d’autorisation uniquement sur les ressources HTML sécurisées.
 
-### Exemple de configuration  {#example-configuration}
+### Exemple de configuration {#example-configuration}
 
 ```xml
 /auth_checker
