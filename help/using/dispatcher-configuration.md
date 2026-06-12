@@ -19,7 +19,7 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: baa06172b3954af08dbeeef4eb7dbd24ce46ad60
 workflow-type: tm+mt
-source-wordcount: 9194
+source-wordcount: 9174
 ht-degree: 97%
 
 ---
@@ -1319,7 +1319,7 @@ Pour spécifier les paramètres qui sont ignorés, ajoutez les règles glob à l
 
 >[!NOTE]
 >
->Lorsque vous configurez la propriété glob, faites-la correspondre au nom du paramètre de requête. Par exemple, pour ignorer le paramètre « p1 » de l’URL suivante `http://example.com/path/test.html?p1=test&p2=v2`, la propriété glob doit être :
+>Lors de la configuration de la propriété globale, elle doit correspondre au nom du paramètre de requête. Par exemple, si vous souhaitez ignorer le paramètre « p1 » du `http://example.com/path/test.html?p1=test&p2=v2` d’URL suivant, la propriété glob doit être :
 > `/0002 { /glob "p1" /type "allow" }`
 
 Dans l’exemple suivant, Dispatcher ignore tous les paramètres, à l’exception du paramètre `nocache`. Par conséquent, Dispatcher ne met jamais en cache les URL de requête qui incluent le paramètre `nocache` :
@@ -1660,7 +1660,7 @@ Les valeurs `glob` peuvent inclure des caractères génériques et des caractèr
 | `?` | Correspond à tout caractère unique. Utilisation en dehors des classes de caractères. Dans une classe de caractères, ce caractère est interprété littéralement. | `*outdoors/??/*`<br/> correspond aux pages du site geometrixx-outdoors dans n’importe quelle langue. Par exemple, la demande HTTP suivante correspond au modèle glob :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La demande suivante ne correspond pas au modèle glob : <br/><ul><li>&quot;GET /content/geometrixx-outdoors/fr.html&quot;</li></ul> |
 | `[ and ]` | Marque le début et la fin d’une classe de caractères. Les classes de caractères peuvent inclure une ou plusieurs plages de caractères et des caractères uniques.<br/>Une correspondance a lieu si le caractère cible correspond à l’un des caractères de la classe de caractères ou dans une plage définie.<br/>Si le crochet fermant n’est pas inclus, le modèle ne produit pas de correspondance. | `*[o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Correspond aux requêtes HTTP suivantes : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indique une plage de caractères. À utiliser dans des classes de caractères. En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[m-p]men.html*`Correspond à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | Annule le caractère ou la classe de caractères qui suit. À utiliser uniquement pour annuler des caractères et des plages de caractères dans des classes de caractères. Équivalent au `^ wildcard`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[ !o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/> Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | Annule le caractère ou la classe de caractères qui suit. À utiliser uniquement pour annuler des caractères et des plages de caractères dans des classes de caractères. Équivalent au `^ wildcard`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | `*[!o]men.html*`<br/> correspond à la requête HTTP suivante : <br/>.<ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Ne correspond pas à la requête HTTP suivante : <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Ne correspond pas à la requête HTTP suivante :<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Annule le caractère ou la plage de caractères qui suit. À utiliser pour annuler uniquement des caractères et des plages de caractères dans des classes de caractères. Équivalent au caractère générique `!`. <br/>En dehors d’une classe de caractères, ce caractère est interprété littéralement. | Les exemples pour le caractère générique `!` s’appliquent, en remplaçant les caractères `!` dans les exemples de motifs par des caractères `^`. |
 
 
@@ -1895,8 +1895,8 @@ La configuration de la ferme ne contient pas de racine de document (élément de
   Le modèle de nom de fichier temporaire dépasse la longueur du plus long nom de fichier possible sur le système. Dispatcher crée d’abord un fichier temporaire, avant de créer ou de remplacer effectivement le fichier mis en cache. Le nom de fichier temporaire est le nom du fichier cible auquel sont ajoutés les caractères `_YYYYXXXXXX`, où `Y` et `X` sont remplacés pour créer un nom unique.
 * **Mise en cache impossible : l’URL de la requête n’a pas d’extension.**\
   L’URL de la demande n’a pas d’extension ou un chemin suit l’extension du fichier, par exemple : `/test.html/a/path`.
-* **impossible à mettre en cache : la requête devait être un GET ou un HEAD**
-La méthode HTTP n’est ni une GET ni une HEAD. Dispatcher suppose que la sortie contient des données dynamiques qui ne doivent pas être mises en cache.
+* **impossible à mettre en cache : la requête devait être une GET ou une HEAD**
+La méthode HTTP n’est ni une méthode GET ni une méthode HEAD. Dispatcher suppose que la sortie contient des données dynamiques qui ne doivent pas être mises en cache.
 * **mise en cache impossible : la requête contenait une chaîne de requête**\
   La requête contenait une chaîne de requête. Dispatcher suppose que la sortie dépend de la chaîne de requête donnée et n’effectue donc pas de mise en cache.
 * **Mise en cache impossible : la personne gestionnaire de session doit s’authentifier.**\

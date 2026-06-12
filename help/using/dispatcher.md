@@ -18,7 +18,7 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 3227
+source-wordcount: 3169
 ht-degree: 96%
 
 ---
@@ -274,13 +274,13 @@ Habituellement, Dispatcher est le prochain serveur susceptible de servir le docu
 Il existe plusieurs méthodes de contrôle de la durée pendant laquelle un CDN met en cache une ressource avant qu’elle ne soit récupérée auprès de Dispatcher.
 
 1. Configuration explicite.
-Configurez la durée pendant laquelle des ressources spécifiques sont conservées dans le cache du réseau de diffusion de contenu, en fonction du type MIME, de l’extension, du type de requête, etc.
+Configurez la durée pendant laquelle des ressources spécifiques sont conservées dans le cache du réseau CDN, en fonction du type MIME, de l’extension, du type de requête, etc.
 
 1. En-têtes d’expiration et de contrôle du cache.
-La plupart des réseaux CDN honorent les en-têtes HTTP `Expires:` et `Cache-Control:` s’ils sont envoyés par le serveur en amont. Pour suivre cette méthode, vous pouvez, par exemple, utiliser le module Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
+La plupart des réseaux CDN respectent les en-têtes HTTP `Expires:` et `Cache-Control:` s’ils sont envoyés par le serveur en amont. Cette méthode peut être réalisée, par exemple, en utilisant le module Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
 
 1. Invalidation manuelle.
-Les CDN permettent de supprimer des ressources du cache via des interfaces web.
+Les réseaux de diffusion de contenu permettent de supprimer des ressources du cache par le biais d’interfaces web.
 1. Invalidation basée sur une API.\
    La plupart des CDN disposent d’une API REST et/ou SOAP qui permet de supprimer des ressources du cache.
 
