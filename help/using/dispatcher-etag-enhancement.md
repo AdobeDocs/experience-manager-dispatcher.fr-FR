@@ -1,7 +1,8 @@
 ---
 title: Amélioration de l’ETag Dispatcher pour la validation du réseau CDN
 description: Disponibilité, statut de prise en charge et comportement de INTERNAL_AEM_DISPATCHER_ETAG_ENHANCEMENT dans AEM as a Cloud Service.
-source-git-commit: ac0fafd060643903735ff565072ef2c5bee970be
+exl-id: 4409d0f0-05db-42f3-ace9-1516f1970891
+source-git-commit: cddffe2194beea628f71b6631faada5df4555267
 workflow-type: tm+mt
 source-wordcount: '308'
 ht-degree: 0%
