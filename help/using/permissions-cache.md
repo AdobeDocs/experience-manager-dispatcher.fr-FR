@@ -7,17 +7,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 TQID: https://experienceleague.adobe.com/oBC-6k0HhbUhVz-Q55DypYbl3PCJ8PYpXT6-zk6sz-s
-product_v2:
-  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: d095671a-1355-40aa-8b5f-06c33c68080b
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 948
-ht-degree: 100%
+source-wordcount: 926
+ht-degree: 96%
 
 ---
 
@@ -77,8 +73,8 @@ Pour mettre en œuvre la mise en cache sensible aux autorisations, effectuez les
 
 >[!NOTE]
 >
->Lorsqu’un réseau CDN (ou tout autre cache) se trouve devant Dispatcher, vous devez définir les en-têtes de mise en cache en conséquence, afin que le réseau CDN ne mette pas en cache le contenu privé. Par exemple : `Header always set Cache-Control private`.
->Pour AEM as a Cloud Service, voir la page [Mettre en cache](https://experienceleague.adobe.com/fr/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) pour en savoir plus sur la définition des en-têtes de mise en cache privés.
+>Lorsqu’un réseau CDN (ou tout autre cache) se trouve devant le Dispatcher, vous devez définir les en-têtes de mise en cache en conséquence, de sorte que le réseau CDN ne mette pas en cache le contenu privé. Par exemple : `Header always set Cache-Control private`.
+>Pour AEM as a Cloud Service, consultez la page [Mise en cache](https://experienceleague.adobe.com/fr/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) pour plus d’informations sur la définition des en-têtes de mise en cache privée.
 
 ## Créer le servlet Auth Checker {#create-the-auth-checker-servlet}
 
