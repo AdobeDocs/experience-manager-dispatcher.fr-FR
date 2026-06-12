@@ -3,18 +3,13 @@ title: Problèmes fréquents de Dispatcher
 description: Problèmes fréquents d’Adobe Experience Manager Dispatcher.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 TQID: https://experienceleague.adobe.com/NQdA2gQ1pBYAiVrjO1arci4qp6cGIKpZZHWimEfB9T0
-product_v2:
-  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: c1579802-ddd4-4214-8a91-97b2066abe11
-  - id: d095671a-1355-40aa-8b5f-06c33c68080b
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 1625
-ht-degree: 100%
+source-wordcount: 1530
+ht-degree: 97%
 
 ---
 
@@ -112,9 +107,9 @@ Content-Length: 0
 
 Dispatcher supprime les fichiers et les dossiers mis en cache et dont les noms correspondent à la valeur de l’en-tête CQ. Par exemple, une CQ-Handle de `/content/geomtrixx-outdoors/en` correspond aux éléments suivants :
 
-Tous les fichiers (quelle que soit leur extension) nommés « en » dans le répertoire geometrixx-outdoors.
-N’importe quel répertoire nommé `_jcr_content` sous le répertoire « en » (qui, s’il existe, contient les rendus mis en cache des sous-nœuds de la page).
-Le répertoire `en` n’est supprimé que si `CQ-Action` est `Delete` ou `Deactivate`.
+Tous les fichiers (de n’importe quelle extension de fichier) nommés dans le répertoire geometrixx-outdoors.
+Tout répertoire nommé `_jcr_content` sous le répertoire en (qui, s’il existe, contient les rendus en cache des sous-nœuds de la page).
+Le répertoire `en` ne peut être supprimé que si le `CQ-Action` est `Delete` ou `Deactivate`.
 
 Pour plus d’informations sur cette rubrique, voir [Invalidation manuelle du cache de Dispatcher](page-invalidate.md).
 
@@ -158,11 +153,11 @@ Pour l’activer :
 
 ## Divers
 
-Comment Dispatcher détermine-t-il si un document est à jour ?
-Pour savoir si un document est à jour, Dispatcher effectue ces actions :
+Comment le Dispatcher détermine-t-il si un document est à jour ?
+Pour déterminer si un document est à jour, le Dispatcher effectue les actions suivantes :
 
-Il vérifie si le document est soumis à l’invalidation automatique. Dans le cas contraire, le document est considéré comme à jour.
-Si le document est configuré pour l’invalidation automatique, Dispatcher vérifie s’il est plus ancien ou plus récent que la dernière modification disponible. S’il est plus ancien, Dispatcher demande la version actuelle à l’instance AEM et remplace la version dans le cache.
+Il vérifie si le document fait l’objet d’une invalidation automatique. Dans le cas contraire, le document est considéré comme à jour.
+Si le document est configuré pour l’invalidation automatique, le Dispatcher vérifie s’il est plus ancien ou plus récent que la dernière modification disponible. S’il est plus ancien, le Dispatcher demande la version actuelle à l’instance AEM et remplace la version dans le cache.
 
 ### Comment Dispatcher renvoie-t-il des documents ?
 

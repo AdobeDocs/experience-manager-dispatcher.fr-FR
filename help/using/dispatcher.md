@@ -6,19 +6,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 TQID: https://experienceleague.adobe.com/Ir-slXay90FcQsvKGLioMgFhmhsaTfkYxIQJzfjDsfY
-product_v2:
-  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
-feature_v2:
-  - id: b1210526-416b-4ef6-bcc0-1692e99f30e9
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: c1579802-ddd4-4214-8a91-97b2066abe11
-  - id: d095671a-1355-40aa-8b5f-06c33c68080b
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: b1210526-416b-4ef6-bcc0-1692e99f30e9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 3227
+source-wordcount: 3169
 ht-degree: 96%
 
 ---
@@ -274,13 +268,13 @@ Habituellement, Dispatcher est le prochain serveur susceptible de servir le docu
 Il existe plusieurs méthodes de contrôle de la durée pendant laquelle un CDN met en cache une ressource avant qu’elle ne soit récupérée auprès de Dispatcher.
 
 1. Configuration explicite.
-Configurez la durée pendant laquelle des ressources spécifiques sont conservées dans le cache du réseau de diffusion de contenu, en fonction du type MIME, de l’extension, du type de requête, etc.
+Configurez la durée pendant laquelle des ressources spécifiques sont conservées dans le cache du réseau CDN, en fonction du type MIME, de l’extension, du type de requête, etc.
 
 1. En-têtes d’expiration et de contrôle du cache.
-La plupart des réseaux CDN honorent les en-têtes HTTP `Expires:` et `Cache-Control:` s’ils sont envoyés par le serveur en amont. Pour suivre cette méthode, vous pouvez, par exemple, utiliser le module Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
+La plupart des réseaux CDN respectent les en-têtes HTTP `Expires:` et `Cache-Control:` s’ils sont envoyés par le serveur en amont. Cette méthode peut être réalisée, par exemple, en utilisant le module Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
 
 1. Invalidation manuelle.
-Les CDN permettent de supprimer des ressources du cache via des interfaces web.
+Les réseaux de diffusion de contenu permettent de supprimer des ressources du cache par le biais d’interfaces web.
 1. Invalidation basée sur une API.\
    La plupart des CDN disposent d’une API REST et/ou SOAP qui permet de supprimer des ressources du cache.
 
@@ -292,7 +286,7 @@ Pour un contrôle davantage affiné, l’invalidation basée sur l’API vous pe
 
 >[!NOTE]
 >
->Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/fr/docs/events/experience-manager-gems-recordings/overview#).
+>Voir aussi [Sécurité de Dispatcher AEM (CQ) et mise en cache du réseau CDN et du navigateur](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023), ainsi que la présentation enregistrée [Mise en cache de Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Utiliser Dispatcher avec un serveur de création {#using-a-dispatcher-with-an-author-server}
 
