@@ -2,13 +2,17 @@
 title: Amélioration de l’ETag Dispatcher pour la validation du réseau CDN
 description: Disponibilité, statut de prise en charge et comportement de INTERNAL_AEM_DISPATCHER_ETAG_ENHANCEMENT dans AEM as a Cloud Service.
 exl-id: 4409d0f0-05db-42f3-ace9-1516f1970891
-source-git-commit: cddffe2194beea628f71b6631faada5df4555267
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e2e1f00ed10637e4cbc09d879ef91ec657cab914
 workflow-type: tm+mt
 source-wordcount: '308'
 ht-degree: 0%
-
 ---
-
 # Amélioration de l’ETag Dispatcher pour la validation du réseau CDN
 
 ## Vue d’ensemble
@@ -68,6 +72,6 @@ Après avoir activé la variable d’environnement et déployé les modification
 
 Pour obtenir des conseils de base destinés aux clients sur la mise en cache des en-têtes et la gestion des `ETag` dans Dispatcher, consultez :
 
-- [Configuration de Dispatcher - Mise en cache des en-têtes de réponse HTTP](https://experienceleague.adobe.com/fr/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
+- [Configuration de Dispatcher - Mise en cache des en-têtes de réponse HTTP](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
 
 « Cette fonctionnalité est disponible dans Dispatcher `2.0.264` (AEM SDK `2026.2.24464`). Lorsqu’il est activé, Dispatcher peut valider les `If-None-Match` par rapport aux valeurs `ETag` mises en cache et renvoyer des `304 Not Modified` sur les accès au cache. Dans AEM as a Cloud Service, cela est pris en charge et peut être activé via la configuration de l’environnement Cloud Manager. »

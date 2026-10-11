@@ -5,17 +5,18 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/fr/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: true
-internal: n
-snippet: y
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+internal: 'n'
+snippet: 'y'
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+source-git-commit: e2e1f00ed10637e4cbc09d879ef91ec657cab914
 workflow-type: tm+mt
 source-wordcount: '1140'
 ht-degree: 100%
-
 ---
-
 
 # Optimiser les performances de mise en cache d’un site web {#optimizing-a-website-for-cache-performance}
 
@@ -37,12 +38,12 @@ Dispatcher propose un certain nombre de mécanismes intégrés que vous pouvez u
 
 >[!NOTE]
 >
->Il peut être utile de vous rappeler que le dispatcher stocke le cache sur un serveur web standard. Cela signifie que :
+>Il peut être utile de vous rappeler que le Dispatcher stocke le cache sur un serveur web standard. Cela signifie que :
 >
 >* vous pouvez mettre en cache tous les éléments enregistrés en tant que page ou demandés à l’aide d’une URL ;
->* vous ne pouvez pas enregistrer d’autres éléments, tels que des en-têtes HTTP, des cookies, des données de session et des données de formulaire.
+>* vous ne pouvez pas stocker d’autres éléments, tels que des en-têtes HTTP, des cookies, des données de session et des données de formulaire.
 >
->En général, de nombreuses stratégies de mise en cache impliquent de sélectionner les URL appropriées et de ne pas s’en tenir à ces données supplémentaires.
+>En général, de nombreuses stratégies de mise en cache impliquent de sélectionner les URL appropriées et de ne pas s’appuyer sur ces données supplémentaires.
 
 ## Utiliser un encodage de page cohérent {#using-consistent-page-encoding}
 
@@ -57,13 +58,13 @@ Les en-têtes de requête HTTP ne sont pas mis en cache. Des problèmes peuvent 
 
 ## Éviter les paramètres d’URL {#avoid-url-parameters}
 
-Si possible, évitez les paramètres d’URL des pages que vous souhaitez mettre en cache. Par exemple, si vous disposez d’une galerie d’images, l’URL suivante n’est jamais mise en cache (sauf si le Dispatcher est [configuré en conséquence](dispatcher-configuration.md#main-pars_title_24)) :
+Si possible, évitez d’utiliser des paramètres d’URL pour les pages que vous souhaitez mettre en cache. Par exemple, si vous disposez d’une galerie d’images, l’URL suivante n’est jamais mise en cache (sauf si le Dispatcher est [configuré en conséquence](dispatcher-configuration.md#main-pars_title_24)) :
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
 ```
 
-Vous pouvez toutefois placer ces paramètres dans l’URL de page, comme suit :
+Vous pouvez toutefois placer ces paramètres dans l’URL de la page, comme suit :
 
 ```xml
 www.myCompany.com/pictures/gallery.christmas.1.html
@@ -77,7 +78,7 @@ www.myCompany.com/pictures/gallery.christmas.1.html
 
 Si vous autorisez les utilisateurs et utilisatrices à modifier la taille de la police (ou toute autre personnalisation de la disposition), assurez-vous que les différentes personnalisations sont reflétées dans l’URL.
 
-Par exemple, les cookies ne sont pas mis en cache. Par conséquent, si vous stockez la taille de police dans un cookie (ou un mécanisme similaire), celle-ci ne sera pas conservée pour la page mise en cache. Par conséquent, le Dispatcher renvoie aléatoirement des documents de n’importe quelle taille de police.
+Par exemple, les cookies ne sont pas mis en cache. Par conséquent, si vous stockez la taille de police dans un cookie (ou un mécanisme similaire), celle-ci ne sera pas conservée pour la page mise en cache. Par conséquent, Dispatcher renvoie aléatoirement des documents de n’importe quelle taille de police.
 
 L’inclusion de la taille de police dans l’URL en tant que sélecteur évite ce problème :
 
@@ -89,7 +90,7 @@ www.myCompany.com/news/main.large.html
 >
 >Pour la plupart des aspects de disposition, il est également possible d’utiliser des feuilles de style, des scripts côté client, ou les deux. L’une et/ou l’autre de ces options fonctionnent bien avec la mise en cache.
 >
->Cette méthode est également utile pour une version imprimée. Dans ce cas, vous pouvez également utiliser une URL telle que:
+>Cette méthode est également utile pour une version imprimée. Dans ce cas, vous pouvez également utiliser une URL telle que :
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -100,7 +101,7 @@ www.myCompany.com/news/main.large.html
 Si vous effectuez le rendu de titres de page ou d’un autre texte sous forme d’images, stockez les fichiers afin qu’ils soient supprimés lors de la mise à jour du contenu sur la page :
 
 1. Placez le fichier image dans le même dossier que la page.
-1. Utilisez le format d’affectation de nom suivant pour le fichier image :
+1. Utilisez le format de nommage suivant pour le fichier image :
 
    `<page file name>.<image file name>`
 
@@ -118,7 +119,7 @@ Si vous utilisez des images pour les entrées de navigation, la méthode est fon
 * Script qui traite les requêtes `.normal` et renvoie l’image normale.
 * Script qui traite les demandes `.active` et renvoie l’image activée.
 
-Il est important que vous créiez ces images avec le même nom que la page, afin de vous assurer qu’une mise à jour du contenu supprime ces images et la page.
+Il est important que vous créiez ces images avec le même identifiant de nommage que la page, afin de vous assurer qu’une mise à jour du contenu supprime ces images et la page.
 
 Pour les pages qui ne sont pas modifiées, les images restent dans le cache, bien que les pages elles-mêmes soient automatiquement invalidées.
 
@@ -131,17 +132,17 @@ Dispatcher ne peut pas mettre en cache les données personnalisées. Il est donc
 
 >[!NOTE]
 >
->Si vous personnalisez chaque page (par exemple en indiquant le nom de l’utilisateur ou de l’utilisatrice dans la barre de titre), vous ne pourrez pas les mettre en cache, et cela peut engendrer un impact significatif sur les performances.
+>Si vous personnalisez chaque page (par exemple en indiquant le nom de l’utilisateur ou de l’utilisatrice dans la barre de titre), vous ne pourrez pas la mettre en cache, et cela peut engendrer un impact significatif sur les performances.
 >
 >Cependant, si vous le devez, vous pouvez effectuer les opérations suivantes :
 >
->* utiliser iFrames pour diviser la page en une partie identique pour tous les utilisateurs et utilisatrices et une partie identique à toutes les pages de l’utilisateur ou de l’utilisatrice. Vous pouvez ensuite mettre en cache ces deux parties ;
+>* utiliser iFrames pour diviser la page en une partie identique pour tous les utilisateurs et utilisatrices et une partie identique à toutes les pages de l’utilisateur ou de l’utilisatrice. Vous pouvez ensuite mettre en cache ces deux parties.
 >* utiliser du JavaScript côté client pour afficher des informations personnalisées. Cependant, vous devez vous assurer que la page s’affiche toujours correctement si un utilisateur ou une utilisatrice désactive JavaScript.
 >
 
 ## Connexions persistantes {#sticky-connections}
 
-Les [connexions persistantes](dispatcher.md#TheBenefitsofLoadBalancing) garantissent que les documents d’un utilisateur ou d’une utilisatrice sont tous composés sur le même serveur. Si un utilisateur ou une utilisatrice quitte ce dossier et y revient ultérieurement, la connexion reste établie. Définissez un dossier à même de contenir tous les documents qui nécessitent des connexions persistantes sur le site web. Essayez de ne pas y stocker d’autres documents. Cela a un impact sur l’équilibrage de la charge si vous utilisez des pages personnalisées et des données de session.
+Les [connexions persistantes](dispatcher.md#TheBenefitsofLoadBalancing) garantissent que les documents d’un utilisateur ou d’une utilisatrice sont tous composés sur le même serveur. Si un utilisateur ou une utilisatrice quitte ce dossier et y revient ultérieurement, l’affinité de session est conservée. Définissez un dossier à même de contenir tous les documents qui nécessitent une affinité de session pour le site web. Essayez de ne pas y stocker d’autres documents. Cela a un impact sur l’équilibrage de la charge si vous utilisez des pages personnalisées et des données de session.
 
 ## Types MIME {#mime-types}
 
@@ -150,7 +151,7 @@ Un navigateur peut déterminer le type d’un fichier de deux façons différent
 1. Par son extension (par exemple : .html, .gif et .jpg)
 1. Par le type MIME que le serveur envoie avec le fichier.
 
-Pour la plupart des fichiers, le type MIME est implicite dans l’extension de fichier.
+Pour la plupart des fichiers, le type MIME est implicite dans l’extension de fichier :
 
 1. Par son extension (par exemple : .html, .gif et .jpg)
 1. Par le type MIME que le serveur envoie avec le fichier.
